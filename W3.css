@@ -145,7 +145,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-padding-top-64{padding-top:64px!important}.w3-padding-top-48{padding-top:48px!important}
 .w3-padding-top-32{padding-top:32px!important}.w3-padding-top-24{padding-top:24px!important}
 .w3-left{float:left!important}.w3-right{float:right!important}
-.w3-button:hover{color:#000!important;background-color:#ccc!important}
+.w3-button:hover{color:#000!important;background-color:#fdf5e6!important}
 .w3-transparent,.w3-hover-none:hover{background-color:transparent!important}
 .w3-hover-none:hover{box-shadow:none!important}
 /* Colors */
@@ -171,7 +171,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important}
 .w3-yellow,.w3-hover-yellow:hover{color:#000!important;background-color:#ffeb3b!important}
 .w3-white,.w3-hover-white:hover{color:#000!important;background-color:#fff!important}
-.w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+.w3-black,.w3-hover-black:hover{color:#fdf5e6!important;background-color:#000!important}
 .w3-grey,.w3-hover-grey:hover,.w3-gray,.w3-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important}
 .w3-light-grey,.w3-hover-light-grey:hover,.w3-light-gray,.w3-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
 .w3-dark-grey,.w3-hover-dark-grey:hover,.w3-dark-gray,.w3-hover-dark-gray:hover{color:#fff!important;background-color:#616161!important}
@@ -234,11 +234,12 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-pale-red,.w3-hover-border-pale-red:hover{border-color:#ffe7e7!important}.w3-border-pale-green,.w3-hover-border-pale-green:hover{border-color:#e7ffe7!important}
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
 /* my colors */
+.text-antique-white,.hover-text-antique-white:hover{color:#FFEBD8!important}
 .antique-white,.antique-white:hover{color:#000!important;background-color:#FFEBD8!important}
-.orange-web,.orange-web:hover{color:#fff!important;background-color:#ffb135!important}
-.virdigris,.virdigris:hover{color:#fff!important;background-color:#72b1a9!important}
-.reseda-green,.reseda-green:hover{color:#fff!important;background-color:#657147!important}
-.black-bean,.black-bean:hover{color:#fff!important;background-color:#3d0f00!important}
+.orange-web,.orange-web:hover{color:#FFEBD8!important;background-color:#ffb135!important}
+.virdigris,.virdigris:hover{color:#FFEBD8!important;background-color:#72b1a9!important}
+.reseda-green,.reseda-green:hover{color:#FFEBD8!important;background-color:#657147!important}
+.black-bean,.black-bean:hover{color:#FFEBD8!important;background-color:#3d0f00!important}
 .selected-works-block {
     display: inline-block;
     width: 33%;
