@@ -278,5 +278,9 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     clear: both;
     display: table;
 }
+.footer-icons a {margin: 0 10px;}
+.pink-glow:hover {box-shadow: 0 0 100px rgb(255, 47, 210)} 
+.w3-sidebar {width: 120px;background: #222;}
+.white-glow:hover { box-shadow: 0 0 50px; color:#fdf5e6} 
 
 
