@@ -36,6 +36,14 @@
         }
         .content{margin-left:110px;margin-right:10px}
 
+        .zoom {
+          transition: transform .2s; /* Animation */
+        }
+
+        .zoom:hover {
+          transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     .w3-row-padding img {margin-bottom: 12px} img {border-radius: 10%}
     /* Set the width of the sidebar to 120px */
@@ -50,13 +58,13 @@
     <div id="nav_bar"> </div>
 
     <!-- Page Content -->
-    <div class="w3-padding-large" id="main">
+    <div class="w3-padding-large zoom" id="main">
       <!-- Header/Home Big-->
       <header class="w3-container w3-padding-32 w3-center w3-hide-small w3-hide-medium w3-dark-grey round-container w3-text-sand" id="home">
         <div class="container">
             <div class="w3-left-align">
                 <h1 class="w3-xxxlarge"> <strong>Riya Kanani</strong></h1>
-                <h4>CS & Immersive Media Design Student at University of Maryland, College Park.</h4>
+                <h4>Computer Science & Immersive Media Design Student at University of Maryland, College Park.</h4>
             </div>
             <img src="me.jpg" alt="Picture of me" class="w3-image pink-glow" width="400" height="500">
         </div>
@@ -71,25 +79,25 @@
 
     <!-- Works Section -->
      
-    <div class="w3-padding-large" id="works">
+    <div class="w3-padding-large zoom" id="works">
       <!--Big-->
       <div class = "content w3-padding-64 round-container  w3-hide-small w3-hide-medium"> 
         <h2>Recent Works</h2>
         <div class="scroll-container w3-dark-grey round-container">
           <a href="./Selected Works Pages/lost_in_translation.html">
-            <img src="./Selected Works Pages/Lost In Translation/final_outside.jpg" alt="LIT cover image" class = "white-glow" style="width:40%">
+            <img src="./Selected Works Pages/Lost In Translation/final_outside.jpg" alt="LIT cover image" class = "white-glow" style="width:30%">
           </a>
 
           <a href="./Selected Works Pages/crimson_premonition.html">
-            <img src="./Selected Works Pages/Crimson Premotion Media/Playing.jpeg" alt="CP cover image" class = "white-glow" style="width:40%">
+            <img src="./Selected Works Pages/Crimson Premotion Media/Playing.jpeg" alt="CP cover image" class = "white-glow" style="width:30%">
           </a>
 
           <a href="./Selected Works Pages/anodyne.html">
-            <img src="./Selected Works Pages/Anodyne Media/final_scene.jpg" alt="anodyne cover image" class = "white-glow" style="width:75%">
+            <img src="./Selected Works Pages/Anodyne Media/final_scene.jpg" alt="anodyne cover image" class = "white-glow" style="width: 55%">
           </a>
 
           <a href="./Selected Works Pages/javascript.html">
-            <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class = "white-glow" style="width:50%">
+            <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class = "white-glow" style="width:40%">
           </a>
         </div>
       </div>
@@ -118,7 +126,7 @@
     </div>
 
     <!-- About Me Section -->
-    <div class="w3-padding-large w3-text-sand" id="About Me">
+    <div class="w3-padding-large zoom" id="About Me">
       <!--Big-->
       <div class="content w3-padding-64 w3-dark-grey round-container w3-hide-small w3-hide-medium w3-text-sand" style="padding: 30px;">
         <h2>About Me :)</h2>
