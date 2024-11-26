@@ -33,14 +33,35 @@
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
+
+        <div class="w3-content w3-display-container">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman1.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman2.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman3.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman4.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman5.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman6.jpg" style="width:100%">
+          <img class="mySlides" src="./Analog_Art/Sculpture/Woman7.jpg" style="width:100%">
+          <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 0)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1, 0)">&#10095;</button>
+        </div>
+
         <img src="./Analog_Art/bird.jpg" style="width:100%">
         <img src="./Analog_Art/mirror_painting.jpg" style="width:100%">
-    </div>
+      </div>
 
-    <div class="w3-half">
-        <img src="./Analog_Art/wire_sculpture.jpg" style="width:100%">
-        <img src="./Analog_Art/van_gogh_switch.jpg" style="width:100%">
-    </div>
+      <div class="w3-half">
+          <div class="w3-content w3-display-container">
+            <img class="mySlides2" src="./Analog_Art/basket/PaintedBasket1.jpg" style="width:100%">
+            <img class="mySlides2" src="./Analog_Art/basket/PaintedBasket2.jpg" style="width:100%">
+            <img class="mySlides2" src="./Analog_Art/basket/PaintedBasket3.jpg" style="width:100%">
+            <img class="mySlides2" src="./Analog_Art/basket/PaintedBasket4.jpg" style="width:100%">
+            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1, 1)">&#10095;</button>
+          </div>
+          <img src="./Analog_Art/wire_sculpture.jpg" style="width:100%">
+          <img src="./Analog_Art/van_gogh_switch.jpg" style="width:100%">
+      </div>
     <!-- End photo grid -->
     </div>
     <!-- End Analog --->
@@ -60,6 +81,28 @@
       $("#nav_bar").load("sw_nav_bar.html");
       $("#footer").load("../footer.html");
     });
+  </script>
+
+  <script>
+      var slideIndex = [1,1];
+      var slideId = ["mySlides", "mySlides2"]
+      showDivs(1, 0);
+      showDivs(1, 1);
+      
+      function plusDivs(n, no) {
+        showDivs(slideIndex[no] += n, no);
+      }
+      
+      function showDivs(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) {slideIndex[no] = 1}
+        if (n < 1) {slideIndex[no] = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        x[slideIndex[no]-1].style.display = "block";  
+      }
   </script>
 </body>
 
