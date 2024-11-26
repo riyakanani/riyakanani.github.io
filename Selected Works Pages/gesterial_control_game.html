@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Gesterial Control</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./../W3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+</head>
+
+<body class="w3-sand w3-text-black">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
+  
+  <div class="w3-padding-64 w3-content" id="projects">
+    <button class="w3-black no-underline" type="button">
+      <a href="./unity_engine.html">Unity Works</a>
+    </button>
+    <h2>Gesterial Control: Game</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <h4>How To Use:</h4>
+    <p>- In <a href="https://github.com/riyakanani/GesteruralControlGame/blob/main/README.md" target="_blank"> GitHub</a>, the game scene is located in: “Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking”</p>
+    <p>- A detailed setup and usage tutorial.</p>
+    <embed class="pdf" 
+            src=
+"./Gesterial Control Game/Techincal Instructions.pdf"
+        width="800" height="500">
+
+    <!-- Artist Statement -->
+    <h4>Project Overview:</h4>
+    <p> 
+        This project is a gesture-controlled game that leverages MediaPipe's 
+        hand-tracking solution to create dynamic interactions between a particle 
+        system and a player’s hand movements, captured through camera input. 
+        The game responds to the player’s gestures, creating an immersive experience 
+        where virtual particles interact in real-time with the hand's motion, 
+        adding a sense of control over the environment.
+    </p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <h4>My Contrubutions:</h4>
+    <h5>Genesis Script:</h5>
+    <p><b>File:</b> "GesteruralControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Genesis.cs".
+    </p>
+    <p><b>Description:</b> In the Genesis script, I set up the foundational 
+        framework for tracking and visualizing hand gestures by capturing the 
+        positions of the thumb and index finger in real time. 
+        I created spherical objects in Unity to represent these two fingers 
+        visually and implemented code to update their positions based on 
+        hand-tracking data. Using linear interpolation, the script maps MediaPipe’s 
+        raw coordinates to the Unity scene, ensuring smooth and accurate movement 
+        of the spheres that mirror the player’s hand gestures.
+    </p>
+
+    <h5>Oscillator Script:</h5>
+    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Oscillator.cs"
+    </p>
+    <p><b>Description:</b> I implemented a dynamic particle system where spherical 
+        particles oscillate in a circular pattern. 
+        The script initializes a customizable number of particles, 
+        each with a random color and a set scale, to create visual variety. 
+        Each particle’s movement is controlled by oscillating functions based on 
+        trigonometric calculations, distributing them evenly in a circular formation 
+        around a central point. Using adjustable parameters for speed, width, and height, 
+        the script allows for flexible oscillation patterns, providing a visually 
+        engaging and responsive interaction that complements the hand-tracking gestures 
+        within the game. This oscillating motion is calculated and updated each frame, 
+        producing smooth, continuous movement that enhances the immersive experience.
+    </p>
+
+    <h5>Collision Detection Script:</h5>
+    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Collision.cs"
+    </p>
+    <p><b>Description:</b> I implemented methods to detect and handle 
+        interactions between the player’s fingers, tracked as a virtual object, 
+        and specific target objects in the game, represented by particles. 
+        The script calculates the distance between the finger position and nearby particles, 
+        checking if the player’s finger is close enough to trigger an interaction. Upon contact, 
+        the script initiates an action, switching to a new scene. 
+        By creating an interactive element that responds to physical gestures, 
+        this Collision script deepens the gameplay by integrating intuitive touch-based triggers.
+    </p>
+
+    <h5>Hand Tracking Solution Script:</h5>
+    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/HandTrackingSolution.cs"
+    </p>
+    <p><b>Description:</b> In the hand-tracking script, 
+        I implemented the OnHandLandmarksOutput() method, 
+        which extracts the real-time x and y coordinates of the 
+        player’s thumb and index finger from the hand-tracking data. 
+        These coordinates are then used to update the Genesis script, 
+        allowing the virtual thumb and index finger in the game to follow the player’s 
+        hand movements with high accuracy. This function links live hand-tracking data 
+        to Unity objects, allowing for gesture recognition and interaction within the game.
+    </p>
+
+  </div>
+
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      $("#nav_bar").load("sw_nav_bar.html");
+      $("#footer").load("../footer.html");
+    });
+  </script>
+</body>
+
+
+
+</html>
