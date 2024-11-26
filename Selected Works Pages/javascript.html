@@ -32,10 +32,35 @@
     <h1>JavaScript</h1>
     <div>
       <h3><a href="https://editor.p5js.org/rkanani/sketches/yID6DDAOOB">Obsticles To Feeding Pacman </a></h3>
-      <p>
-        A game created for my Global Food Systems class in Spring of 2024. This is a game inspired by pacman created to teach student about the obsticles to feeding 9.5 billion people.
-        It taught me concepts of human-computer interaction, Iterface design, collisions/triggers, and sprites. 
+      <h4>Project Overview:</h4>
+      <p>A Pacman-inspired game with integrated educational questions. 
+        The player answers questions by "eating" certain objects in the game. 
+        Each correct answer rewards the player with points, 
+        and incorrect answers result in a loss of life. 
+        Created for global food systems class, 
+        specifically for the topic of obstacles to feeding 9.5 Billion.</p>
+      <h4>Skills:</h4>
+      <h5>Game Design:</h5>
+      <p>I implemented the core mechanics of the Pac-Man game, 
+        including character movement, ghost behaviors, and collision detection using p5.js.
       </p>
+      <h5>Game Modes:</h5>
+      <p>I created different game modes such as a welcome screen, gameplay, 
+        question mode for answering educational prompts,
+        and an end screen that displays the player's score and game-over message.
+      </p>
+      <h5>User Interface:</h5>
+      <p> I designed the UI components to display the score, 
+        lives, and educational questions, enhancing the user experience during gameplay.
+      </p>
+
+      <h5>Animation and Interaction:</h5>
+      <p> I used p5.js' built-in functions to animate characters,
+        trigger events upon interactions 
+        (such as eating objects and encountering ghosts), 
+        and implement the game’s dynamic elements, like the random movements of the ghosts.
+      </p>
+
       <div class="w3-center">
         <iframe src="https://editor.p5js.org/rkanani/full/yID6DDAOOB" width="400" height="450"></iframe>
       </div>
@@ -45,29 +70,40 @@
       <h3><a href="https://editor.p5js.org/rkanani/sketches/rwOk-bNK2">Murder Mystery</a></h3>
 
       <p><strong>In collaboration with Alyssa Mazzone and Danika Perez:</strong></p>
+      <h4>Project Overview:</h4>
       <p>
         In this murder mystery game, the user must play several minigames in order to collect hints to find the murderer. 
         This game uses concepts of On-screen Dynamics, Random Numbers, Text, and particle systems.
       </p>
-      <p>
-        For on-screen dynamics, the door and object respond to each other. If the user clicks one door, the others close. 
-        If the user chooses the correct door, the continue button appears. In the end, the user must decide on the murderer.
-        This can trigger a winner or loser screen and corresponding sound effects.
+
+      <h4>Skills:</h4>
+      <h5>Screen Management:</h5>
+      <p>Each screen function, like startScreen() and murdererScreen(), 
+        dynamically renders content such as text, images, 
+        and animations to set the game’s tone and narrative. 
+        I added interactive visuals and sound cues to enhance the atmosphere, 
+        including startScreen()'s animated title text and background 
+        image that fades in and out, creating a suspenseful first impression.
       </p>
-      <p>
-        Random numbers are also utilized. Every time the user plays the game, the murderer is chosen at random. 
-        In the first minigame, the weapons are moving in a random direction. 
-        In the second minigame, the weapon is placed under a randomly chosen door.
+      <h5>User Interaction & Navigation:</h5>
+      <p>The mouseClicked() function handles flexible navigation, 
+        allowing players to move between screens by once they complete a task. 
+        I also implemented resetGame() to randomize critical game elements, 
+        ensuring varied gameplay with each reset.
       </p>
-      <p>
-        Text is also used across the game. 
-        On the first screen, we have included Text that flashes, changing in real time. In the first minigame, the text color changes 
-        as a clue to who the murderer is.
+      <h5>Weapons Class and Particle System:</h5>
+      <p>Designed a challenging "clicker game" where players must quickly click 
+        the correct weapon type amidst other moving weapons in a particle system. 
+        This minigame includes dynamic object creation and collision handling. 
+        The render() function dynamically displays each weapon’s image based on type, 
+        tinting colors as visual feedback for the player. 
+        I implemented a physics engine in collide() to manage 
+        interactions between weapons, ensuring they move naturally
+         on the screen and respond accurately when clicked.
+        I further supported the atmospere by adding sound effects 
+        to heighten player engagement during gameplay.
       </p>
-      <p>
-        Lastly, we use a particle system in the first minigame. The weapons have a velocity and position. 
-        If they collide with each other or the walls, they bounce off of each other.
-      </p>
+      
       <!-- Grid for photos -->
       <div class="w3-row-padding" style="margin:0 -16px">
         <div class="w3-center">

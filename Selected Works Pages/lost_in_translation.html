@@ -47,7 +47,11 @@
         We hope to relay the confusion that miscounnication can bring, particularly in the space of 
         technology, but also relating to the experiences of immigrants from foreign countries. 
         By utilizing speech recognition, language translation, and the words from previous participants, 
-        each experience is unique and different from the last.
+        each experience is unique and different from the last, offering an evolving narrative that 
+        changes with every person who engages with the installation. 
+        The project emphasizes how communication can become distorted, 
+        showcasing both the limitations of AI and the human struggle to 
+        connect across languages and systems.
       </p>
       <p>
         We will delved into ciruitry, AI audio distortion, installation art, and storytelling. 
@@ -58,15 +62,77 @@
     <div>
       <h4>My Contributions:</h4>
       <p>
-        In this project, I had contributions in many different areas.
-        I mainly worked on rewiring the phone to work in conjunction with the computer.
-        Additionally, in the script, I worked on creating the functions that used AI to turn audio into text
-        and another function that translated and distorted the language.
-        I worked a lot on assembling the physical installation, making purchasing choices,
-        and making design choices.
-        Furthermore, I had some contributions to creating the map in the physical installation.
-        Our team worked on the storyline together throughout the development process.
+        In this project, I had contributions in many different areas. 
+        I worked a lot on assembling the physical installation, 
+        making purchasing and design choices. 
+        I made some contributions to creating the map in the physical installation.
+        Our team worked on the storyline together throughout the development process. 
+        However, my main role was the tech lead, creating interactive audio-based scripts. 
+        The focus was on providing spoken instructions and processing 
+        user responses through speech recognition, 
+        text-to-speech conversion, and translation. 
+        Below is an outline of the key areas I worked on:
       </p>
+      <h5>Speech-to-Text Integration:</h5>
+      <p>I integrated the speech_recognition library to allow the system to capture 
+        spoken input from the user in real-time. 
+        This enabled users to interact with the system by simply speaking, 
+        without requiring manual input.
+      </p>
+      <p>Implemented a function speechToText() to handle voice input and convert 
+        it into text for processing.
+      </p>
+
+      <h5>Interactive Dialogue System:</h5>
+      <p>I enhanced the interaction flow by adding dynamic user prompts and responses, 
+        which are controlled based on speech input. 
+        This creates a more natural conversation, 
+        where the system asks for confirmations and guides the user step by step.
+      </p>
+
+      <h5>Text Translation:</h5>
+      <p>I incorporated the googletrans library, developing the textTranslated function. 
+        This function translates parts of the user’s speech into random languages, 
+        creating a more diverse interaction.
+      </p>
+
+      <h5>Text-to-Speech (TTS) Implementation:</h5>
+      <p>For output, I implemented a textToSpeech function using the gTTS library, 
+        which converts text into spoken words. 
+        This feature allowed the system to provide verbal feedback to users and 
+        facilitate interaction.
+      </p>
+
+      <h5>Error Handling and Robustness:</h5>
+      <p>I built error-handling mechanisms to deal with speech recognition failures 
+        or incorrect responses. For example, if the system could not hear the user properly
+        or if the input was unclear, 
+        it would play a prompt asking the user to repeat themselves. 
+        Furthermore, I implemented various fallback responses 
+        (e.g., "I'm having trouble. I'm just going to go up and left to Willow Creek Avenue") 
+        to handle scenarios where the system could not understand the user's direction.
+      </p>
+
+      <h5>Location-based Navigation Logic:</h5>
+      <p>I developed the logic for location-based navigation, 
+        where the system tracks the user’s current location 
+        (e.g., "Serenity Circle") and provides specific instructions 
+        on how to reach the next location (e.g., "Tranquility Lane"). 
+        The directions are generated dynamically based on the user’s speech input, 
+        allowing the system to guide the user through multiple possible routes.
+      </p>
+
+      <h5>Optimization and Memory Management:</h5>
+      <p>I implemented memory management techniques such as the gc.collect() 
+        function to optimize the system's memory usage, 
+        ensuring that the program runs smoothly over extended periods without 
+        performance degradation.
+      </p>
+      <p>I also optimized the flow by handling multiple iterations of speech 
+        recognition and responses without overloading system resources.
+      </p>
+
+
      
     </div>
 
