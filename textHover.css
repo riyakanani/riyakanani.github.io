@@ -1,0 +1,72 @@
+.work-item {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.work-item img {
+  height: 450px;          /* or any fixed height you like */
+  width: auto;  
+  display: block;
+  border-radius: 8px; /* optional */
+}
+
+.work-item .overlay-text {
+  position: absolute;
+  bottom: 0; /* Or center with top:50%, left:50% + transform */
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6); /* semi-transparent background */
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-item:hover .overlay-text {
+  opacity: 1;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  border-radius: 8px; /* optional */
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: rgba(0,0,0,0.7); /* semi-transparent black */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
