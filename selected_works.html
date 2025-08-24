@@ -18,8 +18,23 @@
     /* Set the width of the sidebar to 120px */
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {margin-left: 120px}
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+
+    /* Small screen layout - two columns */
+    @media only screen and (max-width: 600px) {
+      #main {margin-left: 0}
+      
+      .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      
+      .selected-works-block {
+        width: 50% !important;
+        padding: 15vh 0px !important;
+        box-sizing: border-box;
+      }
+    }
     </style>
 </head>
 
@@ -29,7 +44,7 @@
   
   <!-- Projects Section -->
   <div class="w3-padding-64 w3-content" id="projects">
-    <div>
+    <div class="projects-container">
       <a href="./Selected Works Pages/unity_engine.html" class="w3-button w3-text-light-grey selected-works-block antique-white w3-hover-opacity">
         Unity Engine
       </a>
@@ -62,7 +77,7 @@
   <script>
     $(function () {
       $("#nav_bar").load("nav_bar.html");
-      $("#footer").load("footer.html");
+      $("#footer").load("footer_light.html");
     });
   </script>
 </body>

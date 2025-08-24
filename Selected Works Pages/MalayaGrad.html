@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./../W3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     .w3-row-padding img {margin-bottom: 12px}
@@ -147,7 +148,7 @@
 
 <div class="w3-padding-64 w3-content" id="projects">
   <button class="w3-sand no-underline" type="button">
-    <a href="./adobe.html">Adobe Works</a>
+    <a href="./Graphics.html">Adobe Works</a>
   </button>
   <h2 class="w3-text-sand">Grad Photos</h2>
 
@@ -292,7 +293,14 @@
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
   </script>
-      
+  <div id="footer"> </div>
+  
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      $("#footer").load("/footer_light.html");
+    });
+  </script>
 </body>
 
 
