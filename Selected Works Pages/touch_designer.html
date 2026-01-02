@@ -20,227 +20,46 @@
     </style>
 </head>
 
-<body class="w3-sand w3-text-black">
+<body class="w3-sand">
   <!-- Navigation -->
   <div id="nav_bar"> </div>
 
   <div class="w3-padding-64 w3-content" id="projects">
-    <h2>TouchDesigner</h2>
-    <!-- <p> 
-      Presented at The University of Maryland’s Spring 2024 IMD showcase.
-    </p>
-    <p>In collaboration with <a href="https://malayaheflin.github.io/" target="_blank">Malaya Heflin</a> & Fiza Mulla</p>
-    <p>
-      To read more about the project itself, check out our project website: <a href="https://malayaheflin.github.io/LostInTransWeb/" target="_blank">Lost in Translation Website</a>
-    </p>
-    <p>
-      <a href="https://github.com/riyakanani/LostInTranslation" target="_blank">Github Repo</a>
-    </p>
-    <hr style="width:200px" class="w3-opacity">
-    <div>
-      <h4>Artist Statement:</h4>
-      
-      <p>
-        "Lost in Translation" is a physical art installation where human participants will enter a 
-        "phonebooth" and try to help a "bot", lost and in trouble on phone. 
-        This is a play on the frustrating human experience of trying to receive help from corporate 
-        AI phone systems, where our exhibition now flips the roles between robot and human. 
-        We hope to relay the confusion that miscounnication can bring, particularly in the space of 
-        technology, but also relating to the experiences of immigrants from foreign countries. 
-        By utilizing speech recognition, language translation, and the words from previous participants, 
-        each experience is unique and different from the last, offering an evolving narrative that 
-        changes with every person who engages with the installation. 
-        The project emphasizes how communication can become distorted, 
-        showcasing both the limitations of AI and the human struggle to 
-        connect across languages and systems.
-      </p>
-      <p>
-        We will delved into ciruitry, AI audio distortion, installation art, and storytelling. 
-      </p>
-    </div>
+    <hr style="width:200px; background-color: black; height: 1px;" class="w3-opacity">
 
-    <hr style="width:200px" class="w3-opacity">
-    <div>
-      <h4>My Contributions:</h4>
-      <p>
-        In this project, I had contributions in many different areas. 
-        I worked a lot on assembling the physical installation, 
-        making purchasing and design choices. 
-        I made some contributions to creating the map in the physical installation.
-        Our team worked on the storyline together throughout the development process. 
-        However, my main role was the tech lead, creating interactive audio-based scripts. 
-        The focus was on providing spoken instructions and processing 
-        user responses through speech recognition, 
-        text-to-speech conversion, and translation. 
-        Below is an outline of the key areas I worked on:
-      </p>
-      <h5>Speech-to-Text Integration:</h5>
-      <p>I integrated the speech_recognition library to allow the system to capture 
-        spoken input from the user in real-time. 
-        This enabled users to interact with the system by simply speaking, 
-        without requiring manual input.
-      </p>
-      <p>Implemented a function speechToText() to handle voice input and convert 
-        it into text for processing.
-      </p>
-
-      <h5>Interactive Dialogue System:</h5>
-      <p>I enhanced the interaction flow by adding dynamic user prompts and responses, 
-        which are controlled based on speech input. 
-        This creates a more natural conversation, 
-        where the system asks for confirmations and guides the user step by step.
-      </p>
-
-      <h5>Text Translation:</h5>
-      <p>I incorporated the googletrans library, developing the textTranslated function. 
-        This function translates parts of the user’s speech into random languages, 
-        creating a more diverse interaction.
-      </p>
-
-      <h5>Text-to-Speech (TTS) Implementation:</h5>
-      <p>For output, I implemented a textToSpeech function using the gTTS library, 
-        which converts text into spoken words. 
-        This feature allowed the system to provide verbal feedback to users and 
-        facilitate interaction.
-      </p>
-
-      <h5>Error Handling and Robustness:</h5>
-      <p>I built error-handling mechanisms to deal with speech recognition failures 
-        or incorrect responses. For example, if the system could not hear the user properly
-        or if the input was unclear, 
-        it would play a prompt asking the user to repeat themselves. 
-        Furthermore, I implemented various fallback responses 
-        (e.g., "I'm having trouble. I'm just going to go up and left to Willow Creek Avenue") 
-        to handle scenarios where the system could not understand the user's direction.
-      </p>
-
-      <h5>Location-based Navigation Logic:</h5>
-      <p>I developed the logic for location-based navigation, 
-        where the system tracks the user’s current location 
-        (e.g., "Serenity Circle") and provides specific instructions 
-        on how to reach the next location (e.g., "Tranquility Lane"). 
-        The directions are generated dynamically based on the user’s speech input, 
-        allowing the system to guide the user through multiple possible routes.
-      </p>
-
-      <h5>Optimization and Memory Management:</h5>
-      <p>I implemented memory management techniques such as the gc.collect() 
-        function to optimize the system's memory usage, 
-        ensuring that the program runs smoothly over extended periods without 
-        performance degradation.
-      </p>
-      <p>I also optimized the flow by handling multiple iterations of speech 
-        recognition and responses without overloading system resources.
-      </p>
-
-
-     
-    </div>
-
-    <hr style="width:200px" class="w3-opacity">
-    <div>
-      <h4>Tools Used:</h4>
-      <p>
-        • Western Electric telephone <br>
-        • Focusrite Scarlett Audio Interface <br>
-        • Soldering Station <br>
-        • Circuit Board <br>
-        • Google Translate API <br>
-        • Speach Recoginition API <br>
-        • Led Lighting fixture
-      </p>
-     
-    </div> -->
-
-
-    <!-- <hr style="width:200px" class="w3-opacity"> -->
+    <!--Analog -->
+    <h1 class="w3-text-black">Touchdesigner</h1>
     <!-- Grid for photos -->
-    <!-- <div class="w3-row-padding" style="margin:0 -16px">
-      <p> 
-        Learned soldering techniques to rewire a Western Electric rotary phone. 
-        The microphone input is redirected into a computer, processed through a Python script, and sent back out the phone's speaker. 
-      </p> -->
-
-    <!-- Grid for photos -->
-      <!-- <div class="row">
-        <div class="column">
-          <video width="485" height="485" controls autoplay muted>
-            <source src="./Lost In Translation/soldering_video.mov" type="video/mp4">
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <video width="100%" height="100%" controls autoplay muted>
+            <source src="./Touch Designer/gesture1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video width="100%" height="100%" controls autoplay muted>
+            <source src="./Touch Designer/SelfPortrait.mov" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="w3-half">
+          <video width="100%" height="100%" controls autoplay muted>
+            <source src="./Touch Designer/flocking.mov" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-        </div>
-        <div class="column">
-          <img src="./Lost In Translation/soldering1.jpeg" style="width:100%">
-        </div>
-        <div class="column">
-          <img src="./Lost In Translation/soldering2.jpeg" style="width:100%">
-        </div>
-      </div> -->
-
+          <video width="100%" height="100%" controls autoplay muted>
+            <source src="./Touch Designer/clock.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+      </div>
     <!-- End photo grid -->
-    
-    <!-- Grid for photos -->
-    <!-- <div class="w3-row-padding" style="margin:0 -16px">
-      <p> 
-        Process of creating the physical installation. The inside walls incorporate a map. The user has to guide the bot on the phone through the map to get home.
-        The responses from the bot are dependent on the user's audio.
- 
-      </p>
-      <div class="w3-half">
-        <img src="./Lost In Translation/developing_install1.jpg" style="width:100%">
-      </div>
-      <div class="w3-half">
-        <img src="./Lost In Translation/developing_install2.jpg" style="width:100%">
-      </div>
-    </div> -->
-    <!-- End photo grid -->
-
-   
-
-  <!-- Grid for photos -->
-  <!-- <div class="w3-row-padding" style="margin:0 -16px"></div>
-  <p> 
-    Progression of memories of past users being written on the wall. 
-    This segment of the peice was supposed connect the different users of the experience. 
-    The bot shared previous memories as its own and asked the next user to write it on the wall. 
-    This was to show the deterioration of language as it is translated and processed.
-  </p>
-    <div class="row">
-      <div class="column_fourth">
-        <img src="./Lost In Translation/words1.jpg" style="width:100%">
-      </div>
-      <div class="column_fourth">
-        <img src="./Lost In Translation/words2.jpg" style="width:100%">
-      </div>
-      <div class="column_fourth">
-        <img src="./Lost In Translation/words3.jpg" style="width:100%">
-      </div>
-      <div class="column_fourth">
-        <img src="./Lost In Translation/words4.jpg" style="width:100%">
-      </div>
     </div>
-  </div> -->
-  <!-- End photo grid -->
-
-  <!-- Grid for photos -->
-  <!-- <div class="w3-row-padding" style="margin:0 -16px">
-  <p> 
-    Images of the final installation. 
-  </p>
-    <div class="row">
-      <div class="column">
-        <img src="./Lost In Translation/final_inside.JPG" style="width:100%">
-      </div>
-      <div class="column">
-        <img src="./Lost In Translation/final_inside2.JPG" style="width:100%">
-      </div>
-      <div class="column">
-        <img src="./Lost In Translation/final_outside.jpg" style="width:100%">
-      </div>
-    </div>
-  </div> -->
-  <!-- End photo grid -->
+    <!-- End Analog --->
+  <!-- End Projects Section -->
   </div>
+
+<!-- End Projects Section -->
+</div>
+</div>
 
   <!-- FOOTER SECTION -->
   <div id="footer"> </div>
@@ -251,6 +70,28 @@
       $("#nav_bar").load("sw_nav_bar.html");
       $("#footer").load("../footer.html");
     });
+  </script>
+
+  <script>
+      var slideIndex = [1,1];
+      var slideId = ["mySlides", "mySlides2"]
+      showDivs(1, 0);
+      showDivs(1, 1);
+      
+      function plusDivs(n, no) {
+        showDivs(slideIndex[no] += n, no);
+      }
+      
+      function showDivs(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) {slideIndex[no] = 1}
+        if (n < 1) {slideIndex[no] = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        x[slideIndex[no]-1].style.display = "block";  
+      }
   </script>
 </body>
 
