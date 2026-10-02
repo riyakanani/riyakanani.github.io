@@ -3,276 +3,286 @@
   <head>
     <title>Riya Kanani Portfolio</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="reachPose.png">
-    <link rel="icon" type="image/png" href="TPose.png">
+    <link rel="icon" type="image/png" href="./reachPose.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
+    <link rel="stylesheet" href="./site.css">
     <link rel="stylesheet" href="./textHover.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
-      .container {
-            display: flex;
-            align-items: center;
-            padding-right: 100px;
-            padding-left: 100px;
-            justify-content: center;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            min-height: 80vh; /* Make container take up most of viewport height */
-        }
-      
-        .container img {
-            margin-left: 100px; /* Adjust the space between the image and text */
-        }
-        
-        /* Make the header section take up full viewport height */
-        #home {
-            min-height: 90vh; /* Take up 90% of viewport height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .round-container{
-          border-radius: 45px;
-        }
-        div.scroll-container {
-          overflow: scroll;
-          white-space: nowrap;
-          padding: 5px;
-        }
+      body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; margin: 0; padding: 0;}
+      html {margin: 0; padding: 0;}
+      img {border-radius: 10%}
 
-        div.scroll-container img {
-          padding: 5px;
-        }
-        .content{margin-left:110px;margin-right:10px}
-        
-        .work-item img {
-          border-radius: 30px;
-        }
-        
-        .work-item {
-          overflow: hidden;
-          border-radius: 30px;
-        }
-        
-        .work-item .overlay-text {
-          border-radius: 0 0 30px 30px;
-        }
+      /* Sidebar reaches the very top */
+      .w3-sidebar {
+        height: 100vh !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
 
-        .zoom {
-          transition: transform .2s; /* Animation */
-        }
+      .round-container {border-radius: 45px;}
 
-        .zoom:hover {
-          transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-        }
+      .zoom {transition: transform .2s;}
+      .zoom:hover {transform: scale(1.01);}
 
-    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; margin: 0; padding: 0;}
-    html {margin: 0; padding: 0;}
-    .w3-row-padding img {margin-bottom: 12px} img {border-radius: 10%}
-    
-    /* Ensure sidebar reaches the very top */
-    .w3-sidebar {
-      height: 100vh !important;
-      top: 0 !important;
-      left: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    /* Set the width of the sidebar to 120px */
-    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) - only for large screens */
-    #main {margin-left: 0; margin-top: 0;} /* Default: no margins, will be overridden by media queries */
-    /* Medium screens (tablets) - navigation becomes top bar */
-    @media only screen and (max-width: 1200px) and (min-width: 801px) {
-      #main {margin-left: 0; margin-top: 60px;} /* Add top margin for fixed nav */
-      #home {
-        min-height: calc(90vh - 60px); /* Adjust height to account for top nav */
+      /* ---------- About (photo + intro) ---------- */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        padding: 50px 60px;
       }
-    }
-    
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 800px) {
-      #main {margin-left: 0; margin-top: 50px;} /* Increased margin for better spacing */
-      /* Adjust header height for small screens to account for navbar */
-      #home {
-        min-height: calc(90vh - 50px);
-      }
-    }
-    
-    /* Very small screens need even more spacing */
-    @media only screen and (max-width: 600px) {
-      #main {margin-top: 55px;}
-      #home {
-        min-height: calc(90vh - 55px);
-      }
-    }
-    
-    /* Ensure the header takes up full screen on large screens (desktop with sidebar) */
-    @media only screen and (min-width: 1201px) {
-      #main {margin-left: 120px; margin-top: 0;} /* Sidebar layout, no top margin needed */
-      #home {
-        min-height: 90vh;
-        margin-left: 20px; /* Add extra margin to avoid collision with sidebar */
-        width: calc(100% - 40px); /* Reduce width to account for extra margins */
-      }
-      
-      /* Adjust container within the header for better spacing */
-      .container {
-        max-width: calc(100vw - 180px); /* Account for sidebar width + margins */
-      }
-    }
+      .hero-text {flex: 1; max-width: 640px;}
+      .hero-text p {margin-top: 36px;}
+      .hero-text p {line-height: 1.6;}
+      .hero img {width: 360px; height: auto; max-width: 100%;}
+      .hero-greeting {display: none;}
 
+      /* ---------- Recent works ---------- */
+      .scroll-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 5px;
+      }
+      .scroll-container .work-item {margin: 5px; vertical-align: top;}
+      .work-item, .work-item img {border-radius: 30px;}
+
+
+
+      /* Recent Works overlay: same style as the Interactive Experiences page */
+      .work-item {position: relative; overflow: hidden;}
+      .work-item img, .work-item video {transition: transform .35s ease;}
+      .work-item:hover img, .work-item:hover video {transform: scale(1.04);}
+      .work-item .overlay-text {
+        position: absolute; inset: 0; top: 0; display: flex; flex-direction: column; justify-content: flex-end;
+        text-align: left; padding: 24px 26px; border-radius: 30px; white-space: normal;
+        background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.1) 100%);
+        color: #fdf5e6; font-size: 15px; opacity: 0; transition: opacity .3s ease;
+      }
+      .work-item .overlay-text h3 {margin: 0 0 2px; font-size: 1.35em; color: #fdf5e6;}
+      .work-item .rw-meta {font-size: .8em; letter-spacing: 1px; text-transform: uppercase; opacity: .8;}
+      .work-item .overlay-text p {margin: 8px 0 0; font-size: .9em; line-height: 1.45;}
+      .work-item:hover .overlay-text, .work-item a:focus-visible .overlay-text, .work-item button:focus-visible .overlay-text {opacity: 1;}
+      .video-tile .play-badge {z-index: 2;}
+      /* Touch screens can't hover: always show a compact title bar instead */
+      @media (hover: none) {
+        .work-item .overlay-text {opacity: 1; background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 45%); padding: 16px 20px;}
+        .work-item .overlay-text p, .work-item .rw-meta {display: none;}
+        .work-item .overlay-text h3 {font-size: 1.1em;}
+      }
+
+      /* Video tile + pop-up player */
+      .work-item video {height: 450px; width: auto; display: block; border-radius: 30px; background: #000;}
+      .video-tile {border: 0; padding: 0; background: none; cursor: pointer; display: block; position: relative;}
+      .video-tile .play-badge {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 64px; height: 64px; border-radius: 50%; background: rgba(0,0,0,0.6);
+        color: #fff; font-size: 26px; line-height: 64px; text-align: center; pointer-events: none;
+      }
+      .video-modal {
+        display: none; position: fixed; inset: 0; z-index: 1000;
+        background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 24px;
+      }
+      .video-modal.open {display: flex;}
+      .video-modal-box {position: relative; width: min(1100px, 100%); color: #fdf5e6; text-align: center;}
+      .video-modal-box video {width: 100%; max-height: 75vh; border-radius: 16px; background: #000; display: block;}
+      .video-modal-box h3 {margin: 16px 0 6px;}
+      .video-modal-box p {margin: 0 auto; max-width: 760px; line-height: 1.6;}
+      .video-modal-close {
+        position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%;
+        border: 0; background: #fdf5e6; color: #000; font-size: 24px; line-height: 40px; cursor: pointer;
+      }
+
+      #works .section {padding-top: 16px !important;}
+
+      /* Sections next to the sidebar on desktop */
+      .section {margin-left: 110px; margin-right: 10px;}
+
+      /* ---------- Layout by screen size ---------- */
+      /* Tablets and phones: top nav bar, stacked about card, centered sections */
+      @media only screen and (max-width: 1200px) {
+        #works {margin-top: 36px;}
+        #works .section {padding-top: 8px !important;}
+        .hero {flex-direction: column; gap: 16px; padding: 32px 16px; text-align: center;}
+        .hero-text {text-align: center !important;}
+        .hero h1 {font-size: 36px !important;}
+        .hero h4 br {display: none;}
+        .hero img {width: 300px;}
+        .hero-greeting {display: inline;}
+        .section {margin-left: 0; margin-right: 0; text-align: center;}
+        .work-item img, .work-item video {height: 260px;}
+      }
+
+      @media only screen and (max-width: 600px) {
+        #works {margin-top: 55px;}
+        .hero-greeting {display: none;}
+        .work-item img, .work-item video {height: 200px;}
+      }
     </style>
   </head>
   <body class="w3-sand w3-text-black">
     <!-- Navigation -->
     <div id="nav_bar"> </div>
 
-    <!-- Page Content -->
-    <div class="w3-padding-large zoom" id="main">
-      <!-- Header/Home Big-->
-      <header class="w3-container w3-padding-32 w3-center w3-hide-small w3-hide-medium w3-dark-grey round-container w3-text-sand" id="home">
-        <div class="container">
-            <div class="w3-left-align">
-                <h1 class="w3-xxxlarge"> <strong>Riya Kanani</strong></h1>
-                <h4>Entertainment Technology Graduate <br>Student at Carnegie Mellon University.</h4>
-            </div>
-            <img src="me.jpg" alt="Picture of me" class="w3-image " width="400" height="500">
-        </div>
-      </header>
-      <!-- Header/Home Small-->
-      <header class="w3-container w3-padding-16 w3-center w3-hide-large w3-dark-grey round-container w3-text-sand" id="home" style="min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <h1 class="w3-xxlarge"><span class="w3-hide-small">Hi, my name is</span> Riya Kanani</h1>
-        <h4>Entertainment Technology Graduate @ Carnegie Mellon University.</h4>
-        <img src="me.jpg" alt="Picture of me" class="w3-image " width="300" height="375">
-      </header>
-    </div>
-
     <!-- Works Section -->
-     
     <div class="w3-padding-large zoom" id="works">
-  <!--Big-->
-  <div class="content w3-padding-64 round-container w3-hide-small w3-hide-medium"> 
-    <h2>Recent Works</h2>
-    <div class="scroll-container w3-dark-grey round-container">
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/code.html">
-          <img src="./Selected Works Pages/Code/Protein.jpg" alt="SuperFoldAE cover image" class="white-glow">
-          <div class="overlay-text">SuperFoldAE: Enhancing Protein Fold Classification with Autoencoders</div>
-        </a>
-      </div>
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/lost_in_translation.html">
-          <img src="./Selected Works Pages/Installation And Hardware Media/Lost In Translation Media/final_outside.jpg" alt="LIT cover image" class="white-glow">
-          <div class="overlay-text">Lost In Translation</div>
-        </a>
-      </div>
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/gesterial_control_game.html">
-          <img src="./Selected Works Pages/Gesterial Control Game/GesterialControlImage.png" alt="GC cover image" class="white-glow">
-          <div class="overlay-text">Gesterial Control Game</div>
-        </a>
-      </div>
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/javascript.html">
-          <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class="white-glow">
-          <div class="overlay-text">Obsticles To Feeding PacMan</div>
-        </a>
-      </div>
-
-      <div class="work-item">
-        <button onclick="window.location.href='./Selected Works Pages/javascript.html#MurderMystery';">
-          <img src="./Selected Works Pages/Javascript Media/Murder Mystery.png" alt="MurderMystery cover image" class="white-glow">
-          <div class="overlay-text">Murder Mystery Game</div>
-        </button>
-      </div> 
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/anodyne.html">
-          <img src="./Selected Works Pages/Anodyne Media/final_scene.jpg" alt="anodyne cover image" class="white-glow">
-          <div class="overlay-text">Anodyne</div>
-        </a>
-      </div>
-
-      <div class="work-item">
-        <a href="./Selected Works Pages/crimson_premonition.html">
-          <img src="./Selected Works Pages/Crimson Premotion Media/Playing.jpeg" alt="CP cover image" class="white-glow">
-          <div class="overlay-text">Crimson Premonition</div>
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-      <!--Little-->
-      <div class = "w3-container w3-padding-32 w3-center round-container w3-hide-large"> 
+      <div class="section w3-padding-64 round-container">
         <h2>Recent Works</h2>
         <div class="scroll-container w3-dark-grey round-container">
-          <a href="./Selected Works Pages/code.html">
-            <img src="./Selected Works Pages/Code/Protein.jpg" alt="SuperFoldAE cover image" class = "white-glow" style="width: 40%">
-          </a>
-          
-          <a href="./Selected Works Pages/lost_in_translation.html">
-            <img src="./Selected Works Pages/Installation And Hardware Media/Lost In Translation Media/final_outside.jpg" alt="LIT cover image" class = "white-glow" style="width:30%">
-          </a>
 
-          <a href="./Selected Works Pages/gesterial_control_game.html">
-            <img src="./Selected Works Pages/Gesterial Control Game/GesterialControlImage.png" alt="GC cover image" class = "white-glow" style="width:55%">
-          </a>
+          <div class="work-item">
+            <a href="./Selected Works Pages/Unity/Remnants/remnants.html">
+              <img src="./Selected Works Pages/Unity/Remnants/garden_cover.jpg" alt="Remnants cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Remnants</h3>
+                <span class="rw-meta">Spring 2026 · Immersive Installation</span>
+                <p>A 270° curved-screen gardening experience exploring the emotional toll of caring for someone with dementia.</p>
+              </div>
+            </a>
+          </div>
 
-          <a href="./Selected Works Pages/javascript.html">
-            <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class = "white-glow" style="width:40%">
-          </a>
+          <div class="work-item">
+            <a href="./Selected Works Pages/Unity/Democracy Disco/democracy_disco.html">
+              <img src="./Selected Works Pages/Unity/Democracy Disco/DDThumbnail.webp" alt="Democracy Disco cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Democracy Disco</h3>
+                <span class="rw-meta">Summer 2025 · National Archives Museum</span>
+                <p>A gesture-tracked dance game where visitors recreate dance moves from the National Archives’ historical films.</p>
+              </div>
+            </a>
+          </div>
 
-          <button onclick="window.location.href='./Selected Works Pages/javascript.html#MurderMystery';" style="border: none; background: none; padding: 0; cursor: pointer; width:80%;">
-            <img src="./Selected Works Pages/Javascript Media/Murder Mystery.png" alt="MurderMystery cover image" class="white-glow" style="width:80%">
-          </button> 
+          <div class="work-item">
+            <button type="button" class="video-tile" onclick="openVideoModal()" aria-label="Play TouchDesigner gesture video">
+              <video src="./Selected Works Pages/Touch Designer/gesture1-web.mp4#t=5" preload="metadata" muted playsinline></video>
+              <span class="play-badge">&#9654;</span>
+              <div class="overlay-text">
+                <h3>Reactive Gesture Piece</h3>
+                <span class="rw-meta">TouchDesigner · Click to Play</span>
+                <p>Head tracking and audio input create an immersive experience that reacts to its environment.</p>
+              </div>
+            </button>
+          </div>
 
-          <a href="./Selected Works Pages/anodyne.html">
-            <img src="./Selected Works Pages/Anodyne Media/final_scene.jpg" alt="anodyne cover image" class = "white-glow" style="width: 55%">
-          </a>
-          
-          <a href="./Selected Works Pages/crimson_premonition.html">
-            <img src="./Selected Works Pages/Crimson Premotion Media/Playing.jpeg" alt="CP cover image" class = "white-glow" style="width:30%">
-          </a>
+          <div class="work-item">
+            <a href="./Selected Works Pages/code.html#ConSOLAE">
+              <img src="./Selected Works Pages/Code/consoleAE.png" alt="ConSOLAE cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>ConSOLAE</h3>
+                <span class="rw-meta">2025 · Best Paper (2nd Place), ACM BCB CSBW</span>
+                <p>A contractive supervised autoencoder that more than doubled out-of-distribution protein fold recognition accuracy.</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-item">
+            <a href="./Selected Works Pages/Installation And Hardware Media/Lost In Translation Media/lost_in_translation.html">
+              <img src="./Selected Works Pages/Installation And Hardware Media/Lost In Translation Media/final_outside.jpg" alt="Lost In Translation cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Lost In Translation</h3>
+                <span class="rw-meta">Spring 2024 · Physical Installation</span>
+                <p>A phone-booth installation where visitors help a lost AI “bot” through speech recognition, translation, and distorted audio.</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-item">
+            <a href="./Selected Works Pages/Unity/Gesterial Control Game/gesterial_control_game.html">
+              <img src="./Selected Works Pages/Unity/Gesterial Control Game/GesterialControlImage.png" alt="Gesterial Control cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Gesterial Control</h3>
+                <span class="rw-meta">Fall 2024 · Hand-Tracking Game</span>
+                <p>A game that uses MediaPipe hand tracking to let players interact with a particle system through gestures.</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-item">
+            <a href="./Selected Works Pages/javascript.html">
+              <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Obstacles To Feeding PacMan</h3>
+                <span class="rw-meta">p5.js · Educational Game</span>
+                <p>A Pac-Man-style game where players answer questions about feeding 9.5 billion people by eating the right objects.</p>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="work-item">
+            <a href="./Selected Works Pages/Unity/Anodyne Media/anodyne.html">
+              <img src="./Selected Works Pages/Unity/Anodyne Media/final_scene.jpg" alt="Anodyne cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Anodyne</h3>
+                <span class="rw-meta">Spring 2023 · VR Installation</span>
+                <p>A collaborative VR installation exploring storytelling and human emotion, built in Unity with Maya and Cinema4D.</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-item">
+            <a href="./Selected Works Pages/Unity/Crimson Premotion Media/crimson_premonition.html">
+              <img src="./Selected Works Pages/Unity/Crimson Premotion Media/Playing.jpeg" alt="Crimson Premonition cover image" class="white-glow" loading="lazy">
+              <div class="overlay-text">
+                <h3>Crimson Premonition</h3>
+                <span class="rw-meta">Fall 2023 · Multiplayer Game</span>
+                <p>A two-player mystery escape-room game: solve gesture-triggered puzzles to uncover a cult’s code word before you’re sacrificed.</p>
+              </div>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <!-- About Me Section -->
-    <div class="w3-padding-large zoom" id="About Me">
-      <!--Big-->
-      <div class="content w3-padding-64 w3-dark-grey round-container w3-hide-small w3-hide-medium w3-text-sand" style="padding: 30px;">
-        <h2>About Me :)</h2>
-        <p>
-          Welcome to my website! My name is Riya Kanani, I am an Entertainment Technology graduate student at Carnegie Mellon University. 
-          I am interested in extended reality, art, and software engineering!
-          When I have some free time, I love to pick up new hobbies. 
-          Some of my recent hobbies are crocheting, sculpting, and web development!
-        </p>
-  
+    <!-- About Me Section (photo + intro) -->
+    <div class="w3-padding-large zoom" id="about">
+      <div class="section w3-dark-grey round-container w3-text-sand">
+        <div class="hero">
+          <div class="hero-text w3-left-align">
+            <h1 class="w3-xxxlarge"><span class="hero-greeting">Hi, my name is </span><strong>Riya Kanani</strong></h1>
+            <h4>Entertainment Technology Graduate <br>Student at Carnegie Mellon University.</h4>
+            <p>
+              Welcome to my website! My name is Riya Kanani, I am an Entertainment Technology graduate student at Carnegie Mellon University.
+              I am interested in extended reality, art, and software engineering!
+              When I have some free time, I love to pick up new hobbies.
+              Some of my recent hobbies are pottery, crocheting, sculpting, and web development!
+            </p>
+          </div>
+          <img src="./me.jpg" alt="Picture of me" class="w3-image">
+        </div>
       </div>
-      <!--Little-->
-      <div class="w3-container w3-padding-32 w3-center w3-dark-grey round-container w3-hide-large w3-text-sand" style="padding: 30px;">
-        <h2>About Me :)</h2>
-        <p>
-          Welcome to my website! My name is Riya Kanani, I am an Entertainment Technology graduate student at Carnegie Mellon University.  
-          I am interested in extended reality, art, and software engineering!
-          When I have some free time, I love to pick up new hobbies. 
-          Some of my recent hobbies are pottery, crocheting, sculpting, and web development!
-        </p>
-  
-      </div>
-
     </div>
+
+    <!-- Pop-up video player -->
+    <div class="video-modal" id="videoModal" onclick="if (event.target === this) closeVideoModal()">
+      <div class="video-modal-box" role="dialog" aria-modal="true" aria-label="TouchDesigner gesture video">
+        <button type="button" class="video-modal-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
+        <video id="modalVideo" src="./Selected Works Pages/Touch Designer/gesture1-web.mp4" controls playsinline preload="none"></video>
+        <h3>TouchDesigner: Reactive Gesture Piece</h3>
+        <p>Using head tracking and audio input in TouchDesigner to create an immersive experience that is reactive to its environment.</p>
+      </div>
+    </div>
+    <script>
+      function openVideoModal() {
+        document.getElementById("videoModal").classList.add("open");
+        document.getElementById("modalVideo").play();
+      }
+      function closeVideoModal() {
+        var v = document.getElementById("modalVideo");
+        v.pause();
+        document.getElementById("videoModal").classList.remove("open");
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeVideoModal();
+      });
+    </script>
 
   <!-- FOOTER SECTION -->
   <div id="footer"> </div>
@@ -280,8 +290,11 @@
   <!-- SCRIPTS -->
   <script>
     $(function () {
-      $("#nav_bar").load("nav_bar.html");
-      $("#footer").load("footer.html");
+      var root = "";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer.html");
     });
   </script>
 

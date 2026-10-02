@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Democracy Disco</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../W3.css">
+    <link rel="stylesheet" href="../../../site.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img, .w3-row-padding video {margin-bottom: 12px}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+</head>
+
+<body class="w3-sand w3-text-black">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
+
+  <div class="w3-padding-64 w3-content" id="projects">
+    <button class="w3-black no-underline" type="button">
+      <a href="../../interactive_experiences.html">Interactive Experiences</a>
+    </button>
+    <h2>Democracy Disco: Interactive Installation</h2>
+    <p>
+      Built during my Software Engineer internship at Cortina Productions, Summer 2025.
+      Now deployed at the National Archives Museum Discovery Center in Washington, DC.
+    </p>
+    <p>
+      To read more about the Discovery Center, check out the
+      <a href="https://archivesfoundation.org/newsletter/discovery-center-in-focus/" target="_blank">Overview</a>,
+      <a href="https://visit.archives.gov/learn-us/discovery-center" target="_blank">Visitor Info</a>,
+      and the <a href="https://archivesfoundation.org/?p=35078" target="_blank">National Archives Foundation</a>.
+    </p>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Project Overview -->
+    <h4>Project Overview:</h4>
+    <p>
+      Democracy Disco is an interactive dance station in the National Archives Museum’s Discovery Center.
+      Up to three visitors play short dance clips from the National Archives’ film holdings,
+      then recreate the moves themselves during a scored performance round.
+      Gesture-sensing technology evaluates their accuracy and awards points,
+      and visitors can save a recording of their performance.
+    </p>
+    <p>
+      The experience shows how Americans have expressed themselves through dance for over a century,
+      with footage ranging from Edison’s studio films in 1894 to Pearl Harbor anniversary celebrations.
+      It is used by the public, especially young visitors, as a hands-on educational experience.
+    </p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <h4>My Contributions:</h4>
+    <h5>Unity Front-End & Backend Integration:</h5>
+    <p>
+      Built Unity front-end experiences driven by a producer-facing backend interface,
+      using custom APIs to dynamically load assets and scene data.
+    </p>
+    <h5>Gesture Tracking:</h5>
+    <p>
+      Integrated Nuitrack/Orbbec gesture tracking APIs with Unity FBX avatars to mirror real-time user movement.
+    </p>
+    <h5>Boundary Detection:</h5>
+    <p>
+      Developed boundary detection systems in C# that monitor physical positioning
+      and trigger timeout protocols when users step out of the interactive zone.
+    </p>
+    <h5>Team Workflow:</h5>
+    <p>
+      Collaborated in a multi-developer Agile environment using Git version control (Bitbucket)
+      and SourceTree for branch management, code reviews, and CI/CD pipeline integration.
+    </p>
+    <h5>Unity Pipeline:</h5>
+    <p>
+      Gained full-stack familiarity with the Unity development pipeline, including render pipelines (URP/HDRP),
+      asset management, and deployment workflows.
+    </p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <h4>Tools Used:</h4>
+    <p>• Unity Engine & C# scripting <br>
+        • Nuitrack / Orbbec gesture tracking <br>
+        • Custom APIs & producer-facing backend <br>
+        • Git (Bitbucket) & SourceTree <br>
+        • URP / HDRP render pipelines <br>
+    </p><br>
+
+    <hr style="width:200px" class="w3-opacity">
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="./DDThumbnail.webp" alt="Democracy Disco gameplay screens" style="width:100%">
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Visitors dancing at Democracy Disco">
+          <source src="./dancing-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="w3-half">
+        <img src="./democracy.disco_-748x1024.png" alt="Democracy Disco installation at the National Archives" style="width:100%">
+      </div>
+    <!-- End photo grid -->
+    </div>
+
+  </div>
+
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      var root = "../../../";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer.html");
+    });
+  </script>
+</body>
+
+</html>

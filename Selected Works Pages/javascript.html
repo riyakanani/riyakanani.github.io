@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="../favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./../W3.css">
+    <link rel="stylesheet" href="../W3.css">
+    <link rel="stylesheet" href="../site.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -32,7 +33,7 @@
     <!--JavaScript -->
     <h1>JavaScript</h1>
     <div id="PacMan">
-      <h3><a href="https://editor.p5js.org/rkanani/sketches/yID6DDAOOB" target="_blank">Obsticles To Feeding Pacman </a></h3>
+      <h3><a href="https://editor.p5js.org/rkanani/sketches/yID6DDAOOB" target="_blank">Obstacles To Feeding Pacman </a></h3>
       
       <h4>Project Overview:</h4>
       <p>A Pacman-inspired game with integrated educational questions. 
@@ -63,7 +64,7 @@
         and implement the game’s dynamic elements, like the random movements of the ghosts.
       </p>
       <div class="w3-center">
-        <iframe src="./Javascript Media/obstacles_to_feeding_pacman_game/index.html" width="400" height="400"></iframe>
+        <iframe src="./Javascript Media/obstacles_to_feeding_pacman_game/index.html?v=3" style="width:100%; max-width:400px; aspect-ratio:1 / 1; height:auto; border:0;"></iframe>
       </div>
     </div>
 
@@ -103,11 +104,11 @@
         I implemented a physics engine in collide() to manage 
         interactions between weapons, ensuring they move naturally
          on the screen and respond accurately when clicked.
-        I further supported the atmospere by adding sound effects 
+        I further supported the atmosphere by adding sound effects 
         to heighten player engagement during gameplay.
       </p>
       <div class="w3-center">
-        <iframe src="./Javascript Media/Murder_Mystery_Game/index.html" width="900" height="600"></iframe>
+        <iframe src="./Javascript Media/Murder_Mystery_Game/index.html?v=3" style="width:100%; max-width:900px; aspect-ratio:3 / 2; border:0;"></iframe>
       </div>
 
     </div>
@@ -120,8 +121,11 @@
     <!-- SCRIPTS -->     
     <script>
       $(function () {
-        $("#nav_bar").load("sw_nav_bar.html");
-        $("#footer").load("../footer.html");
+        var root = "../";
+        $("#nav_bar").load(root + "nav_bar.html", function () {
+          $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+        });
+        $("#footer").load(root + "footer.html");
       });
     </script>
     

@@ -5,3 +5,9 @@ html, body {
 canvas {
   display: block;
 }
+
+/* Scale the 400x400 game down on narrow phones (p5 still maps clicks correctly) */
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}

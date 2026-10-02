@@ -1,0 +1,97 @@
+/* ==========================================================================
+   site.css: shared responsive fixes, loaded by every page after W3.css.
+   Phone (<=600px), tablet/laptop, and large monitors (>=1800px).
+   ========================================================================== */
+
+/* ---------- Media never wider than its column ---------- */
+img, video, embed, object {
+  max-width: 100%;
+}
+video {
+  height: auto;
+}
+/* YouTube embeds: full column width at 16:9 instead of a fixed 485px box */
+iframe[src*="youtube.com"] {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+/* PDF viewers */
+embed[type="application/pdf"], embed.pdf {
+  width: 100%;
+  max-width: 800px;
+  height: 70vh;
+  min-height: 400px;
+}
+
+/* ---------- Selected Works tiles: center the last row ---------- */
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ---------- Tablets and small laptops: keep text off the screen edges ---------- */
+@media only screen and (max-width: 1200px) {
+  .w3-content {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* ---------- Phones ---------- */
+@media only screen and (max-width: 600px) {
+  .w3-content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  /* W3's grid pulls 16px past the edges; on a phone that spills off-screen */
+  .w3-row-padding {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .w3-row-padding > .w3-half,
+  .w3-row-padding > .w3-third,
+  .w3-row-padding > .w3-quarter {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* Justified text and wide letter-spacing leave big gaps on narrow screens */
+  .w3-justify {
+    text-align: left !important;
+  }
+  .w3-wide {
+    letter-spacing: 1px;
+  }
+  h1 { font-size: 30px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 21px; }
+  /* Long project titles and links wrap instead of overflowing */
+  .w3-content h1, .w3-content h2, .w3-content h3, .w3-content h4,
+  .w3-content h5, .w3-content p, .w3-content a {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ---------- Large monitors: use more of the screen, scale type up ---------- */
+@media only screen and (min-width: 1800px) {
+  html, body { font-size: 17px; }
+  h1 { font-size: 42px; }
+  h2 { font-size: 34px; }
+  h3 { font-size: 27px; }
+  h4 { font-size: 22px; }
+  h5 { font-size: 20px; }
+  .w3-content { max-width: 1240px; }
+  .selected-works-block { font-size: 19px; }
+}
+@media only screen and (min-width: 2400px) {
+  html, body { font-size: 19px; }
+  h1 { font-size: 48px; }
+  h2 { font-size: 38px; }
+  h3 { font-size: 30px; }
+  h4 { font-size: 24px; }
+  h5 { font-size: 21px; }
+  .w3-content { max-width: 1480px; }
+  .selected-works-block { font-size: 22px; }
+}

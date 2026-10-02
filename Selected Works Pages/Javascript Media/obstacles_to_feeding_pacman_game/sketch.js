@@ -405,6 +405,9 @@ function gameMode(){
 }
 
 function startGame() {
+  // Put the ghosts back in the maze: they drift during the welcome screen,
+  // and wall bouncing only runs once the game has started.
+  resetGhost();
   mode += 1;
   startButton.remove();
 }

@@ -5,3 +5,9 @@ html, body {
 canvas {
   display: block;
 }
+
+/* Scale the 900x600 game down to fit narrower windows (p5 still maps clicks correctly) */
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}

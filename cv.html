@@ -4,9 +4,10 @@
 <head>
     <title>CV</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="./favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
+    <link rel="stylesheet" href="./site.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -38,7 +39,7 @@
 
         <h4 class="w3-wide"><b> University of Maryland,</b> College Park, MD</h4>
         <p>Bachelor of Science, <a href="https://www.cs.umd.edu/" target="_blank">Computer Science</a> and <a href="https://imd.umd.edu/" target="_blank">Immersive Media Design</a><br>
-          Minor: <a href="https://agnr.umd.edu/sustainability-studies-minor/" target="_blank">Sustainibility Studies</a> <br>
+          Minor: <a href="https://agnr.umd.edu/sustainability-studies-minor/" target="_blank">Sustainability Studies</a> <br>
         May 2025, GPA: 3.8</p>
         <p> <b> Relevant Coursework:</b> Algorithms, Advanced Data Structures, Discrete Structures, Computer Systems, Organizational Programming Languages, Object-Oriented Programming, Computer Vision, Artificial Intelligence, Computer and Network Security, Programming Handheld Systems, Data Science, Creative Coding for Digital Media, Computational Media, Digital Media Theory, Calculus II, Linear Algebra, Applied Probability & Statistics</p>
 
@@ -55,7 +56,20 @@
         <h2 class="w3-padding-16 w3-text-grey">Work Experience</h2>
 
         <h4 class="w3-wide"><b>Cortina Productions,</b> McLean, VA</h4>
-        <p>Software Engineer Intern<br>
+        <p>Gameplay Software Engineer Intern<br>
+        June 2026 - Aug 2026</p>
+        <p>• Built real-time interaction systems in Unity 6 (C#, URP) for four concurrent public installations, holding a 60 FPS budget on always-on hardware; profiled and reduced CPU load roughly 60% → 30% by eliminating per-frame allocations and tightening device polling loops. <br>
+        • Designed and shipped a novel physical input system (dual UHF RFID readers plus depth-camera hand tracking with Orbbec/Nuitrack and MediaPipe) translating page turns and mid-air hover into game state, including transition handling for the ambiguous "mid-flip" case so animation never desynced from physical input. <br>
+        • Made the input layer plug-and-play for non-engineers: auto-discovered hardware by device PID and cached the mapping to config, cutting cold-start device connection from ~25s to under 3s and removing manual COM-port setup entirely. <br>
+        • Replaced a ~20-minute manual calibration step with a runtime computer-vision routine that edge-detects projected interaction targets on launch, turning a per-install engineering task into zero-touch setup. <br>
+        • Architected features against a mediator/proxy (PureMVC-style) pattern and authored architecture diagrams reviewed with a senior engineer before implementation; built the networking layer synchronizing a projection display with an operator station over local TCP/HTTP.
+        </p>
+
+        <div class="w3-white">
+        </div>
+
+        <h4 class="w3-wide"><b>Cortina Productions,</b> McLean, VA</h4>
+        <p>Gameplay Software Engineer Intern<br>
         June 2025 - Aug 2025</p>
         <p>• Built Unity front-end experiences driven by a producer-facing backend interface, using custom APIs to dynamically load assets and scene data. <br>
         • Collaborated in a multi-developer Agile environment using Git version control (Bitbucket) and SourceTree for branch management, code reviews, and CI/CD pipeline integration. <br>
@@ -92,7 +106,7 @@
         </div>
 
         <h4 class="w3-wide"><b>Teaching Assistant: Intro to Immersive Media,</b> College Park, MD</h4>
-        Aug 2023 - May 2025</p>
+        <p>Aug 2023 - May 2025</p>
         <p>• Empowered students with the knowledge and resources needed to transform creative ideas into tangible and successful projects. <br>
         • Demonstrated a commitment to maintaining high standards of professionalism in grading and assessment of works, ensuring students receive constructive feedback for academic and professional growth.
         </p>
@@ -101,7 +115,7 @@
         </div>
 
         <h4 class="w3-wide"><b>NASA Ocean Undergraduate Researcher,</b> College Park, MD</h4>
-        Aug 2023 - May 2025</p>
+        <p>Aug 2023 - May 2025</p>
         <p>• Created C# scripts to simulate phytoplankton responding to camera input data in Unity Engine. <br>
           • Played a key role in brainstorming sessions to create an effective method to represent phytoplankton across various
           zoom scales, ensuring visual cohesion and engaging the user. <br>
@@ -114,7 +128,7 @@
         <h4 class="w3-wide"><b>Rock Creek Group,</b> Washington, DC</h4>
         <p>Summer Analyst: Data and Reporting Team<br>
         Summer 2023</p>
-        <p>• Developed software solutions to remodel data, facilitate data visualization, and streamline and automate complex calculations. <br>
+        <p>• Developed 5 key software solutions to remodel data, facilitate data visualization, and streamline and automate complex calculations, improving the team's day-to-day efficiency. <br>
         • Conducted testing and resolved issues within scripts authored by other team members. <br>
         • Engaged in client interactions and communications.
         </p>
@@ -127,7 +141,7 @@
         Aug 2021 - May 2023</p>
         <p>• Collaborated with colleagues to develop an image classification model by leveraging a pre-trained convolutional
           neural network, AlexNet, in conjunction with a decision tree classifier that integrated geospatial data (longitude and
-          latitude). This collaborative effort resulted in a successful achievement of an 81.29% accuracy rate. <br>
+          latitude). This collaborative effort improved image classification accuracy from 62.7% to 81.29%. <br>
           • Utilized the NASA Globe Clouds database to curate a data set comprising cloud images with essential metadata
           attributes including longitude, latitude, and timestamp.
         </p>
@@ -144,26 +158,6 @@
         </p><br>
         <!-- end experience section -->
 
-        <!-- start Projects section-->
-        <h2 class="w3-padding-16 w3-text-grey">Projects</h2>
-        <h4 class="w3-wide"><b>Crimson Premotion,</b> College Park, MD</h4>
-        <p>Multiplayer Video Game<br>
-        Aug 2023 – Dec 2023</p>
-        <p>• Learned effective human computer interaction when designing a video game for intuitive play. <br>
-          • Utilized tools such as gestural recognition.
-        </p><br>
-
-        <h4 class="w3-wide"><b>Anodyne,</b> College Park, MD</h4>
-        <p>VR Installation<br>
-        Jan 2023 – May 2023</p>
-        <p>• Acquired proficiency in designing immersive exhibitions that facilitated collaborative VR experiences. <br>
-          • Acquired valuable experience in adaptability, problem-solving, and effective communication through collaborative
-          project management. <br>
-          • Furthered understanding of the potential and limitations of VR as a storytelling and experiential medium.
-        </p><br>
-
-        <!-- end project section -->
-
         <!-- start ACTIVITIES section -->
         <h2 class="w3-padding-16 w3-text-grey">Activities</h2>
         <h4 class="w3-wide"><b> Girls Who Code,</b> College Park, MD</h4>
@@ -174,7 +168,7 @@
         </p><br>
 
         <h4 class="w3-wide"><b>Motion Capture Instructor,</b> College Park, MD</h4>
-        Jan 2023 - Dec 2023</p>
+        <p>Jan 2023 - Dec 2023</p>
         <p>• Assisted students in using motion capture technology. <br>
           • Learned how to use Vicon's Shogun Live & Post, calibrating the cameras, placing the markers on the subject,
           and integrating the animations into 3D modeling software such as Maya or Unity.
@@ -183,17 +177,19 @@
 
         <!-- start LANGUAGES section -->
         <h2 class="w3-padding-16 w3-text-grey">Languages</h2>
-        <p>English: Fluent<br>
-          Gujrati: Fluent<br>
-          Hindi: Basic Knowledge<br>
-          Spanish: Basic Knowledge
+        <p>English: Native<br>
+          Gujarati: Professional Working Proficiency<br>
+          Hindi: Limited Working Proficiency<br>
+          Spanish: Limited Working Proficiency
         </p><br>
         <!-- end LANGUAGES section -->
 
         <!-- start Skills section -->
         <h2 class="w3-padding-16 w3-text-grey">Skills</h2>
-        <p> <b>Software:</b> Unity Engine, Adobe Suite, Microsoft Office Suite, Cinema4D, Maya<br>
-        <b>Languages:</b> Java, Python, Linux, C, MIPS Assembly, Ocaml, Ruby, Rust, Latex
+        <p> <b>Software:</b> Unity Engine (Unity 6, URP/HDRP), TouchDesigner, Git/Bitbucket, SourceTree, Adobe Suite, Microsoft Office Suite, Cinema4D, Maya<br>
+        <b>Languages:</b> C#, Java, Python, C, JavaScript (p5.js), MIPS Assembly, OCaml, Ruby, Rust, LaTeX, Linux<br>
+        <b>Engineering:</b> Performance profiling &amp; optimization, mediator/MVC architecture (PureMVC), local networking (TCP/HTTP), computer vision<br>
+        <b>Hardware &amp; Tracking:</b> UHF RFID, Orbbec/Nuitrack depth cameras, MediaPipe hand tracking, HTC Vive trackers
         </p><br>
         <!-- end skills section -->
 
@@ -214,7 +210,7 @@
         </div>
 
         <h4 class="w3-wide">Office of Multi-ethnic Student Education Academic Excellence Award</h4>
-        <p>University of Maryland,</b> College Park, MD<br>
+        <p><b>University of Maryland,</b> College Park, MD<br>
           2024, 2023, 2022</p><br>
 
 
@@ -279,8 +275,11 @@
     <!-- SCRIPTS -->
     <script>
       $(function () {
-        $("#nav_bar").load("nav_bar.html");
-        $("#footer").load("footer.html");
+        var root = "";
+        $("#nav_bar").load(root + "nav_bar.html", function () {
+          $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+        });
+        $("#footer").load(root + "footer.html");
       });
     </script>
 

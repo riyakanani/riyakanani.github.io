@@ -4,9 +4,10 @@
 <head>
     <title>Selected Works</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="./favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
+    <link rel="stylesheet" href="./site.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -45,8 +46,8 @@
   <!-- Projects Section -->
   <div class="w3-padding-64 w3-content" id="projects">
     <div class="projects-container">
-      <a href="./Selected Works Pages/unity_engine.html" class="w3-button w3-text-light-grey selected-works-block antique-white w3-hover-opacity">
-        Unity Engine
+      <a href="./Selected Works Pages/interactive_experiences.html" class="w3-button w3-text-light-grey selected-works-block antique-white w3-hover-opacity">
+        Interactive Experiences
       </a>
       <a href="./Selected Works Pages/javascript.html" class="w3-button w3-text-light-grey selected-works-block orange-web w3-hover-opacity">
         JavaScript
@@ -56,10 +57,7 @@
       </a>
       
       <a href="./Selected Works Pages/code.html" class="w3-button w3-text-light-grey selected-works-block reseda-green w3-hover-opacity">
-        Code
-      </a>
-      <a href="./Selected Works Pages/installationAndHardware.html" class="w3-button w3-text-light-grey selected-works-block black-bean w3-hover-opacity">
-        Installation & Hardware
+        Software Engineering
       </a>
       <a href="./Selected Works Pages/Graphics.html" class="w3-button w3-text-light-grey selected-works-block virdigris w3-hover-opacity">
         Graphics
@@ -80,8 +78,11 @@
   <!-- SCRIPTS -->
   <script>
     $(function () {
-      $("#nav_bar").load("nav_bar.html");
-      $("#footer").load("footer_light.html");
+      var root = "";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer_light.html");
     });
   </script>
 </body>

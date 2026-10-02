@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Interactive Experiences</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../W3.css">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    .button-image img {border-radius: 10%}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    #ie-grid {display: flex; gap: 16px; align-items: flex-start;}
+    #ie-grid .ie-col {flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px;}
+    #ie-grid img {width: 100%; height: auto; display: block;}
+    #ie-grid .ie-item {position: relative; display: block; overflow: hidden; border-radius: 10%; color: #fdf5e6; text-decoration: none;}
+    #ie-grid .ie-item img {border-radius: 0; transition: transform .35s ease;}
+    #ie-grid .ie-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 8% 9%; background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.1) 100%);
+      opacity: 0; transition: opacity .3s ease;
+    }
+    #ie-grid .ie-overlay h3 {margin: 0 0 2px; font-size: 1.35em; color: #fdf5e6;}
+    #ie-grid .ie-meta {font-size: .8em; letter-spacing: 1px; text-transform: uppercase; opacity: .8;}
+    #ie-grid .ie-overlay p {margin: 8px 0 0; font-size: .9em; line-height: 1.45;}
+    #ie-grid .ie-item:hover .ie-overlay, #ie-grid .ie-item:focus-visible .ie-overlay {opacity: 1;}
+    #ie-grid .ie-item:hover img {transform: scale(1.04);}
+    /* Touch screens can't hover: always show a compact title bar instead */
+    @media (hover: none) {
+      #ie-grid .ie-overlay {opacity: 1; background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 45%);}
+      #ie-grid .ie-overlay p, #ie-grid .ie-meta {display: none;}
+      #ie-grid .ie-overlay h3 {font-size: 1.1em;}
+    }
+
+    </style>
+</head>
+
+<body class="w3-black w3-text-sand">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
+
+  <div class="w3-padding-64 w3-content" id="projects">
+
+    <hr style="width:200px" class="w3-opacity">
+
+    <h1 class="w3-text-sand">Interactive Experiences</h1>
+    <!-- Interactive Experiences: listed newest to oldest. A small script below deals them
+         into two balanced columns (each tile goes to the shorter column), one column on phones. -->
+    <div id="ie-grid">
+        <!-- Remnants (Spring 2026) -->
+        <a class="ie-item" href="./Unity/Remnants/remnants.html">
+          <img src="./Unity/Remnants/garden_cover.jpg" alt="Remnants cover image" class="white-glow" width="4032" height="3024">
+          <div class="ie-overlay">
+            <h3>Remnants</h3>
+            <span class="ie-meta">Spring 2026 · Immersive Installation</span>
+            <p>A 270° curved-screen gardening experience exploring the emotional toll of caring for someone with dementia.</p>
+          </div>
+        </a>
+        <!-- Democracy Disco (Summer 2025) -->
+        <a class="ie-item" href="./Unity/Democracy Disco/democracy_disco.html">
+          <img src="./Unity/Democracy Disco/DDThumbnail.webp" alt="Democracy Disco cover image" class="white-glow" width="1024" height="587">
+          <div class="ie-overlay">
+            <h3>Democracy Disco</h3>
+            <span class="ie-meta">Summer 2025 · National Archives Museum</span>
+            <p>A gesture-tracked dance game where visitors recreate dance moves from the National Archives’ historical films.</p>
+          </div>
+        </a>
+        <!-- Shadowed Consumption (Spring 2025) -->
+        <a class="ie-item" href="./Unity/Shadowed Consumption/shadowed_consumption.html">
+          <img src="./Unity/Shadowed Consumption/shadowed consumption start screen.png" alt="Shadowed Consumption cover image" class="white-glow" width="2878" height="1572">
+          <div class="ie-overlay">
+            <h3>Shadowed Consumption</h3>
+            <span class="ie-meta">Spring 2025 · 2D Platformer</span>
+            <p>A capstone platformer about overconsumption, where shops transform into levels as a looming shadow pushes you to buy more.</p>
+          </div>
+        </a>
+        <!-- Gesterial Control Game (Fall 2024) -->
+        <a class="ie-item" href="./Unity/Gesterial Control Game/gesterial_control_game.html">
+          <img src="./Unity/Gesterial Control Game/GesterialControlImage.png" alt="Gesterial Control Game cover image" class="white-glow" width="1222" height="712">
+          <div class="ie-overlay">
+            <h3>Gesterial Control</h3>
+            <span class="ie-meta">Fall 2024 · Hand-Tracking Game</span>
+            <p>A game that uses MediaPipe hand tracking to let players interact with a particle system through gestures.</p>
+          </div>
+        </a>
+        <!-- Lost In Translation (Spring 2024) -->
+        <a class="ie-item" href="./Installation And Hardware Media/Lost In Translation Media/lost_in_translation.html">
+          <img src="./Installation And Hardware Media/Lost In Translation Media/soldering1.jpeg" alt="Lost In Translation cover image" class="white-glow" width="3024" height="4032">
+          <div class="ie-overlay">
+            <h3>Lost In Translation</h3>
+            <span class="ie-meta">Spring 2024 · Physical Installation</span>
+            <p>A phone-booth installation where visitors help a lost AI “bot” through speech recognition, translation, and distorted audio.</p>
+          </div>
+        </a>
+        <!-- Crimson Premonition (Fall 2023) -->
+        <a class="ie-item" href="./Unity/Crimson Premotion Media/crimson_premonition.html">
+          <img src="./Unity/Crimson Premotion Media/Playing.jpeg" alt="Crimson Premonition cover image" class="white-glow" width="3024" height="4032">
+          <div class="ie-overlay">
+            <h3>Crimson Premonition</h3>
+            <span class="ie-meta">Fall 2023 · Multiplayer Game</span>
+            <p>A two-player mystery escape-room game: solve gesture-triggered puzzles to uncover a cult’s code word before you’re sacrificed.</p>
+          </div>
+        </a>
+        <!-- Anodyne (Spring 2023) -->
+        <a class="ie-item" href="./Unity/Anodyne Media/anodyne.html">
+          <img src="./Unity/Anodyne Media/final_scene.jpg" alt="Anodyne cover image" class="white-glow" width="1669" height="1168">
+          <div class="ie-overlay">
+            <h3>Anodyne</h3>
+            <span class="ie-meta">Spring 2023 · VR Installation</span>
+            <p>A collaborative VR installation exploring storytelling and human emotion, built in Unity with Maya and Cinema4D.</p>
+          </div>
+        </a>
+        <!-- Cities and Stars (2022) -->
+        <a class="ie-item" href="./Unity/Cities and Stars Media/cities_and_stars.html">
+          <img src="./Unity/Cities and Stars Media/cities_and_stars_cover.png" alt="Cities and Stars cover image" class="white-glow" width="2458" height="1260">
+          <div class="ie-overlay">
+            <h3>Cities and Stars</h3>
+            <span class="ie-meta">2022 · 360° VR</span>
+            <p>A 360° VR city inspired by Calvino’s Invisible Cities, where streets follow planetary orbits and buildings reflect the stars.</p>
+          </div>
+        </a>
+        <!-- Polar Bears (2022) -->
+        <a class="ie-item" href="./Unity/Polar Bear Media/polar_bears.html">
+          <img src="./Unity/Polar Bear Media/polar_bear_poster.jpg" alt="Polar Bears cover image" class="white-glow" width="1226" height="804">
+          <div class="ie-overlay">
+            <h3>Getting the Polar Bears Off Thin Ice</h3>
+            <span class="ie-meta">2022 · Augmented Reality</span>
+            <p>An AR piece that immerses viewers in the realities polar bears face as climate change melts the Arctic ice.</p>
+          </div>
+        </a>
+    </div>
+    <!-- End Interactive Experiences -->
+  </div> 
+
+  <!-- End Projects Section -->
+  </div>
+  
+  <script>
+    // Tiles are listed newest to oldest. On wide screens, split them into two columns:
+    // each column keeps date order, the newest two sit side by side at the top, and among
+    // all possible splits we pick the most even column heights (ties go to the split that
+    // keeps tiles closest to date order when reading top to bottom). Phones get one column.
+    (function () {
+      var grid = document.getElementById("ie-grid");
+      var items = Array.prototype.slice.call(grid.querySelectorAll(".ie-item"));
+      var ratios = items.map(function (a) {
+        var img = a.querySelector("img");
+        return img.getAttribute("height") / img.getAttribute("width");
+      });
+      var GAP = 0.03; // vertical gap between tiles, as a fraction of column width
+
+      function bestSplit() {
+        var n = items.length, best = null;
+        for (var mask = 0; mask < (1 << n); mask++) {
+          if ((mask & 1) || !(mask & 2)) continue;       // item 0 left, item 1 right
+          var h = [0, 0], tops = [];
+          for (var i = 0; i < n; i++) {
+            var c = (mask >> i) & 1;
+            tops.push(h[c]);
+            h[c] += ratios[i] + GAP;
+          }
+          var diff = Math.abs(h[0] - h[1]);
+          var disorder = 0;                                // how far tiles drift from date order
+          for (var a = 0; a < n; a++) for (var b = a + 1; b < n; b++) if (tops[b] < tops[a] - 0.05) disorder++;
+          var score = diff + disorder * 0.08;
+          if (!best || score < best.score) best = { mask: mask, score: score };
+        }
+        return best.mask;
+      }
+
+      var current = 0;
+      function layout() {
+        var cols = window.innerWidth <= 600 ? 1 : 2;
+        if (cols === current) return;
+        current = cols;
+        grid.innerHTML = "";
+        var columns = [];
+        for (var c = 0; c < cols; c++) {
+          var col = document.createElement("div");
+          col.className = "ie-col";
+          grid.appendChild(col);
+          columns.push(col);
+        }
+        var mask = cols === 2 ? bestSplit() : 0;
+        items.forEach(function (item, i) {
+          columns[cols === 2 ? (mask >> i) & 1 : 0].appendChild(item);
+        });
+      }
+      layout();
+      window.addEventListener("resize", layout);
+    })();
+  </script>
+
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+  
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      var root = "../";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer_light.html");
+    });
+  </script>
+
+</body>
+
+</html>

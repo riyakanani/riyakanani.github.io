@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Shadowed Consumption</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../W3.css">
+    <link rel="stylesheet" href="../../../site.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+</head>
+
+<body class="w3-sand w3-text-black">
+   <!-- Navigation -->
+   <div id="nav_bar"> </div>
+
+  <div class="w3-padding-64 w3-content" id="projects">
+    <button class="w3-black no-underline" type="button">
+      <a href="../../interactive_experiences.html">Interactive Experiences</a>
+    </button>
+    <h2>Shadowed Consumption:</h2>
+    <p> 
+      Presented at The University of Maryland’s Spring 2025 IMD showcase.
+    </p>
+    <p>In collaboration with Fiza Mulla</p>
+    <p>
+      <!-- To read more about the project itself, check out our project website: <a href="https://sites.google.com/view/anodyne-experience" target="_blank">Anodyne Website</a> -->
+    </p>
+    <hr style="width:200px" class="w3-opacity">
+    <!-- Arist Statement -->
+    <h4>Artist Statement:</h4>
+    <p> 
+      Shadowed Consumption 2D is a platformer game that my talented partner and I will present 
+      at the University of Maryland’s Spring 2025 IMD showcase as our capstone project.
+    </p>
+    <p>
+        Shadowed Consumption is a single player game where the topic is on consumerism/over-consumption. 
+        The game starts with a character who goes to various shops.
+        The game follows a storyline where the character is influenced by friends and a looming shadow to
+        obtain popular items. After the item they want is introduced, each shopping location transforms into a platform game 
+        where the player must jump/move through platforms to get the item. 
+        The player is constantly feeling like they have to get more 
+        and more things to fit in and ultimately increase their happiness. However, the world around them slowly becomes
+        affected by their choices and they do not see the affect it has on their own mental health.
+    </p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <!-- <h4>My Contributions:</h4>
+    <p>
+      The aspects of this project where I had the most contributions 
+      was in the classroom scene and animations throughout the experience. Through this project, 
+      I was able to learn about scene switching using buttons and triggers, collision, and how to use installation design. 
+    </p> -->
+
+    <hr style="width:200px" class="w3-opacity">
+    <h4>Tools:</h4>
+    <p>
+        • Scene switching: buttons and triggers <br>
+        • Dialogue generation <br>
+        • AI enemy generation <br>
+        • A* pathfinding <br>
+        • Platformer design <br>
+        • Static health <br>
+        • Narrative based programming
+    </p><br>
+
+    <hr style="width:200px" class="w3-opacity">
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <!-- <iframe width="485" height="485" src="https://www.youtube.com/embed/WUttk_NhTRo" 
+        title="Anodyne Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <img src="../Anodyne Media/classroom.PNG" style="width:100%"> -->
+        <img src="./SCPoster.png" style="width:100%">
+        <!-- <video width="485" height="485" controls autoplay muted>
+          <source src="../Anodyne Media/installation_video-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video> -->
+    </div>
+    <div class="w3-half">
+       
+        <img src="./play-web.jpg" style="width:100%">
+        
+    </div>
+  </div>
+<!--
+    <div class="w3-half">
+        <img src="../Anodyne Media/anodyne_installation.jpeg" style="width:100%">
+        <img src="../Anodyne Media/spaceship.PNG" style="width:100%">
+        <img src="../Anodyne Media/anodyne_poster.jpg" style="width:100%">
+        <img src="../Anodyne Media/final_scene.jpg" style="width:100%">
+    </div>
+  </div> -->
+    <!-- End photo grid -->
+
+
+  </div>
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      var root = "../../../";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer.html");
+    });
+  </script>
+</body>
+
+
+
+</html>

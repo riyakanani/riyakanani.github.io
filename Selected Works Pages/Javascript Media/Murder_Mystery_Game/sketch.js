@@ -132,8 +132,8 @@ function preload() {
   riyaMugshot = loadImage("images/riyaMugshot.jpg");
   danikaMugshot = loadImage("images/danikaMugshot.jpg");
 
-  gameMusic = loadSound("sounds/gameMusic.m4a");
-  suspectMusic = loadSound("sounds/suspectMusic.m4a");
+  gameMusic = loadSound("sounds/gameMusic.mp3");
+  suspectMusic = loadSound("sounds/suspectMusic.mp3");
   knifeImage = loadImage("images/knife.png");
   batImage = loadImage("images/baseballBat.png");
 

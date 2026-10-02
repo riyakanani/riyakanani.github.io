@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Polar Bears</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../W3.css">
+    <link rel="stylesheet" href="../../../site.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
+</head>
+
+<body class="w3-sand w3-text-black">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
+
+  <div class="w3-padding-64 w3-content" id="projects">
+    <button class="w3-black no-underline" type="button">
+      <a href="../../interactive_experiences.html">Interactive Experiences</a>
+    </button>
+    <h2>Getting The Polar Bears Off Thin Ice: AR</h2>
+    <p>In collaboration with Justin Seplowe, Ashwittha Ganesan, and Kay Weekes</p>
+    <hr style="width:200px; background-color: black; height: 1px;" class="w3-opacity">
+    <h4>Artist Statement:</h4>
+    <p>
+      The goal of our project is to bring awareness to the endangerment of polar bears. 
+      Polar bears play an integral role in keeping the ecosystem balanced. 
+      Global warming has led to the melting of arctic ice which polar bears rely on to survive and hunt for seals. 
+
+      We utilized augmented reality as an immersive art form to show the larger picture. 
+      While the viewers have likely heard about climate change and its impact, they have likely not been able to be immersed and 
+      truly understand the harsh realities that polar bears face due to climate change.       
+    </p>
+    <h4>My contributions:</h4>
+    <p>
+      In this project, I was able to learn the foundations of AR development for android, how to use AR image detection, and 
+      how to utilize both 2d and 3d aspects within the experience. 
+      My team was assigned with finding many of the assets while I focused on bringing it all together through the 
+      Unity development. This project gave me a good foundation on the basics of using AR in Unity.      
+    </p>
+    <hr style="width:200px; background-color: black; height: 1px;" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <video width="485" height="485" controls autoplay muted playsinline>
+          <source src="./ARMovie-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="w3-half">
+        <img src="./polar_bear_poster.jpg" style="width:125%">
+      </div>
+    </div>
+    <!-- End photo grid -->
+
+    <!-- FOOTER SECTION -->
+    <div id="footer"> </div>
+
+    <!-- SCRIPTS -->
+    <script>
+      $(function () {
+        var root = "../../../";
+        $("#nav_bar").load(root + "nav_bar.html", function () {
+          $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+        });
+        $("#footer").load(root + "footer.html");
+      });
+    </script>
+</body>
+
+
+
+</html>
