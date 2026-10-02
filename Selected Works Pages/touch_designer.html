@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>Touchdesigner</title>
+    <title>TouchDesigner</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="../favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../W3.css">
-    <link rel="stylesheet" href="../site.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="../site.css?v=3">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
@@ -18,6 +18,28 @@
     #main {margin-left: 120px}
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    /* TouchDesigner gallery */
+    .td-intro {max-width: 640px; margin: 4px 0 28px; font-size: 16px; line-height: 1.6; color: #3F4047;}
+    .td-grid {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;}
+    .td-card {background: #FFFFFF; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06); display: flex; flex-direction: column;}
+    .td-media {position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; padding: 0; border: 0; background: #111; cursor: pointer; overflow: hidden;}
+    .td-media img, .td-media video {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; margin: 0;}
+    .td-media video {opacity: 0; transition: opacity .25s ease;}
+    .td-media.previewing video {opacity: 1;}
+    .td-play {position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(14,14,18,.72); color: #FDF5E6; font-size: 14px; font-weight: 600; pointer-events: none;}
+    .td-media:focus-visible {outline: 3px solid #000; outline-offset: -3px;}
+    .td-body {padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 8px;}
+    .td-body h3 {margin: 0; font-size: 21px; font-weight: 600;}
+    .td-body p {margin: 0; font-size: 15px; line-height: 1.5; color: #3F4047;}
+    .td-tags {display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;}
+    .td-tags span {font-size: 12px; font-weight: 600; letter-spacing: .3px; padding: 4px 10px; border-radius: 999px; background: #F1ECE1; color: #2C2D33;}
+    @media only screen and (max-width: 760px) {.td-grid {grid-template-columns: minmax(0, 1fr); gap: 20px;}}
+    /* Pop-up player */
+    .video-modal {display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,.88); align-items: center; justify-content: center; padding: 24px;}
+    .video-modal.open {display: flex;}
+    .video-modal-box {position: relative; width: min(1200px, 100%);}
+    .video-modal-box video {width: 100%; max-height: 82vh; border-radius: 14px; background: #000; display: block;}
+    .video-modal-close {position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #FDF5E6; color: #000; font-size: 24px; line-height: 40px; cursor: pointer;}
     </style>
 </head>
 
@@ -27,40 +49,68 @@
 
   <div class="w3-padding-64 w3-content" id="projects">
     <hr style="width:200px; background-color: black; height: 1px;" class="w3-opacity">
+    <h1 class="w3-text-black">TouchDesigner</h1>
+    <p class="td-intro">Real-time, generative pieces built in TouchDesigner. Hover to preview, click to watch.</p>
 
-    <!--Analog -->
-    <h1 class="w3-text-black">Touchdesigner</h1>
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">
-        <video width="100%" height="100%" controls autoplay muted playsinline>
-            <source src="./Touch Designer/gesture1-web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video width="100%" height="100%" controls autoplay muted playsinline>
-            <source src="./Touch Designer/SelfPortrait-web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="w3-half">
-          <video width="100%" height="100%" controls autoplay muted playsinline>
-            <source src="./Touch Designer/flocking-web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <video width="100%" height="100%" controls autoplay muted playsinline>
-            <source src="./Touch Designer/clock-web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-      </div>
-    <!-- End photo grid -->
+    <div class="td-grid">
+      <article class="td-card" id="gesture">
+        <button type="button" class="td-media" data-video="./Touch Designer/gesture1-30s.mp4" aria-label="Play Reactive Gesture Piece">
+          <img src="./Touch Designer/gesture-cover.jpg" alt="Reactive Gesture Piece still frame" loading="lazy">
+          <video muted loop playsinline preload="none"></video>
+          <span class="td-play">&#9654; Watch</span>
+        </button>
+        <div class="td-body">
+          <h3>Reactive Gesture Piece</h3>
+          <p>Head tracking and audio input shape a point-cloud form that reacts to its environment.</p>
+          <div class="td-tags"><span>MediaPipe head tracking</span><span>Audio-reactive</span><span>Instancing</span></div>
+        </div>
+      </article>
+      <article class="td-card" id="flocking">
+        <button type="button" class="td-media" data-video="./Touch Designer/flocking-30s.mp4" aria-label="Play Flocking">
+          <img src="./Touch Designer/flocking-cover.jpg" alt="Flocking still frame" loading="lazy">
+          <video muted loop playsinline preload="none"></video>
+          <span class="td-play">&#9654; Watch</span>
+        </button>
+        <div class="td-body">
+          <h3>Flocking</h3>
+          <p>A flock of low-poly birds sweeps across a soft, painterly color field.</p>
+          <div class="td-tags"><span>Flocking simulation</span><span>Instanced FBX</span><span>Feedback</span></div>
+        </div>
+      </article>
+      <article class="td-card" id="self-portrait">
+        <button type="button" class="td-media" data-video="./Touch Designer/SelfPortrait-30s.mp4" aria-label="Play Fragmented Self-Portrait">
+          <img src="./Touch Designer/selfportrait-cover.jpg" alt="Fragmented Self-Portrait still frame" loading="lazy">
+          <video muted loop playsinline preload="none"></video>
+          <span class="td-play">&#9654; Watch</span>
+        </button>
+        <div class="td-body">
+          <h3>Fragmented Self-Portrait</h3>
+          <p>A live webcam feed split into tiles, each replaying a different moment in time.</p>
+          <div class="td-tags"><span>Webcam input</span><span>Time Machine TOP</span><span>Pixelation</span></div>
+        </div>
+      </article>
+      <article class="td-card" id="clock">
+        <button type="button" class="td-media" data-video="./Touch Designer/clock-30s.mp4" aria-label="Play Polygon Clock">
+          <img src="./Touch Designer/clock-cover.jpg" alt="Polygon Clock still frame" loading="lazy">
+          <video muted loop playsinline preload="none"></video>
+          <span class="td-play">&#9654; Watch</span>
+        </button>
+        <div class="td-body">
+          <h3>Polygon Clock</h3>
+          <p>Nested polygons where a point on each ring orbits at its own rate, like clock hands.</p>
+          <div class="td-tags"><span>Procedural geometry</span><span>CHOP timing</span><span>Generative color</span></div>
+        </div>
+      </article>
     </div>
-    <!-- End Analog --->
-  <!-- End Projects Section -->
   </div>
 
-<!-- End Projects Section -->
-</div>
-</div>
+  <!-- Pop-up player -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-box" role="dialog" aria-modal="true" aria-label="Video player">
+      <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Close video">&times;</button>
+      <video id="modalVideo" controls playsinline preload="none"></video>
+    </div>
+  </div>
 
   <!-- FOOTER SECTION -->
   <div id="footer"> </div>
@@ -77,25 +127,57 @@
   </script>
 
   <script>
-      var slideIndex = [1,1];
-      var slideId = ["mySlides", "mySlides2"]
-      showDivs(1, 0);
-      showDivs(1, 1);
-      
-      function plusDivs(n, no) {
-        showDivs(slideIndex[no] += n, no);
-      }
-      
-      function showDivs(n, no) {
-        var i;
-        var x = document.getElementsByClassName(slideId[no]);
-        if (n > x.length) {slideIndex[no] = 1}
-        if (n < 1) {slideIndex[no] = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
+    // Hover a card to preview it silently; click to open the full clip. Only one video plays at a time.
+    (function () {
+      var canHover = window.matchMedia("(hover: hover)").matches;
+      var modal = document.getElementById("videoModal");
+      var player = document.getElementById("modalVideo");
+
+      document.querySelectorAll(".td-media").forEach(function (btn) {
+        var preview = btn.querySelector("video");
+        if (canHover) {
+          btn.addEventListener("mouseenter", function () {
+            if (!preview.src) preview.src = btn.dataset.video;
+            btn.classList.add("previewing");
+            preview.play().catch(function () {});
+          });
+          btn.addEventListener("mouseleave", function () {
+            btn.classList.remove("previewing");
+            preview.pause();
+          });
         }
-        x[slideIndex[no]-1].style.display = "block";  
+        btn.addEventListener("click", function () {
+          preview.pause();
+          btn.classList.remove("previewing");
+          player.src = btn.dataset.video;
+          modal.classList.add("open");
+          player.play().catch(function () {});
+        });
+      });
+
+      function closeModal() {
+        player.pause();
+        modal.classList.remove("open");
       }
+      document.getElementById("videoModalClose").addEventListener("click", closeModal);
+
+      // Arriving from a link like touch_designer.html#gesture opens that piece in the large player
+      function openFromHash() {
+        var card = location.hash && document.getElementById(location.hash.slice(1));
+        var btn = card && card.querySelector(".td-media");
+        if (!btn) return;
+        card.scrollIntoView({block: "center"});
+        player.src = btn.dataset.video;
+        player.muted = false;
+        modal.classList.add("open");
+        // Browsers block sound until the visitor interacts, so fall back to muted autoplay
+        player.play().catch(function () { player.muted = true; player.play().catch(function () {}); });
+      }
+      window.addEventListener("hashchange", openFromHash);
+      openFromHash();
+      modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+    })();
   </script>
 </body>
 
