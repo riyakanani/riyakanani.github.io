@@ -113,7 +113,7 @@
       var t = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
       // size by height (like a normal heading), but always leave room for "View all work" on the right
       var reserve = mode === "narrow" ? 40 : 380;
-      var targetPx = mode === "narrow" ? 40 : 24;                    // height of the lettering in px
+      var targetPx = mode === "narrow" ? 40 : Math.max(24, Math.min(36, w * 0.0125));   // lettering height in px (grows a little on big monitors)
       var ppu = Math.min(targetPx / dims.h, Math.max(1, (w - reserve) / dims.w));   // pixels per block
       camera.position.set(0, 0, h / (ppu * 2 * t) + DEPTH);
       camera.lookAt(0, 0, 0);

@@ -104,6 +104,7 @@
     var w = stage.clientWidth, h = stage.clientHeight;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
+    BLOCK = Math.max(14, Math.min(22, w / 90));      // bigger pixels on big monitors
     halfW = w / BLOCK / 2; topY = h / BLOCK;
     camera.left = -halfW; camera.right = halfW; camera.top = topY; camera.bottom = 0;
     camera.updateProjectionMatrix();
