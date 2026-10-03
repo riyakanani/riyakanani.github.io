@@ -1,289 +1,363 @@
 <!doctype html>
 <html>
-
 <head>
     <title>CV</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="./favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
-    <link rel="stylesheet" href="./site.css?v=5">
+    <link rel="stylesheet" href="./site.css?v=14">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-    .w3-row-padding img {margin-bottom: 12px}
-    /* Set the width of the sidebar to 120px */
-    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-    #main {margin-left: 120px}
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    .cv { max-width: 980px; margin: 0 auto; padding: 64px 24px 24px; color: #333; }
+    @media (min-width: 1201px) { .cv { padding-left: 144px; max-width: 1100px; } }
+
+    /* Header card: same dark grey rounded card as the homepage / About Me */
+    .cv-hero { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;
+               padding: 40px 48px; border-radius: 45px; }
+    .cv-hero h1 { margin: 0; font-size: clamp(2em, 4.5vw, 2.9em); font-weight: 700; line-height: 1.1; }
+    .cv-hero .tagline { margin: 8px 0 0; font-size: 1.05em; opacity: .85; }
+    .cv-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .pill { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; font-weight: 700;
+            text-decoration: none !important; background: #fdf5e6; color: #111 !important; border: 2px solid #fdf5e6;
+            transition: transform .2s ease, box-shadow .2s ease; }
+    .pill:hover, .pill:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+    .pill.ghost { background: transparent; color: #fdf5e6 !important; }
+    @media (max-width: 700px) { .cv-hero { padding: 32px 24px; border-radius: 30px; text-align: center; justify-content: center; } .cv-actions { justify-content: center; } }
+
+    /* Section jump links */
+    .cv-nav { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+              padding: 16px 0; background: #fdf5e6; }
+    .cv-nav a { font-size: .8em; font-weight: 600; text-decoration: none; color: #616161; padding: 7px 16px;
+                border-radius: 999px; background: rgba(97,97,97,.1); transition: background .2s ease, color .2s ease; }
+    .cv-nav a:hover { background: #616161; color: #fdf5e6; }
+    @media (max-width: 1200px) { .cv-nav { top: 38px; } }
+
+    /* Sections: same heading + thin rule as the project pages */
+    .cv-section { padding-top: 30px; scroll-margin-top: 80px; }
+    .cv-section > h2 { margin: 0; color: #616161; font-weight: 600; }
+    .cv-section > hr { width: 200px; margin: 12px 0 8px; }
+
+    .entry { display: grid; grid-template-columns: 170px 1fr; gap: 6px 28px; padding: 18px 0; border-top: 1px solid rgba(0,0,0,.08); }
+    .cv-section > hr + .entry { border-top: 0; }
+    .when { font-size: .8em; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: #8a8a8a; padding-top: 4px; }
+    .what h3 { margin: 0; font-size: 1.12em; font-weight: 700; color: #222; }
+    .what .where { font-weight: 500; color: #777; }
+    .what .role { margin: 2px 0 0; font-weight: 600; color: #616161; }
+    .what p { margin: 6px 0 0; line-height: 1.6; }
+    .what ul { margin: 10px 0 0; padding-left: 20px; line-height: 1.65; }
+    .what li { margin-bottom: 6px; }
+    .what a { color: inherit; }
+    .sub { margin-top: 16px; }
+    .sub h4 { margin: 0; font-size: 1em; font-weight: 700; }
+    .sub .when-inline { font-size: .8em; font-weight: 600; color: #8a8a8a; text-transform: uppercase; letter-spacing: .5px; }
+    @media (max-width: 700px) { .entry { grid-template-columns: 1fr; } .when { padding-top: 0; } }
+
+    /* Skills + languages */
+    .skill-row { display: grid; grid-template-columns: 170px 1fr; gap: 8px 28px; padding: 14px 0; border-top: 1px solid rgba(0,0,0,.08); }
+    .cv-section > hr + .skill-row { border-top: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: .85em; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: #616161; color: #fdf5e6; }
+    .langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; padding-top: 10px; }
+    .lang { border-radius: 20px; background: #fff; padding: 14px 18px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .lang b { display: block; color: #222; }
+    .lang span { font-size: .85em; color: #777; }
+    @media (max-width: 700px) { .skill-row { grid-template-columns: 1fr; } }
     </style>
 </head>
 
-<body class = "w3-sand">
-    <!-- Navigation -->
-    <div id="nav_bar"> </div>
+<body class="w3-sand">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
 
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="works">
-        <!-- education section -->
-        <h2 class="w3-padding-16 w3-text-grey">Education</h2>
-        <h4 class="w3-wide"><b> Carnegie Mellon,</b> Pittsburgh, PA</h4>
-        <p><a href="https://etc.cmu.edu/" target="_blank">Masters of Entertainment Technology</a><br>
-        May 2027, GPA: 3.8</p>
-        <p> <b> Relevant Coursework: Building Virtual Worlds, Visual Storytelling, Fundamentals of Entertainment Technology, Improvisational Acting</b> </p>
+  <main class="cv">
+    <header class="cv-hero w3-dark-grey w3-text-sand">
+      <div>
+        <h1><b>Riya Kanani</b></h1>
+        <p class="tagline">Creative Technologist · Entertainment Technology @ Carnegie Mellon</p>
+      </div>
+      <div class="cv-actions">
+        <a class="pill" href="./Riya Resume.pdf" target="_blank" download><i class="fa fa-download"></i> Download Resume</a>
+        <a class="pill ghost" href="https://www.linkedin.com/in/riya-kanani-246024237/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </header>
 
-        <div class="w3-white">
+    <nav class="cv-nav" aria-label="CV sections">
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#activities">Activities</a>
+      <a href="#skills">Skills</a>
+      <a href="#awards">Awards</a>
+      <a href="#languages">Languages</a>
+    </nav>
+
+    <!-- Education -->
+    <section class="cv-section" id="education">
+      <h2>Education</h2>
+      <hr class="w3-opacity">
+
+      <div class="entry">
+        <div class="when">May 2027</div>
+        <div class="what">
+          <h3>Carnegie Mellon University <span class="where">· Pittsburgh, PA</span></h3>
+          <p class="role"><a href="https://etc.cmu.edu/" target="_blank">Masters of Entertainment Technology</a></p>
+          <p>GPA: 3.8</p>
+          <p><b>Relevant Coursework:</b> <strong class="kw">Building Virtual Worlds</strong>, Visual Storytelling, Fundamentals of Entertainment Technology, Improvisational Acting</p>
         </div>
+      </div>
 
-        <h4 class="w3-wide"><b> University of Maryland,</b> College Park, MD</h4>
-        <p>Bachelor of Science, <a href="https://www.cs.umd.edu/" target="_blank">Computer Science</a> and <a href="https://imd.umd.edu/" target="_blank">Immersive Media Design</a><br>
-          Minor: <a href="https://agnr.umd.edu/sustainability-studies-minor/" target="_blank">Sustainability Studies</a> <br>
-        May 2025, GPA: 3.8</p>
-        <p> <b> Relevant Coursework:</b> Algorithms, Advanced Data Structures, Discrete Structures, Computer Systems, Organizational Programming Languages, Object-Oriented Programming, Computer Vision, Artificial Intelligence, Computer and Network Security, Programming Handheld Systems, Data Science, Creative Coding for Digital Media, Computational Media, Digital Media Theory, Calculus II, Linear Algebra, Applied Probability & Statistics</p>
-
-        <div class="w3-white">
+      <div class="entry">
+        <div class="when">May 2025</div>
+        <div class="what">
+          <h3>University of Maryland <span class="where">· College Park, MD</span></h3>
+          <p class="role">Bachelor of Science, <a href="https://www.cs.umd.edu/" target="_blank">Computer Science</a> and <a href="https://imd.umd.edu/" target="_blank">Immersive Media Design</a></p>
+          <p>Minor: <a href="https://agnr.umd.edu/sustainability-studies-minor/" target="_blank">Sustainability Studies</a> · GPA: 3.8</p>
+          <p><b>Relevant Coursework:</b> Algorithms, Advanced Data Structures, Discrete Structures, Computer Systems, Organizational Programming Languages, Object-Oriented Programming, <strong class="kw">Computer Vision, Artificial Intelligence</strong>, Computer and Network Security, Programming Handheld Systems, <strong class="kw">Data Science</strong>, <strong class="kw">Creative Coding for Digital Media</strong>, Computational Media, Digital Media Theory, Calculus II, Linear Algebra, Applied Probability &amp; Statistics</p>
         </div>
+      </div>
 
-        <h4 class="w3-wide"><b>Howard High School,</b> Columbia, MD</h4>
-        <p>August 2017 - May 2021<br>
-          Weighted GPA: 4.64<br>
-          Unweighted GPA: 3.93</p><br>
-        <!-- end education section -->
-
-        <!-- experience section -->
-        <h2 class="w3-padding-16 w3-text-grey">Work Experience</h2>
-
-        <h4 class="w3-wide"><b>Cortina Productions,</b> McLean, VA</h4>
-        <p>Gameplay Software Engineer Intern<br>
-        June 2026 - Aug 2026</p>
-        <p>• Built real-time interaction systems in Unity 6 (C#, URP) for four concurrent public installations, holding a 60 FPS budget on always-on hardware; profiled and reduced CPU load roughly 60% → 30% by eliminating per-frame allocations and tightening device polling loops. <br>
-        • Designed and shipped a novel physical input system (dual UHF RFID readers plus depth-camera hand tracking with Orbbec/Nuitrack and MediaPipe) translating page turns and mid-air hover into game state, including transition handling for the ambiguous "mid-flip" case so animation never desynced from physical input. <br>
-        • Made the input layer plug-and-play for non-engineers: auto-discovered hardware by device PID and cached the mapping to config, cutting cold-start device connection from ~25s to under 3s and removing manual COM-port setup entirely. <br>
-        • Replaced a ~20-minute manual calibration step with a runtime computer-vision routine that edge-detects projected interaction targets on launch, turning a per-install engineering task into zero-touch setup. <br>
-        • Architected features against a mediator/proxy (PureMVC-style) pattern and authored architecture diagrams reviewed with a senior engineer before implementation; built the networking layer synchronizing a projection display with an operator station over local TCP/HTTP.
-        </p>
-
-        <div class="w3-white">
+      <div class="entry">
+        <div class="when">Aug 2017 – May 2021</div>
+        <div class="what">
+          <h3>Howard High School <span class="where">· Columbia, MD</span></h3>
+          <p>Weighted GPA: 4.64 · Unweighted GPA: 3.93</p>
         </div>
+      </div>
+    </section>
 
-        <h4 class="w3-wide"><b>Cortina Productions,</b> McLean, VA</h4>
-        <p>Gameplay Software Engineer Intern<br>
-        June 2025 - Aug 2025</p>
-        <p>• Built Unity front-end experiences driven by a producer-facing backend interface, using custom APIs to dynamically load assets and scene data. <br>
-        • Collaborated in a multi-developer Agile environment using Git version control (Bitbucket) and SourceTree for branch management, code reviews, and CI/CD pipeline integration. <br>
-        • Integrated Nuitrack/Orbbec gesture tracking APIs with Unity FBX avatars to mirror real-time user movement. <br>
-        • Developed boundary detection systems that monitor physical positioning and trigger timeout protocols when users step out of the interactive zone utilizing C#. <br>
-        • Gained full-stack familiarity with the Unity development pipeline, including render pipelines (URP/HDRP), asset management, and deployment workflows. <br>
-        • Delivered interactive installations (Democracy Disco & Step Into History) now deployed at the National Archives Museum Discovery Center, used by the public as an educational experience. 
-  (<a href="https://archivesfoundation.org/newsletter/discovery-center-in-focus/" target="_blank">Overview</a>,
-   <a href="https://visit.archives.gov/learn-us/discovery-center" target="_blank">Visitor Info</a>)
-        </p>
+    <!-- Experience -->
+    <section class="cv-section" id="experience">
+      <h2>Work Experience</h2>
+      <hr class="w3-opacity">
 
-        <div class="w3-white">
+      <div class="entry">
+        <div class="when">June 2026 – Aug 2026</div>
+        <div class="what">
+          <h3>Cortina Productions <span class="where">· McLean, VA</span></h3>
+          <p class="role">Gameplay Software Engineer Intern</p>
+          <ul>
+            <li>Built <strong class="kw">real-time interaction systems in Unity 6 (C#, URP)</strong> for four concurrent public installations, holding a <strong class="kw">60 FPS</strong> budget on always-on hardware; profiled and <strong class="kw">reduced CPU load roughly 60% → 30%</strong> by eliminating per-frame allocations and tightening device polling loops.</li>
+            <li>Designed and shipped a <strong class="kw">novel physical input system</strong> (<strong class="kw">dual UHF RFID readers</strong> plus <strong class="kw">depth-camera hand tracking</strong> with Orbbec/Nuitrack and <strong class="kw">MediaPipe</strong>) translating page turns and mid-air hover into game state, including transition handling for the ambiguous "mid-flip" case so animation never desynced from physical input.</li>
+            <li>Made the input layer <strong class="kw">plug-and-play for non-engineers</strong>: auto-discovered hardware by device PID and cached the mapping to config, cutting cold-start device connection from <strong class="kw">~25s to under 3s</strong> and removing manual COM-port setup entirely.</li>
+            <li>Replaced a ~20-minute manual calibration step with a runtime <strong class="kw">computer-vision routine</strong> that edge-detects projected interaction targets on launch, turning a per-install engineering task into <strong class="kw">zero-touch setup</strong>.</li>
+            <li>Architected features against a <strong class="kw">mediator/proxy (PureMVC-style) pattern</strong> and authored <strong class="kw">architecture diagrams</strong> reviewed with a senior engineer before implementation; built the <strong class="kw">networking layer</strong> synchronizing a projection display with an operator station over <strong class="kw">local TCP/HTTP</strong>.</li>
+          </ul>
         </div>
+      </div>
 
-        <h4 class="w3-wide"><b>Undergraduate Researcher: Computational Biology,</b> College Park, MD</h4>
-        <p><a href="https://doi.org/10.1007/978-3-031-85435-4_1" target="_blank">SuperFoldAE: Enhancing Protein Fold Classification with Autoencoders</a> <br>
-        June 2024 - Dec 2024</p>
-        <p> • Designed and implemented a supervised autoencoder model with auxiliary reconstruction tasks to enhance model generalization and stability on biological data, achieving an 88.73% accuracy. <br>
-        • Leveraged a high-performance computing cluster to train deep models on tertiary structure distance matrices. <br>
-        • Collaborated with research partner and advisor on a novel representation-learning framework integrating fold classification and structural feature extraction. <br>
-        • Published in Springer CCIS (Vol. 2396) and presented at the Computational Structural Biology Workshop (CSBW 2024). <br>
-        • Awarded Professional Development Funding by the University of Maryland to present research at CSBW 2024. <br>
-        </p>
-        <p><a href="https://doi.org/10.1145/3768322.3769023" target="_blank">ConSOLAE: Learning Smooth and Generalizable Representations for Protein Fold Recognition</a> <br>
-        Dec 2024 - May 2025</p>
-        <p> • Developed a contractive supervised autoencoder architecture that learns smooth, noise-invariant latent spaces for fold and family classification. <br>
-        • Improved out-of-distribution performance on SCOP 2.06 from 22.63% → 54.22% Top-1 accuracy, demonstrating significant advances in generalization. <br>
-        • Introduced contractive regularization, Smooth L1 reconstruction, and a deeper encoder–decoder structure to stabilize training and capture fine-grained structural features. <br>
-        • Awarded Best Paper (2nd Place) and accepted for presentation at ACM BCB CSBW Workshop 2025 (Philadelphia, PA). <br>
-        • Co-authored paper and executed large-scale experiments, model training, and evaluation. <br>
-        </p>
-
-        <div class="w3-white">
+      <div class="entry">
+        <div class="when">June 2025 – Aug 2025</div>
+        <div class="what">
+          <h3>Cortina Productions <span class="where">· McLean, VA</span></h3>
+          <p class="role">Gameplay Software Engineer Intern</p>
+          <ul>
+            <li>Built <strong class="kw">Unity front-end experiences</strong> driven by a producer-facing backend interface, using <strong class="kw">custom APIs</strong> to dynamically load assets and scene data.</li>
+            <li>Collaborated in a multi-developer <strong class="kw">Agile environment</strong> using <strong class="kw">Git version control (Bitbucket)</strong> and SourceTree for branch management, <strong class="kw">code reviews</strong>, and <strong class="kw">CI/CD pipeline integration</strong>.</li>
+            <li>Integrated <strong class="kw">Nuitrack/Orbbec gesture tracking APIs</strong> with Unity FBX avatars to mirror <strong class="kw">real-time user movement</strong>.</li>
+            <li>Developed <strong class="kw">boundary detection systems</strong> that monitor physical positioning and trigger timeout protocols when users step out of the interactive zone utilizing C#.</li>
+            <li>Gained full-stack familiarity with the Unity development pipeline, including <strong class="kw">render pipelines (URP/HDRP)</strong>, asset management, and deployment workflows.</li>
+            <li>Delivered interactive installations (Democracy Disco &amp; Step Into History) now deployed at the <strong class="kw">National Archives Museum Discovery Center</strong>, used by the public as an educational experience
+              (<a href="https://archivesfoundation.org/newsletter/discovery-center-in-focus/" target="_blank">Overview</a>,
+              <a href="https://visit.archives.gov/learn-us/discovery-center" target="_blank">Visitor Info</a>).</li>
+          </ul>
         </div>
+      </div>
 
-        <h4 class="w3-wide"><b>Teaching Assistant: Intro to Immersive Media,</b> College Park, MD</h4>
-        <p>Aug 2023 - May 2025</p>
-        <p>• Empowered students with the knowledge and resources needed to transform creative ideas into tangible and successful projects. <br>
-        • Demonstrated a commitment to maintaining high standards of professionalism in grading and assessment of works, ensuring students receive constructive feedback for academic and professional growth.
-        </p>
-
-        <div class="w3-white">
-        </div>
-
-        <h4 class="w3-wide"><b>NASA Ocean Undergraduate Researcher,</b> College Park, MD</h4>
-        <p>Aug 2023 - May 2025</p>
-        <p>• Created C# scripts to simulate phytoplankton responding to camera input data in Unity Engine. <br>
-          • Played a key role in brainstorming sessions to create an effective method to represent phytoplankton across various
-          zoom scales, ensuring visual cohesion and engaging the user. <br>
-          • Conducted research on how different phytoplankton respond to different light stimulus.
-        </p>
-
-        <div class="w3-white">
-        </div>
-
-        <h4 class="w3-wide"><b>Rock Creek Group,</b> Washington, DC</h4>
-        <p>Summer Analyst: Data and Reporting Team<br>
-        Summer 2023</p>
-        <p>• Developed 5 key software solutions to remodel data, facilitate data visualization, and streamline and automate complex calculations, improving the team's day-to-day efficiency. <br>
-        • Conducted testing and resolved issues within scripts authored by other team members. <br>
-        • Engaged in client interactions and communications.
-        </p>
-
-        <div class="w3-white">
-        </div>
-
-        <h4 class="w3-wide"><b>Cloud Computing Research Lab,</b> College Park, MD</h4>
-        <p>Peer Research Mentor<br>
-        Aug 2021 - May 2023</p>
-        <p>• Collaborated with colleagues to develop an image classification model by leveraging a pre-trained convolutional
-          neural network, AlexNet, in conjunction with a decision tree classifier that integrated geospatial data (longitude and
-          latitude). This collaborative effort improved image classification accuracy from 62.7% to 81.29%. <br>
-          • Utilized the NASA Globe Clouds database to curate a data set comprising cloud images with essential metadata
-          attributes including longitude, latitude, and timestamp.
-        </p>
-
-        <div class="w3-white">
-        </div>
-
-        <h4 class="w3-wide"><b>The Young School,</b> Columbia, MD</h4>
-        <p>Assistant Teacher<br>
-        Feb 2021 - Jan 2022</p>
-        <p>• Cooperated with coworkers to develop lessons, encouraging scholastic development of children aged 8 weeks- 5 years. <br>
-          • Interacted with parents daily and gave them a verbal report of their child's behavior. <br>
-          • Learned to adapt to the environment of the classroom, providing interesting and educational activities for the students.
-        </p><br>
-        <!-- end experience section -->
-
-        <!-- start ACTIVITIES section -->
-        <h2 class="w3-padding-16 w3-text-grey">Activities</h2>
-        <h4 class="w3-wide"><b> Girls Who Code,</b> College Park, MD</h4>
-        <p>Web Developer and Teaching Assistant<br>
-        Feb 2023 - Current</p>
-        <p>• Contributes to website development, including using Figma, HTML, and CSS. <br>
-          • Provided instructions in Python fundamentals to middle and high school girls.
-        </p><br>
-
-        <h4 class="w3-wide"><b>Motion Capture Instructor,</b> College Park, MD</h4>
-        <p>Jan 2023 - Dec 2023</p>
-        <p>• Assisted students in using motion capture technology. <br>
-          • Learned how to use Vicon's Shogun Live & Post, calibrating the cameras, placing the markers on the subject,
-          and integrating the animations into 3D modeling software such as Maya or Unity.
-        </p><br>
-        <!-- end ACTIVITIES section -->
-
-        <!-- start LANGUAGES section -->
-        <h2 class="w3-padding-16 w3-text-grey">Languages</h2>
-        <p>English: Native<br>
-          Gujarati: Professional Working Proficiency<br>
-          Hindi: Limited Working Proficiency<br>
-          Spanish: Limited Working Proficiency
-        </p><br>
-        <!-- end LANGUAGES section -->
-
-        <!-- start Skills section -->
-        <h2 class="w3-padding-16 w3-text-grey">Skills</h2>
-        <p> <b>Software:</b> Unity Engine (Unity 6, URP/HDRP), TouchDesigner, Git/Bitbucket, SourceTree, Adobe Suite, Microsoft Office Suite, Cinema4D, Maya<br>
-        <b>Languages:</b> C#, Java, Python, C, JavaScript (p5.js), MIPS Assembly, OCaml, Ruby, Rust, LaTeX, Linux<br>
-        <b>Engineering:</b> Performance profiling &amp; optimization, mediator/MVC architecture (PureMVC), local networking (TCP/HTTP), computer vision<br>
-        <b>Hardware &amp; Tracking:</b> UHF RFID, Orbbec/Nuitrack depth cameras, MediaPipe hand tracking, HTC Vive trackers
-        </p><br>
-        <!-- end skills section -->
-
-        <!-- Awardes section -->
-        <h2 class="w3-padding-16 w3-text-grey">Awards</h2>
-
-        <h4 class="w3-wide">Professional Development Funding Reward</h4>
-        <p><b> University of Maryland,</b> College Park, MD<br>
-          Department of Computer Science</p>
-        <p>Fall 2024</p>
-
-        <h4 class="w3-wide">Dean's List</h4>
-        <p><b> University of Maryland,</b> College Park, MD<br>
-        Semester Academic Honors</p>
-        <p>Fall 2021 - Spring 2024</p>
-
-        <div class="w3-white">
-        </div>
-
-        <h4 class="w3-wide">Office of Multi-ethnic Student Education Academic Excellence Award</h4>
-        <p><b>University of Maryland,</b> College Park, MD<br>
-          2024, 2023, 2022</p><br>
-
-
-        <!-- end awards section -->
-
-        <!-- <div class="w3-white">
-          <div class="w3-dark-grey" style="height:28px;width:85%"></div>
-        </div>
-        <p class="w3-wide">Photoshop</p>
-        <div class="w3-white">
-          <div class="w3-dark-grey" style="height:28px;width:80%"></div>
-        </div><br> -->
-
-
-
-        <!-- <h2 class="w3-text-grey">My Name</h2>
-        <hr style="width:200px" class="w3-opacity">
-        <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p> -->
-        
-        
-        <!-- <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">11+</span><br>
-            Partners
+      <div class="entry">
+        <div class="when">June 2024 – May 2025</div>
+        <div class="what">
+          <h3>Undergraduate Researcher: Computational Biology <span class="where">· College Park, MD</span></h3>
+          <div class="sub">
+            <h4><a href="https://doi.org/10.1007/978-3-031-85435-4_1" target="_blank">SuperFoldAE: Enhancing Protein Fold Classification with Autoencoders</a></h4>
+            <span class="when-inline">June 2024 – Dec 2024</span>
+            <ul>
+              <li>Designed and implemented a <strong class="kw">supervised autoencoder model</strong> with auxiliary reconstruction tasks to enhance model generalization and stability on biological data, achieving an <strong class="kw">88.73% accuracy</strong>.</li>
+              <li>Leveraged a <strong class="kw">high-performance computing cluster</strong> to train deep models on tertiary structure distance matrices.</li>
+              <li>Collaborated with research partner and advisor on a novel representation-learning framework integrating fold classification and structural feature extraction.</li>
+              <li><strong class="kw">Published in Springer CCIS</strong> (Vol. 2396) and presented at the Computational Structural Biology Workshop (CSBW 2024).</li>
+              <li>Awarded Professional Development Funding by the University of Maryland to present research at CSBW 2024.</li>
+            </ul>
           </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">55+</span><br>
-            Projects Done
+          <div class="sub">
+            <h4><a href="https://doi.org/10.1145/3768322.3769023" target="_blank">ConSOLAE: Learning Smooth and Generalizable Representations for Protein Fold Recognition</a></h4>
+            <span class="when-inline">Dec 2024 – May 2025</span>
+            <ul>
+              <li>Developed a <strong class="kw">contractive supervised autoencoder architecture</strong> that learns smooth, noise-invariant latent spaces for fold and family classification.</li>
+              <li>Improved out-of-distribution performance on SCOP 2.06 from <strong class="kw">22.63% → 54.22% Top-1 accuracy</strong>, demonstrating significant advances in generalization.</li>
+              <li>Introduced contractive regularization, Smooth L1 reconstruction, and a deeper encoder–decoder structure to stabilize training and capture fine-grained structural features.</li>
+              <li>Awarded <strong class="kw">Best Paper (2nd Place)</strong> and accepted for presentation at ACM BCB CSBW Workshop 2025 (Philadelphia, PA).</li>
+              <li>Co-authored paper and executed <strong class="kw">large-scale experiments, model training, and evaluation</strong>.</li>
+            </ul>
           </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">89+</span><br>
-            Happy Clients
-          </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">150+</span><br>
-            Meetings
-          </div>
-        </div> -->
-        <button class="w3-button w3-sand w3-padding-large w3-section" id="downloadButton">
-          <a href="./Riya Resume.pdf" target = "_blank" download>
-              <i class="fa fa-download"></i> Download Resume
-          </a>
-        </button>
-        <!-- Testimonials -->
-        <!-- <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>  
-        <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-        <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
-        <p>John Doe saved us from a web disaster.</p><br>
-        
-        <img src="https://www.w3schools.com/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-        <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
-        <p>No one is better than John Doe.</p> -->
-        <!-- End Works Section -->  
-    </div>
+        </div>
+      </div>
 
-    <!-- FOOTER SECTION -->
-    <div id="footer"> </div>
-    
-    <!-- SCRIPTS -->
-    <script>
-      $(function () {
-        var root = "";
-        $("#nav_bar").load(root + "nav_bar.html", function () {
-          $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
-        });
-        $("#footer").load(root + "footer.html");
+      <div class="entry">
+        <div class="when">Aug 2023 – May 2025</div>
+        <div class="what">
+          <h3>Teaching Assistant: Intro to Immersive Media <span class="where">· College Park, MD</span></h3>
+          <ul>
+            <li>Empowered students with the knowledge and resources needed to transform creative ideas into tangible and successful projects.</li>
+            <li>Demonstrated a commitment to maintaining high standards of professionalism in <strong class="kw">grading and assessment</strong> of works, ensuring students receive constructive feedback for academic and professional growth.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Aug 2023 – May 2025</div>
+        <div class="what">
+          <h3>NASA Ocean Undergraduate Researcher <span class="where">· College Park, MD</span></h3>
+          <ul>
+            <li>Created <strong class="kw">C# scripts</strong> to simulate phytoplankton responding to <strong class="kw">camera input data</strong> in <strong class="kw">Unity Engine</strong>.</li>
+            <li>Played a key role in brainstorming sessions to create an effective method to represent phytoplankton across various zoom scales, ensuring visual cohesion and engaging the user.</li>
+            <li>Conducted research on how different phytoplankton respond to different light stimulus.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Summer 2023</div>
+        <div class="what">
+          <h3>Rock Creek Group <span class="where">· Washington, DC</span></h3>
+          <p class="role">Summer Analyst: Data and Reporting Team</p>
+          <ul>
+            <li>Developed <strong class="kw">5 key software solutions</strong> to remodel data, facilitate <strong class="kw">data visualization</strong>, and streamline and <strong class="kw">automate complex calculations</strong>, improving the team's day-to-day efficiency.</li>
+            <li>Conducted testing and resolved issues within scripts authored by other team members.</li>
+            <li>Engaged in client interactions and communications.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Aug 2021 – May 2023</div>
+        <div class="what">
+          <h3>Cloud Computing Research Lab <span class="where">· College Park, MD</span></h3>
+          <p class="role">Peer Research Mentor</p>
+          <ul>
+            <li>Collaborated with colleagues to develop an image classification model by leveraging a <strong class="kw">pre-trained convolutional neural network, AlexNet</strong>, in conjunction with a <strong class="kw">decision tree classifier</strong> that integrated geospatial data (longitude and latitude). This collaborative effort improved image classification accuracy from <strong class="kw">62.7% to 81.29%</strong>.</li>
+            <li>Utilized the NASA Globe Clouds database to curate a data set comprising cloud images with essential metadata attributes including longitude, latitude, and timestamp.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">Feb 2021 – Jan 2022</div>
+        <div class="what">
+          <h3>The Young School <span class="where">· Columbia, MD</span></h3>
+          <p class="role">Assistant Teacher</p>
+          <ul>
+            <li>Cooperated with coworkers to develop lessons, encouraging scholastic development of children aged 8 weeks- 5 years.</li>
+            <li>Interacted with parents daily and gave them a verbal report of their child's behavior.</li>
+            <li>Learned to adapt to the environment of the classroom, providing interesting and educational activities for the students.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="cv-section" id="activities">
+      <h2>Activities</h2>
+      <hr class="w3-opacity">
+      <div class="entry">
+        <div class="when">Feb 2023 – Current</div>
+        <div class="what">
+          <h3>Girls Who Code <span class="where">· College Park, MD</span></h3>
+          <p class="role">Web Developer and Teaching Assistant</p>
+          <ul>
+            <li>Contributes to website development, including using <strong class="kw">Figma, HTML, and CSS</strong>.</li>
+            <li>Provided instructions in <strong class="kw">Python fundamentals</strong> to middle and high school girls.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">Jan 2023 – Dec 2023</div>
+        <div class="what">
+          <h3>Motion Capture Instructor <span class="where">· College Park, MD</span></h3>
+          <ul>
+            <li>Assisted students in using <strong class="kw">motion capture technology</strong>.</li>
+            <li>Learned how to use <strong class="kw">Vicon's Shogun Live &amp; Post</strong>, calibrating the cameras, placing the markers on the subject, and integrating the animations into 3D modeling software such as Maya or Unity.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section" id="skills">
+      <h2>Skills</h2>
+      <hr class="w3-opacity">
+      <div class="skill-row">
+        <div class="when">Software</div>
+        <div class="chips"><span class="chip">Unity Engine (Unity 6, URP/HDRP)</span><span class="chip">TouchDesigner</span><span class="chip">Git/Bitbucket</span><span class="chip">SourceTree</span><span class="chip">Adobe Suite</span><span class="chip">Microsoft Office Suite</span><span class="chip">Cinema4D</span><span class="chip">Maya</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="when">Languages</div>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">JavaScript (p5.js)</span><span class="chip">MIPS Assembly</span><span class="chip">OCaml</span><span class="chip">Ruby</span><span class="chip">Rust</span><span class="chip">LaTeX</span><span class="chip">Linux</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="when">Engineering</div>
+        <div class="chips"><span class="chip">Performance profiling &amp; optimization</span><span class="chip">Mediator/MVC architecture (PureMVC)</span><span class="chip">Local networking (TCP/HTTP)</span><span class="chip">Computer vision</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="when">Hardware &amp; Tracking</div>
+        <div class="chips"><span class="chip">UHF RFID</span><span class="chip">Orbbec/Nuitrack depth cameras</span><span class="chip">MediaPipe hand tracking</span><span class="chip">HTC Vive trackers</span></div>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section class="cv-section" id="awards">
+      <h2>Awards</h2>
+      <hr class="w3-opacity">
+      <div class="entry">
+        <div class="when">Fall 2024</div>
+        <div class="what">
+          <h3>Professional Development Funding Reward</h3>
+          <p>University of Maryland, College Park, MD · Department of Computer Science</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">Fall 2021 – Spring 2024</div>
+        <div class="what">
+          <h3>Dean's List</h3>
+          <p>University of Maryland, College Park, MD · Semester Academic Honors</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2022, 2023, 2024</div>
+        <div class="what">
+          <h3>Office of Multi-ethnic Student Education Academic Excellence Award</h3>
+          <p>University of Maryland, College Park, MD</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="cv-section" id="languages">
+      <h2>Languages</h2>
+      <hr class="w3-opacity">
+      <div class="langs">
+        <div class="lang"><b>English</b><span>Native</span></div>
+        <div class="lang"><b>Gujarati</b><span>Professional Working Proficiency</span></div>
+        <div class="lang"><b>Hindi</b><span>Limited Working Proficiency</span></div>
+        <div class="lang"><b>Spanish</b><span>Limited Working Proficiency</span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      var root = "";
+      $("#nav_bar").load(root + "nav_bar.html", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
       });
-    </script>
-
-    
+      $("#footer").load(root + "footer.html");
+    });
+  </script>
 </body>
-
 </html>

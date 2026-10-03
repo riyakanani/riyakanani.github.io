@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="./reachPose.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
-    <link rel="stylesheet" href="./site.css?v=5">
+    <link rel="stylesheet" href="./site.css?v=14">
     <link rel="stylesheet" href="./textHover.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -147,6 +147,19 @@
         .works-header h2 {font-size: 26px;}
         .works-viewall {font-size: 14px;}
       }
+      /* 3D block-letter title (WebGL); the plain h2 stays for screen readers / fallback */
+      .works-header {position: relative; align-items: center; justify-content: center;}
+      .title-gl {display: none; width: 100%; height: 110px; margin: -31px 0; pointer-events: none;}
+      .title-gl.on {display: block;}
+      .title-gl canvas {display: block; width: 100%; height: 100%;}
+      .title-gl.on ~ h2 {position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;}
+      .works-header .works-viewall {position: absolute; right: 14px; top: 50%; transform: translateY(-50%);}
+      #works > .section {padding-top: 20px !important;}
+      @media (max-width: 620px) {
+        .title-gl {height: 120px; margin: -28px 0;}
+        .works-header {flex-direction: column; align-items: stretch;}
+        .works-header .works-viewall {position: static; transform: none; align-self: flex-end;}
+      }
     </style>
   </head>
   <body class="w3-sand w3-text-black">
@@ -157,6 +170,7 @@
     <div class="w3-padding-large zoom" id="works">
       <div class="section w3-padding-64 round-container">
         <div class="works-header">
+          <div id="titleGL" class="title-gl" role="img" aria-label="Highlighted Works"></div>
           <h2>Highlighted Works</h2>
           <a href="./selected_works.html" class="works-viewall">View all work &rarr;</a>
         </div>
@@ -232,27 +246,10 @@
       </div>
     </div>
 
-    <!-- About Me Section (photo + intro) -->
-    <div class="w3-padding-large zoom" id="about">
-      <div class="section w3-dark-grey round-container w3-text-sand">
-        <div class="hero">
-          <div class="hero-text w3-left-align">
-            <h1 class="w3-xxxlarge"><span class="hero-greeting">Hi, my name is </span><strong>Riya Kanani</strong></h1>
-            <h4>Entertainment Technology Graduate <br>Student @ Carnegie Mellon University.</h4>
-            <p>
-              Welcome to my portfolio website! I am a creative technologist interested in
-              location-based entertainment, mixed reality, and video games!
-              When I have some free time, I love to pick up new hobbies.
-              Some of my recent hobbies are pottery, 3D printing, laser cutting, Arduino, and web development!
-            </p>
-          </div>
-          <img src="./me.jpg" alt="Picture of me" class="w3-image">
-        </div>
-      </div>
-    </div>
-
   <!-- FOOTER SECTION -->
   <div id="footer"> </div>
+
+  <script src="./title-gl.js?v=8"></script>
 
   <!-- SCRIPTS -->
   <script>

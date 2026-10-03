@@ -1,10 +1,42 @@
-<footer class="w3-content w3-padding-64 w3-text-sand w3-xlarge">
-    <div class="w3-center footer-icons">
-      <a class="fa fa-linkedin w3-hover-opacity" href="https://www.linkedin.com/in/riya-kanani-246024237/" target="_blank"></a>
-      <a class="fa fa-instagram w3-hover-opacity" href="https://www.instagram.com/by.kanani/" target="_blank"></a>
-      <a class="fa fa-github w3-hover-opacity" href="https://github.com/riyakanani" target="_blank"></a>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<footer class="site-footer">
+  <div class="pixel-edge" aria-hidden="true"></div>
+  <div class="footer-stage" aria-hidden="true"></div>
+  <div class="footer-body">
+    <div class="footer-icons">
+      <a href="https://www.linkedin.com/in/riya-kanani-246024237/" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/riyakanani" target="_blank" aria-label="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://www.instagram.com/by.kanani/" target="_blank" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+      <a href="mailto:riya.kananiwork@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a>
     </div>
-    <div class="w3-center w3-small w3-opacity">
-      <p>Riya Kanani © 2023</p>
-    </div>
+    <p class="footer-note">&copy; 2026 RIYA KANANI<span class="footer-dot">&#9632;</span><a href="#" class="footer-top-link" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP <span class="blink">&#9650;</span></a></p>
+  </div>
 </footer>
+<script>
+  (function () {
+    // Work out the site root from the shared stylesheet link, so this works at any folder depth
+    var link = document.querySelector('link[href*="site.css"]');
+    var base = link ? link.href.replace(/site\.css.*$/, "") : "";
+    window.__footerBase = base;
+    // on black pages, flip the footer to cream so the skyline doesn't vanish into the background
+    var bg = getComputedStyle(document.body).backgroundColor.match(/\d+/g) || [255, 255, 255];
+    if ((+bg[0] * 0.299 + +bg[1] * 0.587 + +bg[2] * 0.114) < 80) {
+      var ft = document.querySelector(".site-footer"); if (ft) ft.classList.add("on-dark");
+    }
+    function go() {
+      var s = document.createElement("script");
+      s.src = base + "footer/footer-gl.js?v=14";
+      document.body.appendChild(s);
+    }
+    // share one copy of three.js with anything else on the page (e.g. the homepage title)
+    if (window.THREE) { go(); return; }
+    if (!window.__threeWaiters) {
+      window.__threeWaiters = [];
+      var t = document.createElement("script");
+      t.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+      t.onload = function () { window.__threeWaiters.forEach(function (f) { f(); }); };
+      document.head.appendChild(t);
+    }
+    window.__threeWaiters.push(go);
+  })();
+</script>

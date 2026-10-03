@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Me</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="./reachPose.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./W3.css">
+    <link rel="stylesheet" href="./site.css?v=14">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+      body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; margin: 0; padding: 0;}
+      html {margin: 0; padding: 0;}
+      img {border-radius: 10%}
+
+      /* Sidebar reaches the very top */
+      .w3-sidebar {
+        height: 100vh !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .round-container {border-radius: 45px;}
+
+      .zoom {transition: transform .2s;}
+      .zoom:hover {transform: scale(1.01);}
+
+      /* ---------- About (photo + intro) ---------- */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        padding: 50px 60px;
+      }
+      .hero-text {flex: 1; max-width: 640px;}
+      .hero-text p {margin-top: 36px;}
+      .hero-text p {line-height: 1.6;}
+      .hero img {width: 360px; height: auto; max-width: 100%;}
+      .hero-greeting {display: none;}
+
+      .hero-email {margin-top: 20px !important;}
+      .hero-email a {color: #fdf5e6;}
+      #about {padding-top: 64px !important;}
+
+      /* Sections next to the sidebar on desktop */
+      .section {margin-left: 110px; margin-right: 10px;}
+
+      @media only screen and (max-width: 1200px) {
+        #about {padding-top: 56px !important;}
+        .hero {flex-direction: column; gap: 16px; padding: 32px 16px; text-align: center;}
+        .hero-text {text-align: center !important;}
+        .hero h1 {font-size: 36px !important;}
+        .hero h4 br {display: none;}
+        .hero img {width: 300px;}
+        .hero-greeting {display: inline;}
+        .section {margin-left: 0; margin-right: 0;}
+      }
+      @media only screen and (max-width: 600px) {
+        .hero-greeting {display: none;}
+      }
+    </style>
+  </head>
+  <body class="w3-sand w3-text-black">
+    <!-- Navigation -->
+    <div id="nav_bar"> </div>
+
+    <!-- About Me (photo + intro) -->
+    <div class="w3-padding-large zoom" id="about">
+      <div class="section w3-dark-grey round-container w3-text-sand">
+        <div class="hero">
+          <div class="hero-text w3-left-align">
+            <h1 class="w3-xxxlarge"><span class="hero-greeting">Hi, my name is </span><strong>Riya Kanani</strong></h1>
+            <h4>Entertainment Technology Graduate <br>Student @ Carnegie Mellon University.</h4>
+            <p>
+              Welcome to my portfolio website! I am a creative technologist interested in
+              location-based entertainment, mixed reality, and video games!
+              When I have some free time, I love to pick up new hobbies.
+              Some of my recent hobbies are pottery, 3D printing, laser cutting, Arduino, and web development!
+            </p>
+            <p class="hero-email"><i class="fa fa-envelope fa-fw w3-large" style="margin-right:8px"></i>
+              <a href="mailto:riya.kananiwork@gmail.com">riya.kananiwork@gmail.com</a>
+            </p>
+          </div>
+          <img src="./me.jpg" alt="Picture of Riya Kanani" class="w3-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <div id="footer"> </div>
+
+    <!-- SCRIPTS -->
+    <script>
+      $(function () {
+        var root = "";
+        $("#nav_bar").load(root + "nav_bar.html", function () {
+          $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+        });
+        $("#footer").load(root + "footer.html");
+      });
+    </script>
+  </body>
+</html>
