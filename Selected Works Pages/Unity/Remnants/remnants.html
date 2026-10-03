@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="../../../favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../W3.css">
-    <link rel="stylesheet" href="../../../site.css?v=3">
+    <link rel="stylesheet" href="../../../site.css?v=5">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -38,26 +38,47 @@
     <p>
       To read more about the project itself, check out our project website: <a href="https://projects.etc.cmu.edu/remnants/" target="_blank">Remnants Website</a>
     </p>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Artist Statement -->
-    <h4>Artist Statement:</h4>
-    <p>
-      Remnants is an immersive gardening experience presented on a <strong class="kw">270 degree curved screen</strong>.
-      It explores the emotional toll on caretakers of dementia patients through the metaphor of a garden.
-      Players plant seeds, water, weed, and trim the hedges using physical flower boxes and tools,
-      and the garden responds to their attention and care.
-      But over time, the garden continues to decline, no matter what they do.
-    </p>
-    <p>
-      There is intentionally no way to win. Like caregiving, the effort is constant,
-      the responsibility is heavy, and progress is not guaranteed.
-      We hope the experience builds understanding of what caregivers go through,
-      raises awareness of dementia, and encourages earlier recognition of its warning signs.
-    </p>
 
     <hr style="width:200px" class="w3-opacity">
-    <h4>My Contributions:</h4>
+    <p class="kw-line"><b>Key Words:</b> 270 degree curved screen · Hardware integration · Tech art · UDP communication protocols · RFID, button, and accelerometer data · Real-time interactions · Vive tracking system · Kuwahara filter · Sway shader · Blend shapes · Progressive game system</p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Remnants final demo">
+          <source src="./FinalDemo-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Planting seeds">
+          <source src="./Planting-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Watering the garden">
+          <source src="./watering-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="w3-half">
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Weeding">
+          <source src="./Weeding-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Clipping the hedge">
+          <source src="./clippinghedge-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Butterfly moment">
+          <source src="./butterfly_moment-web.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    <!-- End photo grid -->
+    </div>
+
+    <hr style="width:200px" class="w3-opacity">
+    <h4>What I Built:</h4>
     <p>
       In this project, I worked across both the <strong class="kw">hardware integration</strong> and the <strong class="kw">tech art</strong>.
       My goal was to use the hardware and trackers together to create a seamless, magical experience.
@@ -96,40 +117,23 @@
         • 270 degree curved projection screen <br>
     </p><br>
 
-    <hr style="width:200px" class="w3-opacity">
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">
-        <video style="width:100%" controls preload="metadata" playsinline>
-          <source src="./FinalDemo-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Planting seeds">
-          <source src="./Planting-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Watering the garden">
-          <source src="./watering-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
 
-      <div class="w3-half">
-        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Weeding">
-          <source src="./Weeding-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Clipping the hedge">
-          <source src="./clippinghedge-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <video style="width:100%" controls autoplay muted loop playsinline aria-label="Butterfly moment">
-          <source src="./butterfly_moment-web.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    <!-- End photo grid -->
-    </div>
+    <hr style="width:200px" class="w3-opacity">
+    <!-- Overview -->
+    <h4>Overview:</h4>
+    <p>
+      Remnants is an immersive gardening experience presented on a <strong class="kw">270 degree curved screen</strong>.
+      It explores the emotional toll on caretakers of dementia patients through the metaphor of a garden.
+      Players plant seeds, water, weed, and trim the hedges using physical flower boxes and tools,
+      and the garden responds to their attention and care.
+      But over time, the garden continues to decline, no matter what they do.
+    </p>
+    <p>
+      There is intentionally no way to win. Like caregiving, the effort is constant,
+      the responsibility is heavy, and progress is not guaranteed.
+      We hope the experience builds understanding of what caregivers go through,
+      raises awareness of dementia, and encourages earlier recognition of its warning signs.
+    </p>
 
   </div>
 

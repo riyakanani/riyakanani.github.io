@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="../../../favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../W3.css">
-    <link rel="stylesheet" href="../../../site.css?v=3">
+    <link rel="stylesheet" href="../../../site.css?v=5">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -31,82 +31,33 @@
     <button class="w3-black no-underline" type="button">
       <a href="../../interactive_experiences.html">Interactive Experiences</a>
     </button>
-    <h2>Gesterial Control: Game</h2>
-    <hr style="width:200px" class="w3-opacity">
+    <h2>Gesterial Control</h2>
+    <p>Created Fall 2024 · Unity · C# · MediaPipe</p>
+    <p><a href="https://github.com/riyakanani/GesteruralControlGame/blob/main/README.md" target="_blank">Source code on GitHub</a>
+      &nbsp;·&nbsp; <a href="./Techincal Instructions.pdf" target="_blank">Technical guide (PDF)</a></p>
 
-    <h4>How To Use:</h4>
-    <p>- In <a href="https://github.com/riyakanani/GesteruralControlGame/blob/main/README.md" target="_blank"> GitHub</a>, the game scene is located in: “Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking”</p>
-    <p>- A detailed setup and usage tutorial.</p>
+    <hr style="width:200px" class="w3-opacity">
+    <p class="kw-line"><b>Key Words:</b> Gesture-controlled interaction tool · MediaPipe hand tracking · Real-time particle system · Technical guide · Linear interpolation · Trigonometric calculations · Collision detection</p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <img src="./GesterialControlImage.png" alt="Gesterial Control: particles following tracked fingers" style="width:100%; max-width:800px">
     <embed class="pdf" src="./Techincal Instructions.pdf" width="800" height="500">
 
-    <!-- Artist Statement -->
-    <h4>Project Overview:</h4>
-    <p> 
-        This project is a <strong class="kw">gesture-controlled game</strong> that leverages <strong class="kw">MediaPipe's 
-        hand-tracking solution</strong> to create dynamic interactions between a <strong class="kw">particle 
-        system</strong> and a player’s hand movements, captured through camera input. 
-        The game responds to the player’s gestures, creating an immersive experience 
-        where virtual particles interact in real-time with the hand's motion, 
-        adding a sense of control over the environment.
-    </p>
+    <hr style="width:200px" class="w3-opacity">
+    <h4>What I Built</h4>
+    <ul>
+      <li><b>Hand-tracking pipeline:</b> pulled live thumb and index-finger landmarks from MediaPipe and mapped them into Unity space with <strong class="kw">linear interpolation</strong> for smooth, accurate movement.</li>
+      <li><b>Particle system:</b> wrote an oscillator that moves particles in circular patterns using <strong class="kw">trigonometric calculations</strong>, with adjustable speed, size and count.</li>
+      <li><b>Interaction logic:</b> built distance-based <strong class="kw">collision detection</strong> between the tracked fingers and particles that triggers scene changes.</li>
+      <li><b>Documentation:</b> wrote the setup and usage guide shown above.</li>
+    </ul>
 
     <hr style="width:200px" class="w3-opacity">
-    <h4>My Contributions:</h4>
-    <h5>Genesis Script:</h5>
-    <p><b>File:</b> "GesteruralControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Genesis.cs".
-    </p>
-    <p><b>Description:</b> In the Genesis script, I set up the foundational 
-        framework for tracking and visualizing hand gestures by capturing the 
-        positions of the thumb and index finger in real time. 
-        I created spherical objects in Unity to represent these two fingers 
-        visually and implemented code to update their positions based on 
-        hand-tracking data. Using <strong class="kw">linear interpolation</strong>, the script maps MediaPipe’s 
-        raw coordinates to the Unity scene, ensuring smooth and accurate movement 
-        of the spheres that mirror the player’s hand gestures.
-    </p>
-
-    <h5>Oscillator Script:</h5>
-    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Oscillator.cs"
-    </p>
-    <p><b>Description:</b> I implemented a dynamic particle system where spherical 
-        particles oscillate in a circular pattern. 
-        The script initializes a customizable number of particles, 
-        each with a random color and a set scale, to create visual variety. 
-        Each particle’s movement is controlled by oscillating functions based on 
-        <strong class="kw">trigonometric calculations</strong>, distributing them evenly in a circular formation 
-        around a central point. Using adjustable parameters for speed, width, and height, 
-        the script allows for flexible oscillation patterns, providing a visually 
-        engaging and responsive interaction that complements the hand-tracking gestures 
-        within the game. This oscillating motion is calculated and updated each frame, 
-        producing smooth, continuous movement that enhances the immersive experience.
-    </p>
-
-    <h5>Collision Detection Script:</h5>
-    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Collision.cs"
-    </p>
-    <p><b>Description:</b> I implemented methods to <strong class="kw">detect and handle 
-        interactions</strong> between the player’s fingers, tracked as a virtual object, 
-        and specific target objects in the game, represented by particles. 
-        The script calculates the distance between the finger position and nearby particles, 
-        checking if the player’s finger is close enough to trigger an interaction. Upon contact, 
-        the script initiates an action, switching to a new scene. 
-        By creating an interactive element that responds to physical gestures, 
-        this Collision script deepens the gameplay by integrating intuitive touch-based triggers.
-    </p>
-
-    <h5>Hand Tracking Solution Script:</h5>
-    <p><b>File:</b> "GestureControlGame/Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/HandTrackingSolution.cs"
-    </p>
-    <p><b>Description:</b> In the hand-tracking script, 
-        I implemented the OnHandLandmarksOutput() method, 
-        which extracts the real-time x and y coordinates of the 
-        player’s thumb and index finger from the hand-tracking data. 
-        These coordinates are then used to update the Genesis script, 
-        allowing the virtual thumb and index finger in the game to follow the player’s 
-        hand movements with high accuracy. This function links live hand-tracking data 
-        to Unity objects, allowing for <strong class="kw">gesture recognition</strong> and interaction within the game.
-    </p>
-
+    <h4>Overview</h4>
+    <p>A <strong class="kw">gesture-controlled interaction tool</strong> built in Unity. Using a webcam and
+      <strong class="kw">MediaPipe hand tracking</strong>, players steer a <strong class="kw">real-time particle system</strong>
+      with their thumb and index finger, no controller needed. I also wrote a
+      <strong class="kw">technical guide</strong> so others can set it up and use it.</p>
   </div>
 
   <!-- FOOTER SECTION -->

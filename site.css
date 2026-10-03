@@ -101,3 +101,7 @@ strong.kw {
   font-weight: 800;
   color: #111;
 }
+
+/* Key Words line on project pages */
+.kw-line { font-size: 1.1em; line-height: 1.7; color: #333; }
+.kw-line b { font-weight: 800; color: #111; letter-spacing: .5px; }
