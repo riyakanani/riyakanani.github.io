@@ -140,7 +140,7 @@
     var canHover = window.matchMedia && window.matchMedia("(hover: hover)").matches;
     var M = { angle: 0, target: 0, vel: 0, lastX: null, lastMove: 0, tiltX: 0, tiltXT: 0, lastT: 0,
               inZone: false, lastFlip: performance.now() };
-    var AUTO_FLIP_MS = 7000;   // when the mouse isn't on the title row, flip on its own every 7 seconds
+    var AUTO_FLIP_MS = 5000;   // when the mouse is not on the title row, flip on its own every 5 seconds
     // Only the title row reacts: the strip above the works grid, across the section's width.
     var header = wrap.parentElement, grid = document.querySelector(".works-grid");
     function inZone(x, y) {
