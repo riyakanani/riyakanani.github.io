@@ -1,18 +1,18 @@
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-hide-medium w3-center w3-text-sand">
     <!-- Avatar image in top left corner -->
-    <a href="./index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="./index.html" data-nav="home" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-home w3-xxlarge"></i>
       <p>HOME</p>
     </a>
-    <a href="./cv.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="./cv.html" data-nav="cv" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-user w3-xxlarge"></i>
       <p>CV</p>
     </a>
-    <a href="./selected_works.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="./selected_works.html" data-nav="works" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-eye w3-xxlarge"></i>
       <p>SELECTED WORKS</p>
     </a>
-    <a href="./about.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="./about.html" data-nav="about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-info-circle w3-xxlarge"></i>
       <p>ABOUT ME</p>
     </a>
@@ -20,9 +20,30 @@
 
 <div class="w3-top w3-hide-large" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="./index.html" target="_self" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="./cv.html" class="w3-bar-item w3-button" style="width:25% !important">CV</a>
-    <a href="./selected_works.html" class="w3-bar-item w3-button" style="width:25% !important">SELECTED WORKS</a>
-    <a href="./about.html" class="w3-bar-item w3-button" style="width:25% !important">ABOUT ME</a>
+    <a href="./index.html" data-nav="home" target="_self" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="./cv.html" data-nav="cv" class="w3-bar-item w3-button" style="width:25% !important">CV</a>
+    <a href="./selected_works.html" data-nav="works" class="w3-bar-item w3-button" style="width:25% !important">SELECTED WORKS</a>
+    <a href="./about.html" data-nav="about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT ME</a>
   </div>
 </div>
+
+<style>
+  /* Current page in the nav */
+  .w3-sidebar a.nav-active { background: #000 !important; color: #fff !important; box-shadow: inset 4px 0 0 #fdf5e6; }
+  .w3-sidebar a.nav-active p { font-weight: bold; }
+  #myNavbar a.nav-active { background: #fdf5e6 !important; color: #000 !important; font-weight: bold; }
+</style>
+<script>
+  (function () {
+    var p = decodeURIComponent(location.pathname).toLowerCase();
+    var key = "home";
+    if (p.indexOf("/selected works pages/") !== -1 || /selected_works\.html$/.test(p)) key = "works";
+    else if (/\/cv\.html$/.test(p)) key = "cv";
+    else if (/\/(about|contact)\.html$/.test(p)) key = "about";
+    var links = document.querySelectorAll('a[data-nav="' + key + '"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].classList.add("nav-active");
+      links[i].setAttribute("aria-current", "page");
+    }
+  })();
+</script>
