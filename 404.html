@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page not found · Riya Kanani</title>
+<script>
+  // Old links used /RiyaKanani/... — send them to the same page at the root.
+  var p = location.pathname;
+  if (/^\/RiyaKanani(\/|$)/i.test(p)) {
+    location.replace(p.replace(/^\/RiyaKanani/i, "") || "/" );
+  }
+</script>
+<style>body{font-family:Arial,sans-serif;text-align:center;padding:80px 16px;background:#f8f6f1;color:#17181c}a{color:#1d4ed8}</style>
+</head>
+<body><h1>Page not found</h1><p><a href="/">Go to the homepage</a></p></body>
+</html>
