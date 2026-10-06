@@ -130,6 +130,8 @@
       .works-grid .work-item {margin: 0; aspect-ratio: 4 / 3; display: block;}
       .works-grid .work-item > a, .works-grid .video-tile {display: block; width: 100%; height: 100%;}
       .works-grid .work-item img, .works-grid .work-item video {width: 100% !important; height: 100% !important; object-fit: cover; display: block;}
+      .work-item .wip-tag {position: absolute; top: 14px; left: 14px; z-index: 3; background: #ffb135; color: #000;
+        font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px;}
       @media only screen and (max-width: 1200px) {
         .works-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
       }
@@ -232,12 +234,13 @@
           </div>
 
           <div class="work-item">
-            <a href="./Selected Works Pages/javascript.html#PacMan">
-              <img src="./Selected Works Pages/Javascript Media/pacman.png" alt="Pacman cover image" class="white-glow" loading="lazy">
+            <a href="./Selected Works Pages/Unity/BirdiesChirp/birdies_chirp.html">
+              <img src="./Selected Works Pages/Unity/BirdiesChirp/birdies_tile.jpg" alt="Birdie's Chirp poster art: painted birds in a forest" class="white-glow" loading="lazy">
+              <span class="wip-tag">In progress</span>
               <div class="overlay-text">
-                <h3>Obstacles To Feeding PacMan</h3>
-                <span class="rw-meta">p5.js · Educational Game</span>
-                <p>A Pac-Man-style game where players answer questions about feeding 9.5 billion people by eating the right objects.</p>
+                <h3>Birdie's Chirp</h3>
+                <span class="rw-meta">Unity + Body Tracking · Tilt Five Party Game</span>
+                <p>An asymmetrical party game: one player on a Tilt Five guides people in the physical room through challenges.</p>
               </div>
             </a>
           </div>
