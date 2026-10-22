@@ -152,3 +152,20 @@ html { overflow-x: clip; }
 .site-footer.on-dark .footer-icons a:hover, .site-footer.on-dark .footer-icons a:focus-visible { box-shadow: 2px 2px 0 #f5b452; }
 .site-footer.on-dark .footer-top-link { color: #111; }
 .site-footer.on-dark .footer-top-link:hover { color: #a8728c; }
+
+/* ---------- Short pages: keep the footer at the bottom of the screen ---------- */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+body > * { flex-shrink: 0; width: 100%; }
+body > #footer { margin-top: auto; }
+
+/* ---------- 4K screens at 100% scaling (e.g. 3840 x 2160): scale the whole page up ---------- */
+@media only screen and (min-width: 3200px) {
+  html { zoom: 1.5; }
+  /* zoom also enlarges vw/vh, so divide those back down */
+  .site-footer { width: calc(100vw / 1.5); }
+  body { min-height: calc(100vh / 1.5); }
+  html .w3-sidebar { height: calc(100vh / 1.5) !important; }
+  .video-modal-box video { max-height: calc(75vh / 1.5); }
+  .lightbox img, .lightbox video { max-height: calc(88vh / 1.5); }
+  embed[type="application/pdf"], embed.pdf { height: calc(70vh / 1.5); }
+}
