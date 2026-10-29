@@ -1,37 +1,30 @@
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-hide-medium w3-center w3-text-sand">
-    <!-- Avatar image in top left corner -->
-    <a href="./index.html" data-nav="home" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-      <i class="fa fa-home w3-xxlarge"></i>
-      <p>HOME</p>
-    </a>
-    <a href="./cv.html" data-nav="cv" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-      <i class="fa fa-user w3-xxlarge"></i>
-      <p>CV</p>
-    </a>
-    <a href="./selected_works.html" data-nav="works" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-      <i class="fa fa-eye w3-xxlarge"></i>
-      <p>SELECTED WORKS</p>
-    </a>
-    <a href="./about.html" data-nav="about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-      <i class="fa fa-info-circle w3-xxlarge"></i>
-      <p>ABOUT ME</p>
-    </a>
+<!-- Same look as the old sidebar (dark grey, icon above each label), laid out across the top -->
+<nav class="topnav w3-text-sand" aria-label="Main">
+  <a href="./index.html" data-nav="home" class="w3-hover-black"><i class="fa fa-home"></i><span>HOME</span></a>
+  <a href="./cv.html" data-nav="cv" class="w3-hover-black"><i class="fa fa-user"></i><span>CV</span></a>
+  <a href="./selected_works.html" data-nav="works" class="w3-hover-black"><i class="fa fa-eye"></i><span>ALL WORKS</span></a>
+  <a href="./about.html" data-nav="about" class="w3-hover-black"><i class="fa fa-info-circle"></i><span>ABOUT ME</span></a>
 </nav>
 
-<div class="w3-top w3-hide-large" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="./index.html" data-nav="home" target="_self" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="./cv.html" data-nav="cv" class="w3-bar-item w3-button" style="width:25% !important">CV</a>
-    <a href="./selected_works.html" data-nav="works" class="w3-bar-item w3-button" style="width:25% !important">SELECTED WORKS</a>
-    <a href="./about.html" data-nav="about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT ME</a>
-  </div>
-</div>
-
 <style>
-  /* Current page in the nav */
-  .w3-sidebar a.nav-active { background: #000 !important; color: #fff !important; box-shadow: inset 4px 0 0 #fdf5e6; }
-  .w3-sidebar a.nav-active p { font-weight: bold; }
-  #myNavbar a.nav-active { background: #fdf5e6 !important; color: #000 !important; font-weight: bold; }
+  /* Top navigation bar: stays at the top of the screen while scrolling */
+  #nav_bar { position: sticky; top: 0; z-index: 100; }
+  .topnav { display: flex; justify-content: center; background: #222; font-family: "Montserrat", sans-serif; }
+  .topnav a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+              width: 120px; padding: 12px 0 10px; color: #fdf5e6; text-decoration: none; font-size: 12px;
+              text-align: center; box-shadow: inset 0 -4px 0 transparent; transition: background .2s; }
+  .topnav a i { font-size: 26px; line-height: 1; }
+  .topnav a:hover { background: #000; color: #fff; }
+  /* Current page: black tile with a cream bar along the bottom (was along the side) */
+  .topnav a.nav-active { background: #000; color: #fff; font-weight: bold; box-shadow: inset 0 -4px 0 #fdf5e6; }
+  @media (min-width: 1800px) { .topnav a { width: 140px; font-size: 13px; } .topnav a i { font-size: 30px; } }
+  /* Phones and tablets: the old slim top bar, text only, four equal buttons */
+  @media (max-width: 992px) {
+    .topnav { background: #000; }
+    .topnav a { flex: 1; width: auto; padding: 14px 4px; font-size: 12px; box-shadow: none; }
+    .topnav a i { display: none; }
+    .topnav a.nav-active { background: #fdf5e6; color: #000; box-shadow: none; }
+  }
 </style>
 <script>
   (function () {

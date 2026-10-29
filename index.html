@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="./reachPose.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css">
-    <link rel="stylesheet" href="./site.css?v=15">
+    <link rel="stylesheet" href="./site.css?v=19">
     <link rel="stylesheet" href="./textHover.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -101,13 +101,13 @@
 
       #works .section {padding-top: 16px !important;}
 
-      /* Sections next to the sidebar on desktop */
-      .section {margin-left: 110px; margin-right: 10px;}
+      /* Sections on desktop */
+      .section {margin-left: 10px; margin-right: 10px;}
 
       /* ---------- Layout by screen size ---------- */
       /* Tablets and phones: top nav bar, stacked about card, centered sections */
       @media only screen and (max-width: 1200px) {
-        #works {margin-top: 36px;}
+        #works {margin-top: 8px;}
         #works .section {padding-top: 8px !important;}
         .hero {flex-direction: column; gap: 16px; padding: 32px 16px; text-align: center;}
         .hero-text {text-align: center !important;}
@@ -120,7 +120,7 @@
       }
 
       @media only screen and (max-width: 600px) {
-        #works {margin-top: 55px;}
+        #works {margin-top: 4px;}
         .hero-greeting {display: none;}
         .work-item img, .work-item video {height: 200px;}
       }
@@ -135,9 +135,15 @@
       @media only screen and (max-width: 1200px) {
         .works-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
       }
+      /* Landscape tablets / small laptops: keep three columns so all six fit on screen */
+      @media only screen and (min-width: 601px) and (max-width: 1200px) and (orientation: landscape) {
+        .works-grid {grid-template-columns: repeat(3, minmax(0, 1fr));}
+      }
       @media only screen and (max-width: 600px) {
         .works-grid {grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 10px;}
       }
+      /* Tile height is set by a script below so the whole grid fits in the window */
+      .works-grid.fit .work-item {aspect-ratio: auto;}
 
       /* Recent Works header: bold title aligned with the tiles, link on the right */
       .works-header {display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 0 14px 14px;}
@@ -162,6 +168,30 @@
         .works-header {flex-direction: column; align-items: stretch;}
         .works-header .works-viewall {position: static; transform: none; align-self: flex-end;}
       }
+
+      /* ---------- Personality: intro line ---------- */
+      .intro {display: flex; align-items: center; justify-content: center; gap: 18px; margin: 0 14px 6px; text-align: left;}
+      .intro img {width: 92px; height: 92px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: #000;
+                  box-shadow: 0 0 0 3px #fdf5e6, 0 0 0 5px #f5b452;}
+      .intro p {margin: 0; font-size: 16px; line-height: 1.45; color: #333;}
+      .intro b {color: #111;}
+      @media only screen and (min-width: 1800px) {.intro img {width: 108px; height: 108px;} .intro p {font-size: 18px;}}
+      @media only screen and (max-width: 600px) {.intro {flex-direction: column; text-align: center; gap: 10px; margin: 8px 4px 4px;} .intro p {font-size: 15px;} .intro img {width: 96px; height: 96px;}}
+
+      /* Tight spacing so the works keep as much height as possible */
+      #works {padding-top: 4px !important;}
+      #works > .section {padding-top: 0 !important;}
+      .intro {margin: 16px 14px -26px; position: relative; z-index: 1;}
+      .works-header {padding-bottom: 6px;}
+      @media only screen and (max-width: 600px) {.intro {margin: 4px 4px 0;}}
+
+      /* Melting Rainbow figure peeking over the top-right corner of the works grid */
+      .works-grid {position: relative;}
+      .peek {position: absolute; right: 7%; bottom: 100%; width: 132px; height: 64px; overflow: hidden; z-index: 1;}
+      .peek img {display: block; width: 132px; transform: translateY(18px); transition: transform .35s cubic-bezier(.3,1.6,.5,1);}
+      .peek:hover img {transform: translateY(2px) rotate(-4deg);}
+      @media only screen and (max-width: 600px) {.peek {display: none;}}
+      @media (prefers-reduced-motion: reduce) {.peek img {transition: none;}}
     </style>
   </head>
   <body class="w3-sand w3-text-black">
@@ -171,12 +201,18 @@
     <!-- Works Section -->
     <div class="w3-padding-large zoom" id="works">
       <div class="section w3-padding-64 round-container">
+        <!-- Intro: who I am, in one line -->
+        <div class="intro">
+          <img src="./home/riya-avatar.jpg" alt="Cartoon portrait of Riya">
+          <p>Hi, I'm <b>Riya</b>, a creative technologist. I make physical things playable to create meaningful and transformational experiences.</p>
+        </div>
         <div class="works-header">
           <div id="titleGL" class="title-gl" role="img" aria-label="Highlighted Works"></div>
           <h2>Highlighted Works</h2>
-          <a href="./selected_works.html" class="works-viewall">View all work &rarr;</a>
         </div>
         <div class="works-grid w3-dark-grey round-container">
+          <!-- A Melting Rainbow figure (from my illustrations) peeking over the edge -->
+          <div class="peek" aria-hidden="true"><img src="./home/rainbow-figure.png" alt=""></div>
 
           <div class="work-item">
             <a href="./Selected Works Pages/Unity/Remnants/remnants.html">
@@ -246,6 +282,7 @@
           </div>
 
         </div>
+
       </div>
     </div>
 
@@ -258,12 +295,42 @@
   <script>
     $(function () {
       var root = "";
-      $("#nav_bar").load(root + "nav_bar.html", function () {
+      $("#nav_bar").load(root + "nav_bar.html?v=3", function () {
         $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
       });
       $("#footer").load(root + "footer.html");
     });
   </script>
 
+    <!-- Fit Highlighted Works on screen: the grid keeps its full width, and the tiles get a little
+         shorter (cropping the images) so all six fit in the window height -->
+    <script>
+      (function () {
+        var grid = document.querySelector(".works-grid");
+        if (!grid) return;
+        function fit() {
+          grid.classList.remove("fit");
+          grid.style.gridAutoRows = "";
+          if (window.innerWidth <= 600) return;              // phones scroll through one column
+          var z = parseFloat(getComputedStyle(document.documentElement).zoom) || 1;
+          var cs = getComputedStyle(grid);
+          var cols = cs.gridTemplateColumns.split(" ").length;
+          var rows = Math.ceil(grid.querySelectorAll(".work-item").length / cols);
+          var gap = parseFloat(cs.rowGap) || 0, pad = parseFloat(cs.paddingTop) || 0;
+          var tileW = (grid.clientWidth - 2 * pad - gap * (cols - 1)) / cols;
+          var top = (grid.getBoundingClientRect().top + window.scrollY) / z;   // page px
+          var avail = window.innerHeight / z - top - 14;                      // leave a little room below
+          var fitH = (avail - 2 * pad - gap * (rows - 1)) / rows;
+          // never taller than 4:3, and never flatter than a wide banner (then the page just scrolls)
+          var tileH = Math.min(tileW * 0.75, Math.max(tileW * 0.38, fitH));
+          grid.classList.add("fit");
+          grid.style.gridAutoRows = tileH + "px";
+        }
+        fit();
+        window.addEventListener("resize", fit);
+        window.addEventListener("load", fit);
+        setTimeout(fit, 600);
+      })();
+    </script>
   </body>
 </html>

@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>Selected Works</title>
+    <title>All Works</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="./favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./W3.css?v=2">
-    <link rel="stylesheet" href="./site.css?v=15">
+    <link rel="stylesheet" href="./site.css?v=19">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -19,6 +19,20 @@
     /* Set the width of the sidebar to 120px */
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {margin-left: 120px}
+
+    /* Bigger, bolder labels on the category blocks */
+    .selected-works-block { font-size: 22px; white-space: normal; }
+    @media only screen and (min-width: 1800px) { .selected-works-block { font-size: 25px; } }
+    @media only screen and (min-width: 2400px) { .selected-works-block { font-size: 28px; } }
+
+    /* Spacing: the two rows of blocks fill the screen under the menu (block style unchanged) */
+    #projects { padding-top: 32px !important; padding-bottom: 32px !important; }
+    .selected-works-block { padding-top: 0 !important; padding-bottom: 0 !important;
+      height: max(170px, calc((100vh - 170px) / 2)); display: inline-flex; align-items: center; justify-content: center; vertical-align: top; }
+    @media only screen and (min-width: 3200px) { .selected-works-block { height: max(170px, calc((100vh / 1.5 - 170px) / 2)); } }
+
+    /* Dark text on the light teal Graphics block */
+    .virdigris, .virdigris:hover, .cool-gray, .cool-gray:hover { color: #000 !important; }
 
     /* Small screen layout - two columns */
     @media only screen and (max-width: 600px) {
@@ -33,7 +47,11 @@
       .selected-works-block {
         width: 50% !important;
         padding: 15vh 0px !important;
+        height: auto;
         box-sizing: border-box;
+        font-size: 17px;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
       }
     }
     </style>
@@ -62,6 +80,9 @@
       <a href="./Selected Works Pages/Graphics.html" class="w3-button w3-text-light-grey selected-works-block virdigris w3-hover-opacity">
         Graphics
       </a>
+      <a href="./Selected Works Pages/fabrication.html" class="w3-button w3-text-light-grey selected-works-block cool-gray w3-hover-opacity">
+        Fabrication
+      </a>
       <!-- <a href="./Selected Works Pages/analog_art.html" class="w3-button w3-text-light-grey selected-works-block cool-gray w3-hover-opacity">
         Analog Art
       </a> -->
@@ -79,7 +100,7 @@
   <script>
     $(function () {
       var root = "";
-      $("#nav_bar").load(root + "nav_bar.html", function () {
+      $("#nav_bar").load(root + "nav_bar.html?v=2", function () {
         $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
       });
       $("#footer").load(root + "footer_light.html");

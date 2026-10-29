@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="../../../favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../W3.css">
-    <link rel="stylesheet" href="../../../site.css?v=15">
+    <link rel="stylesheet" href="../../../site.css?v=19">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -40,11 +40,11 @@
     <p class="kw-line"><b>Key Words:</b> Gesture-controlled interaction tool · MediaPipe hand tracking · Real-time particle system · Technical guide · Linear interpolation · Trigonometric calculations · Collision detection</p>
 
     <hr style="width:200px" class="w3-opacity">
-    <img src="./GesterialControlImage.png" alt="Gesterial Control: particles following tracked fingers" style="width:100%; max-width:800px">
+    <img src="./GesterialControlImage.png" alt="Gesterial Control: particles following tracked fingers" style="width:100%; max-width:800px; display:block; margin-bottom:24px">
     <embed class="pdf" src="./Techincal Instructions.pdf" width="800" height="500">
 
     <hr style="width:200px" class="w3-opacity">
-    <h4>What I Built</h4>
+    <h4><b>What I Built</b></h4>
     <ul>
       <li><b>Hand-tracking pipeline:</b> pulled live thumb and index-finger landmarks from MediaPipe and mapped them into Unity space with <strong class="kw">linear interpolation</strong> for smooth, accurate movement.</li>
       <li><b>Particle system:</b> wrote an oscillator that moves particles in circular patterns using <strong class="kw">trigonometric calculations</strong>, with adjustable speed, size and count.</li>
@@ -53,7 +53,7 @@
     </ul>
 
     <hr style="width:200px" class="w3-opacity">
-    <h4>Overview</h4>
+    <h4><b>Overview</b></h4>
     <p>A <strong class="kw">gesture-controlled interaction tool</strong> built in Unity. Using a webcam and
       <strong class="kw">MediaPipe hand tracking</strong>, players steer a <strong class="kw">real-time particle system</strong>
       with their thumb and index finger, no controller needed. I also wrote a
@@ -67,7 +67,7 @@
   <script>
     $(function () {
       var root = "../../../";
-      $("#nav_bar").load(root + "nav_bar.html", function () {
+      $("#nav_bar").load(root + "nav_bar.html?v=3", function () {
         $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
       });
       $("#footer").load(root + "footer.html");

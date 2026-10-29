@@ -133,7 +133,6 @@ html { overflow-x: clip; }
 .footer-top-link .blink { display: inline-block; animation: pixel-bob 1s steps(2) infinite; }
 @keyframes pixel-bob { 50% { transform: translateY(-3px); } }
 @media (prefers-reduced-motion: reduce) { .footer-top-link .blink { animation: none; } }
-@media (min-width: 1201px) { .footer-body { padding-left: 136px; } }
 
 /* WebGL footer stage (falls back to the pixel edge above if WebGL is unavailable) */
 .footer-stage { display: none; position: relative; height: 300px; margin-bottom: -1px; }
@@ -152,6 +151,15 @@ html { overflow-x: clip; }
 .site-footer.on-dark .footer-icons a:hover, .site-footer.on-dark .footer-icons a:focus-visible { box-shadow: 2px 2px 0 #f5b452; }
 .site-footer.on-dark .footer-top-link { color: #111; }
 .site-footer.on-dark .footer-top-link:hover { color: #a8728c; }
+
+/* ---------- Project pages: section headings vs. subtitles ---------- */
+/* "What I Built:", "Tools Used:", "Overview:" a step bigger than the subtitles under them */
+#projects h4 { font-size: 23px; }
+/* Subtitles under What I Built (e.g. "Vive Tracking:") in bold */
+#projects h5 { font-weight: 700; }
+@media only screen and (min-width: 1800px) { #projects h4 { font-size: 25px; } }
+@media only screen and (min-width: 2400px) { #projects h4 { font-size: 27px; } }
+@media only screen and (max-width: 600px) { #projects h4 { font-size: 21px; } }
 
 /* ---------- Short pages: keep the footer at the bottom of the screen ---------- */
 body { min-height: 100vh; display: flex; flex-direction: column; }

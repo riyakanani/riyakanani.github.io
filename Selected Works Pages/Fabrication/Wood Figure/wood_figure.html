@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Stacked Wood Figure</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../W3.css">
+    <link rel="stylesheet" href="../../../site.css?v=19">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Auto-playing slideshow (same black arrow buttons as the earlier site) */
+    /* Sized so the whole photo fits in the window under the title */
+    .slideshow {position: relative; overflow: hidden; width: min(560px, 100%, calc((100vh - 325px) * 0.75)); min-width: 240px;
+                aspect-ratio: 3 / 4; margin: 0 auto 8px; background: #e9e2d4;}
+    @media only screen and (min-width: 3200px) {.slideshow {width: min(560px, 100%, calc((100vh / 1.5 - 325px) * 0.75));}}
+    .slideshow img {display: none; width: 100%; height: 100%; object-fit: cover; margin: 0 !important;}
+    .slideshow img.on {display: block;}
+    @keyframes slidefade {from {opacity: .3} to {opacity: 1}}
+    .slideshow .w3-button {position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;}
+    .slideshow .prev {left: 0;} .slideshow .next {right: 0;}
+    /* Click a slide to see it bigger (same viewer as the Graphics page); it keeps playing */
+    .slideshow img {cursor: zoom-in;}
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.9); align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 88vh; border-radius: 16px; }
+    .lightbox .lb-prev, .lightbox .lb-next { position: absolute; top: 50%; transform: translateY(-50%); font-size: 22px; padding: 14px 18px; }
+    /* Arrows sit right beside the photo (inside its edges on phones) */
+    .lightbox .lb-stage { position: relative; display: inline-block; max-width: 100%; }
+    .lightbox .lb-stage img { display: block; }
+    .lightbox .lb-prev { left: -64px; } .lightbox .lb-next { right: -64px; }
+    @media only screen and (max-width: 700px) { .lightbox .lb-prev { left: 0; } .lightbox .lb-next { right: 0; } }
+    .lightbox .lb-close { position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 0;
+      background: #fdf5e6; color: #111; font-size: 24px; line-height: 44px; cursor: pointer; }
+    </style>
+</head>
+
+<body class="w3-sand w3-text-black">
+  <!-- Navigation -->
+  <div id="nav_bar"> </div>
+
+  <div class="w3-padding-64 w3-content" id="projects">
+    <button class="w3-black no-underline" type="button">
+      <a href="../../fabrication.html">Fabrication</a>
+    </button>
+    <h2>Stacked Wood Figure</h2>
+    <p>A seated figure built from stacked blocks of wood, made in the woodshop.</p>
+
+    <hr style="width:200px" class="w3-opacity">
+    <div class="slideshow">
+      <img src="./figure_1.jpg" alt="The stacked wood figure (1 of 7)">
+      <img src="./figure_2.jpg" alt="The stacked wood figure (2 of 7)">
+      <img src="./figure_3.jpg" alt="The stacked wood figure (3 of 7)">
+      <img src="./figure_4.jpg" alt="The stacked wood figure (4 of 7)">
+      <img src="./figure_5.jpg" alt="The stacked wood figure (5 of 7)">
+      <img src="./figure_6.jpg" alt="The stacked wood figure (6 of 7)">
+      <img src="./figure_7.jpg" alt="The stacked wood figure (7 of 7)">
+      <button class="w3-button w3-black prev" type="button" aria-label="Previous photo">&#10094;</button>
+      <button class="w3-button w3-black next" type="button" aria-label="Next photo">&#10095;</button>
+    </div>
+
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+    <button type="button" class="lb-close" aria-label="Close">&times;</button>
+    <div class="lb-stage">
+      <button class="w3-button w3-black lb-prev" type="button" aria-label="Previous photo">&#10094;</button>
+      <img alt="">
+      <button class="w3-button w3-black lb-next" type="button" aria-label="Next photo">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Slideshow: advances every 1.2 seconds, pauses while the mouse is over it -->
+  <script>
+    document.querySelectorAll(".slideshow").forEach(function (box) {
+      var imgs = box.querySelectorAll("img"), i = 0, timer;
+      var lb = document.getElementById("lightbox"), lbImg = lb.querySelector("img");
+      function show(n) {
+        imgs[i].classList.remove("on"); i = (n + imgs.length) % imgs.length; imgs[i].classList.add("on");
+        if (lb.classList.contains("open")) { lbImg.src = imgs[i].src; lbImg.alt = imgs[i].alt; }
+      }
+      // Click a photo: open it big; the slideshow keeps playing inside the viewer
+      imgs.forEach(function (im) {
+        im.addEventListener("click", function () { lbImg.src = imgs[i].src; lbImg.alt = imgs[i].alt; lb.classList.add("open"); start(); });
+      });
+      function shut() { lb.classList.remove("open"); }
+      lb.querySelector(".lb-close").addEventListener("click", shut);
+      lb.querySelector(".lb-prev").addEventListener("click", function () { show(i - 1); start(); });
+      lb.querySelector(".lb-next").addEventListener("click", function () { show(i + 1); start(); });
+      lb.addEventListener("click", function (e) { if (e.target === lb) shut(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") shut(); });
+      function start() { stop(); timer = setInterval(function () { show(i + 1); }, 1200); }
+      function stop() { clearInterval(timer); }
+      imgs[0].classList.add("on");
+      box.querySelector(".prev").addEventListener("click", function () { show(i - 1); start(); });
+      box.querySelector(".next").addEventListener("click", function () { show(i + 1); start(); });
+      box.addEventListener("mouseenter", stop);
+      box.addEventListener("mouseleave", start);
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) start();
+    });
+  </script>
+
+  <!-- FOOTER SECTION -->
+  <div id="footer"> </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    $(function () {
+      var root = "../../../";
+      $("#nav_bar").load(root + "nav_bar.html?v=3", function () {
+        $("#nav_bar a").attr("href", function (i, h) { return root + h.replace(/^\.\//, ""); });
+      });
+      $("#footer").load(root + "footer.html");
+    });
+  </script>
+</body>
+
+</html>
