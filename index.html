@@ -142,8 +142,6 @@
       @media only screen and (max-width: 600px) {
         .works-grid {grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 10px;}
       }
-      /* Tile height is set by a script below so the whole grid fits in the window */
-      .works-grid.fit .work-item {aspect-ratio: auto;}
 
       /* Recent Works header: bold title aligned with the tiles, link on the right */
       .works-header {display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 0 14px 14px;}
@@ -181,9 +179,18 @@
       /* Tight spacing so the works keep as much height as possible */
       #works {padding-top: 4px !important;}
       #works > .section {padding-top: 0 !important;}
-      .intro {margin: 16px 14px -26px; position: relative; z-index: 1;}
+      .intro {margin: 32px 0 18px; position: relative; z-index: 1;}
+      /* Panel behind the intro: same dark grey rounded card as the works grid */
+      .intro {background: #616161; border-radius: 30px; padding: 34px 48px; gap: 32px;}
+      .intro p {color: #fdf5e6; font-size: 20px; line-height: 1.5; max-width: 900px;}
+      /* First sentence reads as a headline so it catches the eye */
+      .intro b {color: #fdf5e6; display: block; font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px;}
+      .intro b + br {display: none;}
+      .intro img {width: 128px; height: 128px; border-radius: 24px;}  /* rounded square like the work tiles */
+      @media only screen and (min-width: 1800px) {.intro p {font-size: 23px;} .intro b {font-size: 38px;} .intro img {width: 150px; height: 150px;}}
+      @media only screen and (max-width: 1200px) {.intro {padding: 28px 28px; gap: 22px;} .intro b {font-size: 27px;} .intro p {font-size: 18px;}}
       .works-header {padding-bottom: 6px;}
-      @media only screen and (max-width: 600px) {.intro {margin: 4px 4px 0;}}
+      @media only screen and (max-width: 600px) {.intro {margin: 16px 0 12px; padding: 24px 20px; border-radius: 24px;} .intro b {font-size: 23px;} .intro p {font-size: 16px;} .intro img {width: 110px; height: 110px;}}
 
       /* Melting Rainbow figure peeking over the top-right corner of the works grid */
       .works-grid {position: relative;}
@@ -204,7 +211,7 @@
         <!-- Intro: who I am, in one line -->
         <div class="intro">
           <img src="./home/riya-avatar.jpg" alt="Cartoon portrait of Riya">
-          <p>Hi, I'm <b>Riya</b>, a creative technologist. I make physical things playable to create meaningful and transformational experiences.</p>
+          <p><b>I believe play is the core driver of human potential.</b><br>I design playful worlds that make the ordinary and the impossible feel real, where play becomes growth, connection, and care.</p>
         </div>
         <div class="works-header">
           <div id="titleGL" class="title-gl" role="img" aria-label="Highlighted Works"></div>
@@ -302,35 +309,5 @@
     });
   </script>
 
-    <!-- Fit Highlighted Works on screen: the grid keeps its full width, and the tiles get a little
-         shorter (cropping the images) so all six fit in the window height -->
-    <script>
-      (function () {
-        var grid = document.querySelector(".works-grid");
-        if (!grid) return;
-        function fit() {
-          grid.classList.remove("fit");
-          grid.style.gridAutoRows = "";
-          if (window.innerWidth <= 600) return;              // phones scroll through one column
-          var z = parseFloat(getComputedStyle(document.documentElement).zoom) || 1;
-          var cs = getComputedStyle(grid);
-          var cols = cs.gridTemplateColumns.split(" ").length;
-          var rows = Math.ceil(grid.querySelectorAll(".work-item").length / cols);
-          var gap = parseFloat(cs.rowGap) || 0, pad = parseFloat(cs.paddingTop) || 0;
-          var tileW = (grid.clientWidth - 2 * pad - gap * (cols - 1)) / cols;
-          var top = (grid.getBoundingClientRect().top + window.scrollY) / z;   // page px
-          var avail = window.innerHeight / z - top - 14;                      // leave a little room below
-          var fitH = (avail - 2 * pad - gap * (rows - 1)) / rows;
-          // never taller than 4:3, and never flatter than a wide banner (then the page just scrolls)
-          var tileH = Math.min(tileW * 0.75, Math.max(tileW * 0.38, fitH));
-          grid.classList.add("fit");
-          grid.style.gridAutoRows = tileH + "px";
-        }
-        fit();
-        window.addEventListener("resize", fit);
-        window.addEventListener("load", fit);
-        setTimeout(fit, 600);
-      })();
-    </script>
   </body>
 </html>
