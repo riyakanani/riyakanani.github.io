@@ -206,6 +206,23 @@
       .peek:hover img {transform: translateY(2px) rotate(-4deg);}
       @media only screen and (max-width: 600px) {.peek {display: none;}}
       @media (prefers-reduced-motion: reduce) {.peek img {transition: none;}}
+
+      /* ---- Speech bubble: Riya "saying" her why ---- */
+      .intro {align-items: center; padding: 26px 34px; gap: 58px; background: #6b6b6b;}
+      .intro img {width: 160px; height: 160px;}
+      .intro p {position: relative; max-width: 1060px; background: #fdf5e6; color: #2b2b2b !important;
+        border: 3px solid #222; border-radius: 44px; padding: 38px 48px; box-shadow: 6px 6px 0 rgba(0,0,0,.28);}
+      .intro p b {color: #111 !important;}
+      .intro p::before {content: ""; position: absolute; left: -60px; top: 50%; width: 64px; height: 54px;
+        transform: translateY(-62%); background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2240%22%20viewBox%3D%220%200%2048%2040%22%3E%3Cpath%20d%3D%22M48%206%20C34%208%2016%2014%202%2034%20C18%2028%2032%2027%2048%2030%20Z%22%20fill%3D%22%23fdf5e6%22/%3E%3Cpath%20d%3D%22M45%206.5%20C34%208%2016%2014%202%2034%20C18%2028%2032%2027%2045%2029.5%22%20fill%3D%22none%22%20stroke%3D%22%23222%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E") no-repeat; background-size: 100% 100%;}
+      @media only screen and (min-width: 1800px) {.intro img {width: 184px; height: 184px;} .intro p {max-width: 1100px;}}
+      @media only screen and (max-width: 1200px) {.intro {padding: 26px 26px; gap: 40px;} .intro img {width: 136px; height: 136px;} .intro p {padding: 30px 34px;}}
+      @media only screen and (max-width: 600px) {
+        .intro {padding: 20px 14px; gap: 34px;}
+        .intro img {width: 128px; height: 128px;}
+        .intro p {padding: 30px 24px; border-radius: 36px;}
+        .intro p::before {left: 50%; top: -40px; width: 50px; height: 42px; transform: translateX(-50%) rotate(90deg) scaleY(-1);}
+      }
     </style>
   </head>
   <body class="w3-sand w3-text-black">
