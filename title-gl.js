@@ -80,8 +80,12 @@
     var DEPTH = 2.2;
     var box = new T.BoxGeometry(1, 1, DEPTH);
     // faces: +x, -x, +y, -y, +z (front), -z (back). Sides take each letter's colour, faces stay black.
+    var cream = wrap.dataset.face === "cream";
+    // Instance colours tint every material on the box, so in cream mode the box only draws the coloured sides
+    // and the cream front/back faces are separate, untinted planes.
     var mats = [0, 0, 0, 0].map(function () { return new T.MeshLambertMaterial({ color: 0xffffff }); })
-      .concat([new T.MeshBasicMaterial({ color: 0x111111 }), new T.MeshBasicMaterial({ color: 0x111111 })]);
+      .concat([0, 0].map(function () { return cream ? new T.MeshBasicMaterial({ visible: false }) : new T.MeshBasicMaterial({ color: 0x111111 }); }));
+    var faceGeo = new T.PlaneGeometry(1, 1), faceMat = new T.MeshBasicMaterial({ color: 0xfdf5e6, side: T.DoubleSide });
 
     var front, back, dims = { w: 1, h: 1 }, mode = "";
     function build(lines, flip) {
@@ -91,12 +95,20 @@
         mesh.setColorAt(i, c.setHex(ACC[v.letter % ACC.length]));
       });
       var g = new T.Group(); g.add(mesh);
+      if (cream) {
+        var faces = new T.InstancedMesh(faceGeo, faceMat, L.vox.length * 2);
+        L.vox.forEach(function (v, i) {
+          m.makeTranslation(v.x, v.y, DEPTH / 2 + 0.001); faces.setMatrixAt(i * 2, m);
+          m.makeTranslation(v.x, v.y, -DEPTH / 2 - 0.001); faces.setMatrixAt(i * 2 + 1, m);
+        });
+        g.add(faces);
+      }
       if (flip) g.rotation.y = Math.PI;          // back text reads correctly once the sign has turned
       sign.add(g);
       return { group: g, w: L.w, h: L.h };
     }
     function rebuild() {
-      var narrow = wrap.clientWidth < 620, want = narrow ? "narrow" : "wide";
+      var narrow = !wrap.dataset.oneLine && wrap.clientWidth < (wrap.dataset.narrowBelow ? +wrap.dataset.narrowBelow : 620), want = narrow ? "narrow" : "wide";
       if (want === mode) return;
       mode = want;
       if (front) { sign.remove(front.group); sign.remove(back.group); }
@@ -112,8 +124,8 @@
       camera.aspect = w / h; camera.updateProjectionMatrix();
       var t = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
       // size by height (like a normal heading), but always leave room for "View all work" on the right
-      var reserve = mode === "narrow" ? 40 : 380;
-      var targetPx = mode === "narrow" ? 40 : Math.max(24, Math.min(36, w * 0.0125));   // lettering height in px (grows a little on big monitors)
+      var reserve = wrap.dataset.reserve ? +wrap.dataset.reserve : (mode === "narrow" ? 40 : 380);
+      var targetPx = (mode !== "narrow" && wrap.dataset.sizeOneLine) ? +wrap.dataset.sizeOneLine : wrap.dataset.size ? +wrap.dataset.size : (mode === "narrow" ? 40 : Math.max(24, Math.min(36, w * 0.0125)));   // lettering height in px (grows a little on big monitors)
       var ppu = Math.min(targetPx / dims.h, Math.max(1, (w - reserve) / dims.w));   // pixels per block
       camera.position.set(0, 0, h / (ppu * 2 * t) + DEPTH);
       camera.lookAt(0, 0, 0);
@@ -143,9 +155,17 @@
     var AUTO_FLIP_MS = 5000;   // when the mouse is not on the title row, flip on its own every 5 seconds
     // Only the title row reacts: the strip above the works grid, across the section's width.
     var header = wrap.parentElement, grid = document.querySelector(".works-grid");
-    function inZone(x, y) {
+    // The tab is narrow now, so the zone is the tab plus the portrait above it, with some padding.
+    var portrait = document.querySelector(".intro img");
+    function zoneRect() {
       var h = header.getBoundingClientRect(), gTop = grid ? grid.getBoundingClientRect().top : h.bottom;
-      return x >= h.left && x <= h.right && y >= h.top - 30 && y <= gTop;
+      var top = h.top - 30, p = portrait && portrait.getBoundingClientRect();
+      if (p && p.width && p.right > h.left && p.left < h.right && p.bottom <= h.top + 4) top = Math.min(top, p.top);
+      return { left: h.left - 40, right: h.right + 40, top: top, bottom: Math.max(gTop, h.bottom) };
+    }
+    function inZone(x, y) {
+      var z = zoneRect();
+      return x >= z.left && x <= z.right && y >= z.top && y <= z.bottom;
     }
     window.addEventListener("mousemove", function (e) {
       if (!inZone(e.clientX, e.clientY)) {
@@ -153,7 +173,12 @@
         M.inZone = false; M.lastX = null; M.tiltXT = 0; return;
       }
       M.inZone = true;
-      if (M.lastX !== null) M.target += Math.max(-40, Math.min(40, e.clientX - M.lastX)) * 0.006;
+      // 
+      // calm, fixed sensitivity: about 450px of mouse travel turns the sign over once
+      var k = Math.PI / 450;
+      if (M.lastX !== null) M.target += Math.max(-25, Math.min(25, e.clientX - M.lastX)) * k;
+      // never get more than half a turn ahead of where the sign is, so fast swipes don't whirl it around
+      M.target = Math.max(M.angle - Math.PI * 0.6, Math.min(M.angle + Math.PI * 0.6, M.target));
       M.lastX = e.clientX; M.lastMove = performance.now();
       var r = wrap.getBoundingClientRect();
       M.tiltXT = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 60)) * 0.12;
@@ -163,9 +188,9 @@
       var nowT = now || performance.now(), dt = Math.min(0.05, (nowT - (M.lastT || nowT)) / 1000); M.lastT = nowT;
       var a;
       if (!reduce) {
-        if (nowT - M.lastMove > 220) M.target = Math.round(M.target / Math.PI) * Math.PI;   // settle on a readable side
+        if (nowT - M.lastMove > 380) M.target = Math.round(M.target / Math.PI) * Math.PI;   // settle on a readable side
         if (!M.inZone && nowT - M.lastFlip > AUTO_FLIP_MS) { M.target += Math.PI; M.lastFlip = nowT; }
-        M.vel += (40 * (M.target - M.angle) - 11 * M.vel) * dt;                             // springy follow
+        M.vel += (28 * (M.target - M.angle) - 11 * M.vel) * dt;                             // springy follow
         M.angle += M.vel * dt;
         a = M.angle;
       } else {

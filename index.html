@@ -223,6 +223,98 @@
         .intro p {padding: 30px 24px; border-radius: 36px;}
         .intro p::before {left: 50%; top: -40px; width: 50px; height: 42px; transform: translateX(-50%) rotate(90deg) scaleY(-1);}
       }
+      /* ---- Neater first screen: one shared width, no grey panel behind the bubble ---- */
+      #works > .section {max-width: 1240px; margin-left: auto; margin-right: auto;}
+      .intro {background: none; padding: 0 0 0 4px; margin: 34px 0 30px; gap: 54px; justify-content: flex-start;}
+      .intro img {width: 150px; height: 150px; border-radius: 28px; box-shadow: 6px 6px 0 rgba(0,0,0,.28); border: 3px solid #222;}
+      .intro p {flex: 1; max-width: none; padding: 30px 40px; border-radius: 36px; font-size: 18px; line-height: 1.6;}
+      .intro b {font-size: 30px; margin-bottom: 10px;}
+      .works-grid {border-radius: 36px; border-top-left-radius: 0; padding: 16px; gap: 16px;}
+      .works-grid .work-item, .works-grid .work-item img, .works-grid .work-item video, .work-item .overlay-text {border-radius: 22px;}
+      .peek {right: 40px;}
+
+      /* "Highlighted Works" folder tab on the grid, holding the spinning 3D title */
+      .works-header {display: flex; justify-content: center; align-items: center; width: 480px; max-width: 100%; height: 78px;
+        padding: 0; margin: 0; background: #616161; border-radius: 22px 22px 0 0; box-sizing: border-box;}
+      .works-header .title-gl {width: 100%; height: 100%; margin: 0;}
+      .works-header h2 {font-size: 24px; color: #fdf5e6; letter-spacing: 0;}   /* fallback when 3D can't run */
+
+      @media only screen and (min-width: 1800px) {#works > .section {max-width: 1500px;} .intro b {font-size: 34px;} .intro p {font-size: 20px;} .intro img {width: 170px; height: 170px;}}
+      @media only screen and (max-width: 600px) {
+        .intro {padding: 0; margin: 18px 0 22px; gap: 34px;}
+        .intro img {width: 120px; height: 120px; border-radius: 24px;}
+        .intro p {padding: 26px 22px; border-radius: 30px; font-size: 16px;}
+        .intro b {font-size: 23px;}
+        .works-grid {padding: 10px; gap: 10px; border-radius: 28px; border-top-left-radius: 0;}
+        .works-header {width: 300px; height: 58px; flex-direction: row; align-items: center;}
+        .works-header .title-gl {height: 100%; margin: 0;}
+        .works-header h2 {font-size: 20px;}
+      }
+      /* ---- Final first-screen layout: portrait over a narrow tab, bubble fills the space beside them ---- */
+      .works-header {width: 230px; height: 92px;}
+      .works-header .title-gl {width: 100%; height: 100%; margin: 0;}
+      .intro {display: flex; align-items: flex-start; justify-content: flex-start; gap: 0; padding: 0;
+        margin: 34px 0 -92px; position: relative; z-index: 2;}
+      .intro img {width: 190px; height: 190px; margin: 0 0 0 20px; flex-shrink: 0;}
+      .intro p {flex: 1; margin: 0 0 22px 76px; min-height: 290px; box-sizing: border-box; padding: 30px 48px;
+        display: flex; flex-direction: column; justify-content: center; font-size: 21px; line-height: 1.6;}
+      .intro b {font-size: 38px; margin-bottom: 14px;}
+      .intro p::before {top: 70px; transform: none;}
+      /* the intro box reaches down beside the tab; let the empty part pass the mouse through to the tab */
+      .intro {pointer-events: none;} .intro > * {pointer-events: auto;}
+      /* little guy pops out of the grid's right side at an angle (only where there's room beside the grid) */
+      .works-grid {position: static;}
+      .works-block {position: relative;}
+      .works-block .peek {bottom: auto; right: auto; left: 100%; top: 10px; width: 110px; height: 200px;}
+      .works-block .peek img {position: absolute; left: -86px; top: 54px; width: 132px; max-width: none; transform: rotate(60deg);}
+      .works-block .peek:hover img {transform: translate(12px, -7px) rotate(64deg);}
+      @media only screen and (max-width: 1380px) {.works-block .peek {display: none;}}
+      @media only screen and (max-width: 1200px) {.intro p {font-size: 18px;} .intro b {font-size: 30px;}}
+      /* Tablets and phones: portrait, then bubble, then the tab and grid */
+      @media only screen and (max-width: 1000px) {
+        .intro {flex-direction: column; align-items: center; margin: 22px 0 26px; gap: 34px;}
+        .intro img {width: 136px; height: 136px; margin: 0;}
+        .intro p {margin: 0; min-height: 0; padding: 26px 26px; text-align: center;}
+        .intro p::before {left: 50%; top: -40px; width: 50px; height: 42px; transform: translateX(-50%) rotate(90deg) scaleY(-1);}
+      }
+      @media only screen and (max-width: 600px) {
+        .intro img {width: 120px; height: 120px;}
+        .intro p {padding: 24px 20px; font-size: 16px;} .intro b {font-size: 23px;}
+        .works-header {width: 210px; height: 84px;}
+      }
+      /* What I do: small sign-off line under the statement */
+      .intro .role-tag {display: block; align-self: flex-start; font-size: 14px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+        color: #6b6b6b; line-height: 1.4; margin-top: 16px; padding-top: 12px; border-top: 2px solid #e6dccb;}
+      .intro p {line-height: 1.85; padding-top: 28px; padding-bottom: 26px;}
+      .intro b {line-height: 1.2; margin-bottom: 12px;}
+      @media only screen and (max-width: 1000px) {.intro .role-tag {align-self: center;}}
+      @media only screen and (max-width: 600px) {.intro .role-tag {font-size: 11px; letter-spacing: 1.5px;} .intro p {line-height: 1.7;}}
+      /* Keep the portrait centred in the space above the tab, whatever the bubble's height */
+      .intro {align-items: stretch;}
+      .intro img {align-self: center; margin-top: 0; margin-bottom: 116px;}   /* 116 = tab (92) + gap (24) */
+      .intro p {min-height: 284px; font-size: 20px; line-height: 1.75;}
+      .intro b {font-size: 34px;}
+      .intro p::before {top: calc((100% + 22px - 306px) / 2 + 70px);}        /* tail follows the portrait */
+      @media only screen and (max-width: 1200px) {.intro p {font-size: 18px;} .intro b {font-size: 28px;}}
+      @media only screen and (max-width: 1000px) {.intro {align-items: center;} .intro img {margin-bottom: 0;} .intro p {min-height: 0;}
+        .intro p::before {top: -40px;}}
+      @media only screen and (max-width: 600px) {.intro p {font-size: 16px; line-height: 1.7;} .intro b {font-size: 23px;}}
+      /* Highlighter stroke on the key phrases */
+      .intro mark {background: linear-gradient(transparent 45%, rgba(245,180,82,.5) 45%, rgba(245,180,82,.5) 95%, transparent 95%); color: inherit; padding: 0 2px;}
+      /* Phones and tablets: compact intro, left-aligned, full-width title bar */
+      @media only screen and (max-width: 1000px) {
+        .intro {align-items: flex-start; gap: 16px; margin: 14px 0 18px;}
+        .intro img {align-self: flex-start; width: 76px; height: 76px; margin-left: 6px; position: relative; z-index: 1; border-radius: 20px; box-shadow: 4px 4px 0 rgba(0,0,0,.28);}
+        .intro p {padding: 20px 20px 18px; text-align: left; line-height: 1.6; border-radius: 26px;}
+        .intro b {font-size: 22px; margin-bottom: 8px;}
+        /* the role line moves up beside the portrait, filling the space next to it */
+        .intro .role-tag {position: absolute; top: -54px; transform: translateY(-50%); left: 96px; right: 0; margin: 0; padding: 0 0 0 14px; border: 0;
+          border-left: 3px solid #f5b452; font-size: 12px; letter-spacing: 1.8px; line-height: 1.6; color: #555;}
+        .intro p::before {left: 22px; top: -26px; width: 34px; height: 30px; transform: rotate(90deg) scaleY(-1);}
+        /* full-width header bar instead of a tab; title on one line */
+        .works-header {width: 100%; height: 60px; border-radius: 26px 26px 0 0;}
+        .works-grid {border-top-left-radius: 0; border-top-right-radius: 0;}
+      }
     </style>
   </head>
   <body class="w3-sand w3-text-black">
@@ -235,13 +327,14 @@
         <!-- Intro: who I am, in one line -->
         <div class="intro zoom">
           <img src="./home/riya-avatar.jpg" alt="Cartoon portrait of Riya">
-          <p><b>I believe play is at the heart of human potential.</b><br>When we play, we feel safe enough to take risks, fail, and connect in ways we otherwise wouldn&rsquo;t. That&rsquo;s why I design playful worlds that make the ordinary and the impossible feel real, so people can live the ideas that words alone can&rsquo;t explain.</p>
+          <p><b>I believe play is at the heart of human potential.</b><br><span class="intro-body">When we play, we feel safe enough to <mark>take risks, fail, and connect</mark> in ways we otherwise wouldn&rsquo;t. That&rsquo;s why I design <mark>playful worlds</mark> that make the ordinary and the impossible feel real, so people can <mark>live the ideas</mark> that words alone can&rsquo;t explain.</span><span class="role-tag">Creative Technologist &amp; Interaction Engineer</span></p>
         </div>
+        <div class="works-block zoom">
         <div class="works-header">
-          <div id="titleGL" class="title-gl" role="img" aria-label="Highlighted Works"></div>
+          <div id="titleGL" class="title-gl" role="img" aria-label="Highlighted Works" data-reserve="30" data-face="cream" data-size="44" data-size-one-line="24" data-narrow-below="300"></div>
           <h2>Highlighted Works</h2>
         </div>
-        <div class="works-grid w3-dark-grey round-container zoom">
+        <div class="works-grid w3-dark-grey round-container">
           <!-- A Melting Rainbow figure (from my illustrations) peeking over the edge -->
           <div class="peek" aria-hidden="true"><img src="./home/rainbow-figure.png" alt=""></div>
 
@@ -313,6 +406,7 @@
           </div>
 
         </div>
+        </div>
 
       </div>
     </div>
@@ -320,7 +414,7 @@
   <!-- FOOTER SECTION -->
   <div id="footer"> </div>
 
-  <script src="./title-gl.js?v=12"></script>
+  <script src="./title-gl.js?v=18"></script>
 
   <!-- SCRIPTS -->
   <script>
